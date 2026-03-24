@@ -16,12 +16,16 @@ FRAMEWORK_DIR="$SCRIPT_DIR"
 mkdir -p "$OUTPUT_DIR" "$METRICS_DIR"
 
 # ── GPU backends (all running Qwen3.5-27B Q4_K_M) ────────────
+# Edit these to match your llama.cpp server addresses
+HOST_A="${HOST_A:-192.168.1.10}"   # Host with RTX PRO 6000 + RTX 5090
+HOST_B="${HOST_B:-192.168.1.11}"   # Host with RTX 4090 + RTX 3090
+
 declare -A GPU_LABEL=( [1]="6000" [2]="5090" [3]="4090" [4]="3090" )
 declare -A GPU_BACKEND=(
-    [1]="http://10.0.20.9:18080/v1"
-    [2]="http://10.0.20.9:18181/v1"
-    [3]="http://10.0.20.107:8080/v1"
-    [4]="http://10.0.20.107:8081/v1"
+    [1]="http://${HOST_A}:18080/v1"
+    [2]="http://${HOST_A}:18181/v1"
+    [3]="http://${HOST_B}:8080/v1"
+    [4]="http://${HOST_B}:8081/v1"
 )
 # ── Proxy ports (nothink proxy injects chat_template_kwargs) ──
 declare -A PROXY_PORT=( [1]=9101 [2]=9102 [3]=9103 [4]=9104 )
@@ -106,7 +110,8 @@ sleep 1
 # ── 3. Start metrics collector (nvidia-smi + /slots) ─────────
 echo "   Starting metrics collector..."
 python3 "$FRAMEWORK_DIR/metrics_collector.py" \
-    --config "6000=pg1:0:18080,5090=pg1:1:18181,4090=local:0:8080,3090=local:1:8081" \
+    --config "6000=remote:0:18080,5090=remote:1:18181,4090=local:0:8080,3090=local:1:8081" \
+    --remote-host "user@${HOST_A}" \
     --metrics-dir "$METRICS_DIR" \
     --interval 2 \
     --duration "$DURATION" &

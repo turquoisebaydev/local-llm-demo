@@ -10,7 +10,7 @@ Sits between Hermes agents and model backends, capturing:
 Writes per-request metrics to a JSONL file and prints a summary on SIGINT/exit.
 
 Usage:
-    python3 metrics_proxy.py --listen 0.0.0.0:9100 --backend http://10.0.20.9:11434/qwen27/v1 --label 27b --metrics-dir ./metrics
+    python3 metrics_proxy.py --listen 0.0.0.0:9100 --backend http://gpu-host:8080/v1 --label 27b --metrics-dir ./metrics
 """
 
 import argparse
@@ -226,7 +226,7 @@ def run_proxy(listen_host, listen_port, backend_url, label, metrics_dir):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="LLM metrics proxy")
     parser.add_argument("--listen", default="127.0.0.1:9100", help="host:port to listen on")
-    parser.add_argument("--backend", required=True, help="Backend URL (e.g., http://10.0.20.9:11434/qwen27/v1)")
+    parser.add_argument("--backend", required=True, help="Backend URL (e.g., http://gpu-host:8080/v1)")
     parser.add_argument("--label", required=True, help="Label for this model (e.g., '27b')")
     parser.add_argument("--metrics-dir", default="./metrics", help="Directory for metrics output")
     args = parser.parse_args()

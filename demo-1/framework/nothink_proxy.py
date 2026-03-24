@@ -5,7 +5,7 @@ Qwen3.5 thinking mode. Passes everything else through untouched,
 including streaming responses.
 
 Usage:
-    python3 nothink_proxy.py --listen 127.0.0.1:9101 --backend http://10.0.20.9:18080/v1
+    python3 nothink_proxy.py --listen 127.0.0.1:9101 --backend http://gpu-host:18080/v1
 """
 
 import argparse

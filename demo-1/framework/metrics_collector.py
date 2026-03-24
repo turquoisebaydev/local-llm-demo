@@ -5,8 +5,8 @@ llama.cpp /slots for token counts and timings.
 
 Usage:
     python3 metrics_collector.py \
-        --config '6000=pg1:0:18080,5090=pg1:1:18181,4090=local:0:8080,3090=local:1:8081' \
-        --pg1-host turq@10.0.20.9 \
+        --config '6000=remote:0:18080,5090=remote:1:18181,4090=local:0:8080,3090=local:1:8081' \
+        --remote-host user@gpu-host \
         --metrics-dir ./metrics --interval 2 --duration 120
 """
 
@@ -78,8 +78,9 @@ def calc_stats(vals):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True,
-                        help="label=host_type:gpu_idx:port,... host_type is 'pg1' or 'local'")
-    parser.add_argument("--pg1-host", default="turq@10.0.20.9")
+                        help="label=host_type:gpu_idx:port,... host_type is 'remote' or 'local'")
+    parser.add_argument("--remote-host", default="user@remote-host",
+                        help="SSH user@host for remote GPU polling")
     parser.add_argument("--metrics-dir", default="./metrics")
     parser.add_argument("--interval", type=float, default=2.0)
     parser.add_argument("--duration", type=int, default=120)
@@ -90,11 +91,11 @@ def main():
     for pair in args.config.split(","):
         label, spec = pair.split("=", 1)
         host_type, gpu_idx, port = spec.split(":")
-        if host_type == "pg1":
-            base_url = f"http://10.0.20.9:{port}"
-            ssh_host = args.pg1_host
+        if host_type == "remote":
+            base_url = f"http://{args.remote_host.split('@')[-1]}:{port}"
+            ssh_host = args.remote_host
         else:
-            base_url = f"http://10.0.20.107:{port}"
+            base_url = f"http://127.0.0.1:{port}"
             ssh_host = None
         gpus[label.strip()] = {
             "host_type": host_type,

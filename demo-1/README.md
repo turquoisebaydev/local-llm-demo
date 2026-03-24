@@ -5,12 +5,12 @@ Each GPU runs an independent AI agent that iteratively draws an SVG from a text 
 
 ## GPUs
 
-| GPU | Host | VRAM | Context | Port |
-|-----|------|------|---------|------|
-| NVIDIA RTX PRO 6000 (Blackwell) | pg1 | 48 GB | 131072 | 18080 |
-| NVIDIA GeForce RTX 5090 | pg1 | 32 GB | 131072 | 18181 |
-| NVIDIA GeForce RTX 4090 | turqette | 24 GB | 131072 | 8080 |
-| NVIDIA GeForce RTX 3090 | turqette | 24 GB | 131072 | 8081 |
+| GPU | VRAM | Context |
+|-----|------|---------|
+| NVIDIA RTX PRO 6000 (Blackwell) | 48 GB | 131072 |
+| NVIDIA GeForce RTX 5090 | 32 GB | 131072 |
+| NVIDIA GeForce RTX 4090 | 24 GB | 131072 |
+| NVIDIA GeForce RTX 3090 | 24 GB | 131072 |
 
 All running:
 - **Model:** Qwen3.5-27B-Q4_K_M.gguf
@@ -102,26 +102,19 @@ The RTX PRO 6000 delivers **58% more tokens per watt** than the 5090 and **44% m
 ## Infrastructure
 
 ```
-  Agent 1 ──► nothink proxy :9101 ──► pg1:18080       ──► llama.cpp (RTX PRO 6000)
-  Agent 2 ──► nothink proxy :9102 ──► pg1:18181       ──► llama.cpp (RTX 5090)
-  Agent 3 ──► nothink proxy :9103 ──► turqette:8080   ──► llama.cpp (RTX 4090)
-  Agent 4 ──► nothink proxy :9104 ──► turqette:8081   ──► llama.cpp (RTX 3090)
-                                                           │
-  metrics_collector.py ── polls nvidia-smi + /slots ───────┘
+  Agent 1 ──► nothink proxy ──► llama.cpp (RTX PRO 6000)
+  Agent 2 ──► nothink proxy ──► llama.cpp (RTX 5090)
+  Agent 3 ──► nothink proxy ──► llama.cpp (RTX 4090)
+  Agent 4 ──► nothink proxy ──► llama.cpp (RTX 3090)
+                                     │
+  metrics_collector.py ── polls nvidia-smi + /slots ─┘
 ```
 
-- **Agent orchestration:** [Hermes Agent](https://github.com/nousresearch/hermes-agent) CLI with isolated HERMES_HOME per agent
+- **Agent orchestration:** [Hermes Agent](https://github.com/nousresearch/hermes-agent) CLI with isolated config per agent
 - **NoThink proxy:** Injects `chat_template_kwargs: {enable_thinking: false}` into each request for reliable tool calling
-- **Metrics:** Sidecar polling nvidia-smi (SSH to pg1, local for turqette) and llama.cpp `/slots` every 2s
-
-## Service Files
-
-See `services/` for the systemd unit files used on each host.
+- **Metrics:** Sidecar polling `nvidia-smi` and llama.cpp `/slots` every 2s
 
 ## Reproduce
 
-```bash
-cd demo-1/framework
-./launch_agents.sh
-# Watch live: http://<turqette-ip>:8766/demo.html
-```
+See `framework/` for the launcher, proxies, metrics collector, and live viewer.
+See `services/` for the systemd unit files.
