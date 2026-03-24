@@ -1,3 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#f0f0f0"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="wallGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B9BB4;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#3D4452;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2D3440;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="deskGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C4945C;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="catBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5E6D3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8D4B8;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="eyeGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFF9D9;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#C9D86D;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#9BB648;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B8E23;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background wall -->
+  <rect x="0" y="0" width="800" height="400" fill="url(#wallGradient)" />
+
+  <!-- Desk surface -->
+  <rect x="0" y="350" width="800" height="250" fill="url(#deskGradient)" />
+
+  <!-- Monitor in background -->
+  <rect x="250" y="150" width="300" height="180" fill="#1a1a1a" />
+  <rect x="245" y="330" width="310" height="15" fill="#2a2a2a" />
+
+  <!-- Laptop behind cat -->
+  <rect x="200" y="280" width="400" height="120" fill="#c0c0c0" />
+  <rect x="200" y="280" width="400" height="100" fill="#d8d8d8" />
+  <rect x="220" y="300" width="360" height="80" fill="#1a1a1a" />
+  <rect x="200" y="380" width="400" height="20" fill="#b0b0b0" />
+
+  <!-- Cat body (sitting position) -->
+  <ellipse cx="400" cy="380" rx="80" ry="70" fill="url(#catBodyGradient)" />
+
+  <!-- Cat head -->
+  <ellipse cx="400" cy="290" rx="55" ry="45" fill="url(#catBodyGradient)" />
+
+  <!-- Cat ears -->
+  <polygon points="360,255 370,220 395,245" fill="#E8D4B8" />
+  <polygon points="405,245 430,220 440,255" fill="#E8D4B8" />
+  <polygon points="365,250 372,230 390,248" fill="#ffb6c1" />
+  <polygon points="410,248 428,230 435,250" fill="#ffb6c1" />
+
+  <!-- Cat eyes -->
+  <ellipse cx="385" cy="285" rx="12" ry="10" fill="url(#eyeGradient)" />
+  <ellipse cx="415" cy="285" rx="12" ry="10" fill="url(#eyeGradient)" />
+  <circle cx="385" cy="285" r="4" fill="#1a1a1a" />
+  <circle cx="415" cy="285" r="4" fill="#1a1a1a" />
+
+  <!-- Cat nose -->
+  <polygon points="395,295 405,295 400,302" fill="#ffb6c1" />
+
+  <!-- Cat mouth -->
+  <path d="M 400 302 L 400 310 M 395 308 Q 400 315 405 308" stroke="#3d3d3d" stroke-width="2" fill="none" />
+
+  <!-- Cat collar -->
+  <ellipse cx="400" cy="330" rx="50" ry="8" fill="#6b7280" />
+
+  <!-- White chest fur -->
+  <ellipse cx="400" cy="355" rx="25" ry="20" fill="#ffffff" />
+
+  <!-- Tabby markings on head -->
+  <path d="M 375 260 Q 380 255 385 260" stroke="#8B7355" stroke-width="3" fill="none" />
+  <path d="M 415 260 Q 420 255 425 260" stroke="#8B7355" stroke-width="3" fill="none" />
+  <path d="M 390 270 Q 400 265 410 270" stroke="#8B7355" stroke-width="3" fill="none" />
+
+  <!-- Orange cable on desk -->
+  <path d="M 50 380 Q 80 400 100 390 L 120 420" stroke="#FF8C42" stroke-width="6" fill="none" />
+
+  <!-- White papers on desk -->
+  <rect x="60" y="360" width="60" height="40" fill="#f5f5f5" />
+  <rect x="70" y="368" width="40" height="2" fill="#d0d0d0" />
+  <rect x="70" y="374" width="35" height="2" fill="#d0d0d0" />
+  <rect x="70" y="380" width="38" height="2" fill="#d0d0d0" />
+
 </svg>

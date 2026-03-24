@@ -1,55 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
   <defs>
-    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a1a3e"/>
-      <stop offset="100%" style="stop-color:#2d1b4e"/>
+    <!-- Background gradient for wall -->
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4d4d4;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#6b6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a4a4a;stop-opacity:1" />
     </linearGradient>
-    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#fff700"/>
-      <stop offset="100%" style="stop-color:#ff6600"/>
+    
+    <!-- Desk gradient -->
+    <linearGradient id="deskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9a961;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a68b5b;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Cat fur gradient -->
+    <linearGradient id="catFur" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5deb3;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#deb887;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c4a574;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Cat markings -->
+    <linearGradient id="catMarkings" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b7355;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6b5b45;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Eye gradient -->
+    <radialGradient id="eyeGrad">
+      <stop offset="30%" style="stop-color:#2d5016;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#8fbc8f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#556b2f;stop-opacity:1" />
     </radialGradient>
   </defs>
   
-  <!-- Sky background -->
-  <rect width="800" height="600" fill="url(#sky)"/>
+  <!-- Background wall -->
+  <rect x="0" y="0" width="800" height="400" fill="url(#wallGrad)" />
   
-  <!-- Sun -->
-  <circle cx="600" cy="150" r="60" fill="url(#sun)" opacity="0.9"/>
-  <circle cx="600" cy="150" r="80" fill="url(#sun)" opacity="0.3"/>
+  <!-- Desk surface -->
+  <rect x="0" y="380" width="800" height="220" fill="url(#deskGrad)" />
   
-  <!-- Mountains -->
-  <polygon points="0,600 200,300 400,600" fill="#1a3a1a"/>
-  <polygon points="300,600 550,250 800,600" fill="#2d4a2d"/>
-  <polygon points="100,600 350,350 600,600" fill="#1f2f1f" opacity="0.8"/>
+  <!-- Monitor in background -->
+  <rect x="280" y="180" width="240" height="160" fill="#1a1a1a" />
+  <rect x="260" y="340" width="280" height="15" fill="#3a3a3a" />
   
-  <!-- Ground -->
-  <rect y="550" width="800" height="50" fill="#1a4a1a"/>
+  <!-- Laptop (MacBook) -->
+  <rect x="220" y="280" width="360" height="200" fill="#c0c0c0" />
+  <rect x="230" y="290" width="340" height="170" fill="#2d2d2d" />
+  <rect x="180" y="460" width="440" height="8" fill="#a0a0a0" />
   
-  <!-- Stars -->
-  <circle cx="80" cy="60" r="2" fill="#fff"/>
-  <circle cx="150" cy="100" r="1.5" fill="#fff"/>
-  <circle cx="700" cy="80" r="2" fill="#fff"/>
-  <circle cx="750" cy="120" r="1.5" fill="#fff"/>
-  <circle cx="400" cy="50" r="1.5" fill="#fff"/>
-  <circle cx="500" cy="90" r="2" fill="#fff"/>
+  <!-- Cat body (main shape) -->
+  <ellipse cx="400" cy="380" rx="90" ry="70" fill="url(#catFur)" />
   
-  <!-- Cloud -->
-  <ellipse cx="200" cy="120" rx="40" ry="20" fill="#fff" opacity="0.7"/>
-  <ellipse cx="240" cy="110" rx="35" ry="18" fill="#fff" opacity="0.7"/>
-  <ellipse cx="170" cy="125" rx="30" ry="15" fill="#fff" opacity="0.7"/>
+  <!-- Cat chest (white fur) -->
+  <ellipse cx="400" cy="400" rx="45" ry="55" fill="#fffef0" />
   
-  <!-- Tree silhouette -->
-  <rect x="700" y="450" width="8" height="100" fill="#0d1a0d"/>
-  <circle cx="704" cy="430" r="35" fill="#1a3a1a"/>
-  <circle cx="680" cy="450" r="25" fill="#1a3a1a"/>
-  <circle cx="730" cy="450" r="25" fill="#1a3a1a"/>
+  <!-- Cat head -->
+  <ellipse cx="400" cy="290" rx="75" ry="65" fill="url(#catFur)" />
   
-  <!-- Moon rays -->
-  <line x1="600" y1="90" x2="580" y2="50" stroke="#fff700" stroke-width="1" opacity="0.4"/>
-  <line x1="660" y1="150" x2="700" y2="130" stroke="#fff700" stroke-width="1" opacity="0.4"/>
-  <line x1="600" y1="210" x2="590" y2="250" stroke="#fff700" stroke-width="1" opacity="0.4"/>
+  <!-- Cat ears -->
+  <polygon points="340,240 355,200 385,245" fill="url(#catFur)" stroke="#6b5b45" stroke-width="2"/>
+  <polygon points="345,240 358,210 378,240" fill="#ffb6c1" />
+  <polygon points="415,245 445,200 460,240" fill="url(#catFur)" stroke="#6b5b45" stroke-width="2"/>
+  <polygon points="422,240 442,210 455,240" fill="#ffb6c1" />
   
-  <!-- Title -->
-  <text x="400" y="585" font-family="monospace" font-size="18" fill="#888" text-anchor="middle">REFERENCE SCENE</text>
+  <!-- Cat eyes -->
+  <ellipse cx="375" cy="285" rx="18" ry="22" fill="url(#eyeGrad)" />
+  <ellipse cx="425" cy="285" rx="18" ry="22" fill="url(#eyeGrad)" />
+  <ellipse cx="375" cy="285" rx="8" ry="20" fill="#000" />
+  <ellipse cx="425" cy="285" rx="8" ry="20" fill="#000" />
+  <circle cx="378" cy="280" rx="5" fill="#fff" />
+  <circle cx="428" cy="280" rx="5" fill="#fff" />
+  
+  <!-- Cat nose -->
+  <polygon points="395,305 405,305 400,315" fill="#ffb6c1" />
+  
+  <!-- Cat mouth -->
+  <path d="M 400 315 Q 390 325 385 320" fill="none" stroke="#6b5b45" stroke-width="2" />
+  <path d="M 400 315 Q 410 325 415 320" fill="none" stroke="#6b5b45" stroke-width="2" />
+  
+  <!-- Cat collar -->
+  <ellipse cx="400" cy="345" rx="65" ry="12" fill="#696969" />
+  <circle cx="400" cy="345" r="8" fill="#ffd700" />
+  
+  <!-- Cat tabby markings on head -->
+  <path d="M 360 260 Q 375 250 390 260" fill="none" stroke="url(#catMarkings)" stroke-width="3" opacity="0.6"/>
+  <path d="M 410 260 Q 425 250 440 260" fill="none" stroke="url(#catMarkings)" stroke-width="3" opacity="0.6"/>
+  <path d="M 385 245 L 395 235 L 405 245" fill="none" stroke="url(#catMarkings)" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Cat paws -->
+  <ellipse cx="360" cy="435" rx="25" ry="18" fill="#fffef0" />
+  <ellipse cx="440" cy="435" rx="25" ry="18" fill="#fffef0" />
+  
+  <!-- Orange cable on desk -->
+  <path d="M 0 390 Q 80 420 150 390" fill="none" stroke="#ff8c00" stroke-width="6" />
+  
+  <!-- White papers on left -->
+  <rect x="30" y="370" width="80" height="60" fill="#f5f5dc" />
+  <rect x="25" y="365" width="90" height="70" fill="#fafad8" />
+  
 </svg>

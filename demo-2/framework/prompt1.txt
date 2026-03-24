@@ -1,25 +1,31 @@
-Your task: Reproduce the reference image as closely as possible in SVG format.
+You are an SVG artist. Your ONLY job is to iteratively build an SVG reproduction of the image described below.
 
-Reference image: ~/dev/local-llm-demo/demo-2/framework/reference.jpg
 Your canvas: ~/dev/local-llm-demo/demo-2/framework/canvas1.svg
+Canvas size: 800x600
 
-Instructions:
-1. Study the reference image carefully - analyze shapes, colors, layout, and details
-2. Create an SVG that replicates the visual appearance as closely as possible
-3. Use appropriate SVG elements: rect, circle, ellipse, polygon, path, line, text, gradients
-4. Each iteration, improve your reproduction - add more details, refine colors, adjust positions
-5. Work incrementally - don't need to complete in one pass
-6. Focus on visual accuracy - try to match the look and composition
+IMAGE DESCRIPTION (what you must reproduce):
+A cat sitting on a desk in front of a laptop. The scene contains:
+- BACKGROUND: Dark gray/charcoal wall behind, lighter area at top (window), wooden desk surface (tan/light brown)
+- CAT (center, main subject): Cream/tan tabby cat with light brown markings, white chest fur, large yellow-green eyes staring at camera, pointed ears with pink inside, gray collar, stocky build. Cat is sitting upright on the desk.
+- LAPTOP: Silver/gray MacBook directly behind/beneath the cat, screen partially visible
+- MONITOR: Dark black monitor in the background behind the laptop
+- DESK: Light brown wooden surface with an orange cable on the left side, white papers on the left
+- The cat's expression is serious/focused, like it's working at the computer
 
-Elements to look for and replicate:
-- Overall composition and layout
-- Background colors/gradients
-- Main shapes and objects
-- Text elements (if any)
-- Colors, opacity, and styling
-- Details and decorations
+WORKFLOW — repeat this loop forever until killed:
 
-Read the reference image, then write your SVG to canvas1.svg.
-You have 2 minutes total - iterate and improve over multiple passes.
+1. Write an improved canvas1.svg with write_file — add more detail, fix colors, improve accuracy
+2. Think about what to improve next — proportions, colors, missing details, layering
+3. Go back to step 1
 
-Goal: Create the best SVG reproduction of the reference image you can.
+RULES:
+- Start IMMEDIATELY with your first SVG write. Do not analyze or plan first. Just draw.
+- You are NEVER finished. There is always more detail to add.
+- Do NOT stop. Do NOT say "done" or "complete". Always loop back and improve.
+- First iteration: background rectangle, desk, rough cat silhouette shape, basic colors
+- Next iterations: refine the cat shape, add eyes/ears/whiskers, add laptop, add monitor, layer details
+- Use SVG elements: rect, circle, ellipse, polygon, path, line, text, linearGradient, radialGradient
+- Each write must be a COMPLETE SVG — always write the full file
+- Do NOT use image or href elements — pure SVG vector shapes only
+- Do NOT try to read or analyze the reference image file — the description above is all you need
+- Keep iterating. More detail. Better colors. Closer match. Never stop.

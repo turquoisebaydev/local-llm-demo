@@ -1,25 +1,32 @@
-Your task: Reproduce the reference image as closely as possible in SVG format.
-
-Reference image: ~/dev/local-llm-demo/demo-2/framework/reference.jpg
-Your canvas: ~/dev/local-llm-demo/demo-2/framework/canvas3.svg
-
-Instructions:
-1. Study the reference image carefully - analyze shapes, colors, layout, and details
-2. Create an SVG that replicates the visual appearance as closely as possible
-3. Use appropriate SVG elements: rect, circle, ellipse, polygon, path, line, text, gradients
-4. Each iteration, improve your reproduction - add more details, refine colors, adjust positions
-5. Work incrementally - don't need to complete in one pass
-6. Focus on visual accuracy - try to match the look and composition
-
-Elements to look for and replicate:
-- Overall composition and layout
-- Background colors/gradients
-- Main shapes and objects
-- Text elements (if any)
-- Colors, opacity, and styling
-- Details and decorations
-
-Read the reference image, then write your SVG to canvas3.svg.
-You have 2 minutes total - iterate and improve over multiple passes.
-
-Goal: Create the best SVG reproduction of the reference image you can.
+     1|You are an SVG artist. Your ONLY job is to iteratively build an SVG reproduction of the image described below.
+     2|
+     3|Your canvas: ~/dev/local-llm-demo/demo-2/framework/canvas3.svg
+     4|Canvas size: 800x600
+     5|
+     6|IMAGE DESCRIPTION (what you must reproduce):
+     7|A cat sitting on a desk in front of a laptop. The scene contains:
+     8|- BACKGROUND: Dark gray/charcoal wall behind, lighter area at top (window), wooden desk surface (tan/light brown)
+     9|- CAT (center, main subject): Cream/tan tabby cat with light brown markings, white chest fur, large yellow-green eyes staring at camera, pointed ears with pink inside, gray collar, stocky build. Cat is sitting upright on the desk.
+    10|- LAPTOP: Silver/gray MacBook directly behind/beneath the cat, screen partially visible
+    11|- MONITOR: Dark black monitor in the background behind the laptop
+    12|- DESK: Light brown wooden surface with an orange cable on the left side, white papers on the left
+    13|- The cat's expression is serious/focused, like it's working at the computer
+    14|
+    15|WORKFLOW — repeat this loop forever until killed:
+    16|
+    17|1. Write an improved canvas3.svg with write_file — add more detail, fix colors, improve accuracy
+    18|2. Think about what to improve next — proportions, colors, missing details, layering
+    19|3. Go back to step 1
+    20|
+    21|RULES:
+    22|- Start IMMEDIATELY with your first SVG write. Do not analyze or plan first. Just draw.
+    23|- You are NEVER finished. There is always more detail to add.
+    24|- Do NOT stop. Do NOT say "done" or "complete". Always loop back and improve.
+    25|- First iteration: background rectangle, desk, rough cat silhouette shape, basic colors
+    26|- Next iterations: refine the cat shape, add eyes/ears/whiskers, add laptop, add monitor, layer details
+    27|- Use SVG elements: rect, circle, ellipse, polygon, path, line, text, linearGradient, radialGradient
+    28|- Each write must be a COMPLETE SVG — always write the full file
+    29|- Do NOT use image or href elements — pure SVG vector shapes only
+    30|- Do NOT try to read or analyze the reference image file — the description above is all you need
+    31|- Keep iterating. More detail. Better colors. Closer match. Never stop.
+    32|

@@ -1,3 +1,119 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-  <rect width="800" height="600" fill="#f0f0f0"/>
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8dcc8"/>
+      <stop offset="25%" style="stop-color:#5a5a62"/>
+      <stop offset="100%" style="stop-color:#3d3d42"/>
+    </linearGradient>
+    <linearGradient id="catFur" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5deb3"/>
+      <stop offset="50%" style="stop-color:#e4d4a8"/>
+      <stop offset="100%" style="stop-color:#c9b896"/>
+    </linearGradient>
+    <linearGradient id="deskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#deb887"/>
+      <stop offset="100%" style="stop-color:#cd853f"/>
+    </linearGradient>
+    <linearGradient id="laptopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4d4d4"/>
+      <stop offset="100%" style="stop-color:#b0b0b0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background wall -->
+  <rect x="0" y="0" width="800" height="600" fill="url(#wallGrad)"/>
+  
+  <!-- Monitor in background -->
+  <rect x="280" y="280" width="240" height="140" fill="#0d0d0d"/>
+  <rect x="260" y="420" width="280" height="15" fill="#2d2d2d"/>
+  <!-- Monitor screen glow -->
+  <rect x="290" y="290" width="220" height="120" fill="#1a1a2e" opacity="0.5"/>
+  
+  <!-- Laptop screen -->
+  <rect x="250" y="320" width="300" height="95" fill="#e0e0e0"/>
+  <rect x="255" y="325" width="290" height="85" fill="#87ceeb" opacity="0.3"/>
+  
+  <!-- Laptop body -->
+  <rect x="200" y="405" width="400" height="28" fill="url(#laptopGrad)"/>
+  <polygon points="200,405 205,418 595,418 600,405" fill="#a0a0a0"/>
+  
+  <!-- Desk surface -->
+  <rect x="0" y="420" width="800" height="180" fill="url(#deskGrad)"/>
+  <!-- Desk wood grain lines -->
+  <line x1="0" y1="450" x2="800" y2="450" stroke="#b8860b" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="480" x2="800" y2="480" stroke="#b8860b" stroke-width="1" opacity="0.3"/>
+  <line x1="0" y1="520" x2="800" y2="520" stroke="#b8860b" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Cat tail -->
+  <path d="M 520 450 Q 560 430 570 400 Q 575 380 565 360" stroke="#c9b896" stroke-width="18" fill="none" stroke-linecap="round"/>
+  
+  <!-- Cat body (main torso) -->
+  <ellipse cx="400" cy="445" rx="85" ry="65" fill="url(#catFur)"/>
+  
+  <!-- Cat tabby stripes on body -->
+  <path d="M 360 430 Q 370 445 360 460" stroke="#b89858" stroke-width="4" fill="none" opacity="0.6"/>
+  <path d="M 380 425 Q 390 440 380 455" stroke="#b89858" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M 440 430 Q 450 445 440 460" stroke="#b89858" stroke-width="4" fill="none" opacity="0.6"/>
+  <path d="M 460 425 Q 470 440 460 455" stroke="#b89858" stroke-width="3" fill="none" opacity="0.5"/>
+  
+  <!-- Cat head -->
+  <ellipse cx="400" cy="335" rx="68" ry="58" fill="url(#catFur)"/>
+  
+  <!-- Cat tabby stripes on head -->
+  <path d="M 365 310 Q 370 325 365 340" stroke="#b89858" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M 435 310 Q 430 325 435 340" stroke="#b89858" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M 400 305 Q 400 320 400 335" stroke="#b89858" stroke-width="2" fill="none" opacity="0.4"/>
+  
+  <!-- Cat ears -->
+  <polygon points="348,290 335,255 372,288" fill="url(#catFur)"/>
+  <polygon points="452,290 465,255 428,288" fill="url(#catFur)"/>
+  <polygon points="352,285 342,265 368,282" fill="#ffb6c1"/>
+  <polygon points="448,285 458,265 432,282" fill="#ffb6c1"/>
+  
+  <!-- Cat eyes with more detail -->
+  <ellipse cx="378" cy="332" rx="14" ry="17" fill="#1a1a1a"/>
+  <ellipse cx="422" cy="332" rx="14" ry="17" fill="#1a1a1a"/>
+  <ellipse cx="378" cy="332" rx="6" ry="10" fill="#9acd32"/>
+  <ellipse cx="422" cy="332" rx="6" ry="10" fill="#9acd32"/>
+  <ellipse cx="378" cy="330" rx="3" ry="5" fill="#ffff00"/>
+  <ellipse cx="422" cy="330" rx="3" ry="5" fill="#ffff00"/>
+  
+  <!-- Cat nose -->
+  <polygon points="396,352 404,352 400,362" fill="#ffb6c1"/>
+  
+  <!-- Cat mouth -->
+  <path d="M 400 362 Q 395 370 390 368" stroke="#8b7355" stroke-width="1.5" fill="none"/>
+  <path d="M 400 362 Q 405 370 410 368" stroke="#8b7355" stroke-width="1.5" fill="none"/>
+  
+  <!-- Cat whiskers -->
+  <line x1="358" y1="352" x2="325" y2="348" stroke="#8b7355" stroke-width="1"/>
+  <line x1="358" y1="358" x2="325" y2="358" stroke="#8b7355" stroke-width="1"/>
+  <line x1="358" y1="364" x2="328" y2="368" stroke="#8b7355" stroke-width="1"/>
+  <line x1="442" y1="352" x2="475" y2="348" stroke="#8b7355" stroke-width="1"/>
+  <line x1="442" y1="358" x2="475" y2="358" stroke="#8b7355" stroke-width="1"/>
+  <line x1="442" y1="364" x2="472" y2="368" stroke="#8b7355" stroke-width="1"/>
+  
+  <!-- Cat collar -->
+  <ellipse cx="400" cy="378" rx="55" ry="14" fill="#696969"/>
+  <ellipse cx="400" cy="378" rx="52" ry="10" fill="#808080"/>
+  <circle cx="400" cy="378" r="6" fill="#ffd700"/>
+  
+  <!-- Cat chest fur (white) -->
+  <ellipse cx="400" cy="410" rx="35" ry="30" fill="#fff"/>
+  
+  <!-- Cat paws -->
+  <ellipse cx="365" cy="490" rx="22" ry="16" fill="#f5deb3"/>
+  <ellipse cx="435" cy="490" rx="22" ry="16" fill="#f5deb3"/>
+  <ellipse cx="365" cy="490" rx="15" ry="10" fill="#ffb6c1"/>
+  <ellipse cx="435" cy="490" rx="15" ry="10" fill="#ffb6c1"/>
+  
+  <!-- Orange cable on desk -->
+  <path d="M 40 440 Q 80 460 120 490 L 140 520" stroke="#ff6600" stroke-width="9" fill="none" stroke-linecap="round"/>
+  
+  <!-- White papers on left -->
+  <rect x="75" y="435" width="65" height="85" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+  <rect x="85" y="445" width="45" height="65" fill="#fff"/>
+  <line x1="90" y1="455" x2="120" y2="455" stroke="#ddd" stroke-width="1"/>
+  <line x1="90" y1="465" x2="120" y2="465" stroke="#ddd" stroke-width="1"/>
+  <line x1="90" y1="475" x2="110" y2="475" stroke="#ddd" stroke-width="1"/>
 </svg>

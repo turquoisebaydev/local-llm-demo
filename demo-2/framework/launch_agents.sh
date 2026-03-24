@@ -1,22 +1,18 @@
 #!/bin/bash
 # Launch 4 subagents — same model (Qwen3.5-27B) on 4 different GPUs
-# Each agent gets an isolated HERMES_HOME with a locked config pointing
-# to its metrics proxy.  No fallback, no provider resolution magic.
-# Captures TTFT, TPS, duration per GPU via metrics proxies.
-# Records a video of the demo viewer via periodic screenshots.
+# Each agent gets an isolated HERMES_HOME pointing directly at its GPU backend.
+# Metrics collected via sidecar polling llama.cpp /metrics endpoint.
 
 set -e
 
-echo "🎬 Starting demo with metrics + video recording..."
+echo "🎬 Starting demo with metrics collection..."
 
-DURATION=120  # 2 minutes in seconds
+DURATION=120  # 2 minutes
 TIMESTAMP=$(date +%s)
 OUTPUT_DIR="/tmp/svg_demo_${TIMESTAMP}"
 METRICS_DIR="${OUTPUT_DIR}/metrics"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FRAMEWORK_DIR="$SCRIPT_DIR"
-HERMES_AGENT_DIR="$HOME/.hermes/hermes-agent"
-DEMO_PORT=8766
 mkdir -p "$OUTPUT_DIR" "$METRICS_DIR"
 
 # ── GPU backends (all running Qwen3.5-27B Q4_K_M) ────────────
@@ -27,6 +23,7 @@ declare -A GPU_BACKEND=(
     [3]="http://10.0.20.107:8080/v1"
     [4]="http://10.0.20.107:8081/v1"
 )
+# ── Proxy ports (nothink proxy injects chat_template_kwargs) ──
 declare -A PROXY_PORT=( [1]=9101 [2]=9102 [3]=9103 [4]=9104 )
 
 # ── Build isolated HERMES_HOME per agent ──────────────────────
@@ -55,32 +52,33 @@ cleanup() {
     echo "   Stopping agents..."
     for pid in "${AGENT_PIDS[@]}"; do kill "$pid" 2>/dev/null || true; done
 
-    echo "   Stopping proxies (triggering metric summaries)..."
-    for pid in "${PROXY_PIDS[@]}"; do kill -TERM "$pid" 2>/dev/null || true; done
-    sleep 2
+    echo "   Stopping proxies..."
+    for pid in "${PROXY_PIDS[@]}"; do kill "$pid" 2>/dev/null || true; done
+
+    echo "   Stopping metrics collector..."
+    kill $COLLECTOR_PID 2>/dev/null || true
 
     echo "   Stopping HTTP server..."
     kill $HTTP_PID 2>/dev/null || true
 
-    # Wait for video recorder (it finishes on its own after DURATION)
     if [ -n "$RECORDER_PID" ]; then
-        echo "   Waiting for video to finish encoding..."
+        echo "   Waiting for video to finish..."
         wait $RECORDER_PID 2>/dev/null || true
     fi
 
     wait 2>/dev/null
 
-    # Generate combined report
+    # Generate report
     echo ""
-    echo "📊 Generating combined metrics report..."
-    python3 "$FRAMEWORK_DIR/metrics_report.py" "$METRICS_DIR"
+    echo "📊 Metrics report:"
+    python3 "$FRAMEWORK_DIR/metrics_report.py" "$METRICS_DIR" 2>/dev/null || true
 
     echo ""
     echo "✅ Demo complete!"
-    echo "   🎬 Video: $OUTPUT_DIR/demo.mp4"
     echo "   📁 Canvas files: $FRAMEWORK_DIR/canvas[1-4].svg"
     echo "   📊 Metrics: $METRICS_DIR/"
     echo "   📂 Output dir: $OUTPUT_DIR"
+    [ -f "$OUTPUT_DIR/demo.mp4" ] && echo "   🎬 Video: $OUTPUT_DIR/demo.mp4"
 }
 trap cleanup EXIT
 
@@ -94,38 +92,51 @@ for i in 1 2 3 4; do
 EOF
 done
 
-# ── 2. Start metrics proxies ─────────────────────────────────
-echo "   Starting metrics proxies..."
+# ── 2. Start nothink proxies ──────────────────────────────────
+echo "   Starting nothink proxies..."
 declare -a PROXY_PIDS
 for i in 1 2 3 4; do
-    python3 "$FRAMEWORK_DIR/metrics_proxy.py" \
+    python3 "$FRAMEWORK_DIR/nothink_proxy.py" \
         --listen "127.0.0.1:${PROXY_PORT[$i]}" \
-        --backend "${GPU_BACKEND[$i]}" \
-        --label "${GPU_LABEL[$i]}" \
-        --metrics-dir "$METRICS_DIR" &
+        --backend "${GPU_BACKEND[$i]}" &
     PROXY_PIDS+=($!)
 done
 sleep 1
 
-# ── 3. Start HTTP server for demo viewer ─────────────────────
-echo "   Starting demo viewer on :${DEMO_PORT}..."
-cd "$FRAMEWORK_DIR"
-python3 -m http.server "$DEMO_PORT" --bind 127.0.0.1 >/dev/null 2>&1 &
-HTTP_PID=$!
-cd - >/dev/null
-sleep 0.5
+# ── 3. Start metrics collector (nvidia-smi + /slots) ─────────
+echo "   Starting metrics collector..."
+python3 "$FRAMEWORK_DIR/metrics_collector.py" \
+    --config "6000=pg1:0:18080,5090=pg1:1:18181,4090=local:0:8080,3090=local:1:8081" \
+    --metrics-dir "$METRICS_DIR" \
+    --interval 2 \
+    --duration "$DURATION" &
+COLLECTOR_PID=$!
 
-# ── 4. Start video recorder ──────────────────────────────────
-echo "   Starting video recorder..."
-bash "$FRAMEWORK_DIR/record_demo.sh" "$OUTPUT_DIR" "$DURATION" "http://127.0.0.1:${DEMO_PORT}/demo.html" &
-RECORDER_PID=$!
+# ── 3. Start video recorder (optional) ───────────────────────
+DEMO_PORT=8766
+HTTP_PID=""
+RECORDER_PID=""
+if command -v wkhtmltoimage &>/dev/null; then
+    echo "   Starting video recorder..."
+    # HTTP server should already be running on 8766 from user
+    # If not, start one
+    if ! ss -tlnp | grep -q ":${DEMO_PORT}"; then
+        cd "$FRAMEWORK_DIR"
+        python3 -m http.server "$DEMO_PORT" --bind 0.0.0.0 >/dev/null 2>&1 &
+        HTTP_PID=$!
+        cd - >/dev/null
+        sleep 0.5
+    fi
+    bash "$FRAMEWORK_DIR/record_demo.sh" "$OUTPUT_DIR" "$DURATION" "http://127.0.0.1:${DEMO_PORT}/demo.html" &
+    RECORDER_PID=$!
+fi
 
-# ── 5. Launch 4 agents via isolated homes ─────────────────────
+# ── 4. Launch 4 agents directly at GPU backends ──────────────
 echo "   Launching 4 agents (Qwen3.5-27B on 4 GPUs)..."
 declare -a AGENT_PIDS
 for i in 1 2 3 4; do
     agent_home=$(make_agent_home $i)
-    echo "     Agent $i: ${GPU_LABEL[$i]} → proxy :${PROXY_PORT[$i]} → ${GPU_BACKEND[$i]}"
+    echo "     Agent $i: ${GPU_LABEL[$i]} → ${GPU_BACKEND[$i]}"
 
     HERMES_HOME="$agent_home" OPENAI_API_KEY="not-needed" \
       hermes chat -q "$(cat "$FRAMEWORK_DIR/prompt${i}.txt")" --yolo \
@@ -135,9 +146,9 @@ done
 
 echo ""
 echo "   PIDs: ${AGENT_PIDS[*]}"
-echo "   Recording for $DURATION seconds..."
-echo "   Metrics: $METRICS_DIR/"
+echo "   Running for $DURATION seconds..."
 echo "   Agent logs: $OUTPUT_DIR/agent_*.log"
+echo "   Watch live: http://$(hostname -I | awk '{print $1}'):8766/demo.html"
 
-# ── 6. Wait for duration ─────────────────────────────────────
+# ── 5. Wait for duration ─────────────────────────────────────
 sleep $DURATION

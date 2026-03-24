@@ -5,53 +5,58 @@
   <title>Multi-Agent SVG Demo</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { 
+    html, body {
       width: 1920px; height: 1080px; overflow: hidden;
       background: #0a0a1a; font-family: monospace; color: #fff;
     }
     .header {
-      height: 50px; display: flex; align-items: center; justify-content: center; gap: 30px;
+      height: 40px; display: -webkit-flex; display: flex;
+      -webkit-align-items: center; align-items: center;
+      -webkit-justify-content: center; justify-content: center;
+      gap: 30px;
     }
-    .header h1 { font-size: 1.3rem; color: #667eea; }
-    .timer { font-size: 1.1rem; color: #e94560; }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-      gap: 8px;
-      padding: 0 10px 10px;
-      height: 1020px;
+    .header h1 { font-size: 1.2rem; color: #667eea; }
+    .timer { font-size: 1rem; color: #e94560; }
+    .row {
+      display: -webkit-flex; display: flex;
+      -webkit-flex-direction: row; flex-direction: row;
+      height: 1030px;
+      padding: 0 6px 6px;
+      gap: 6px;
     }
     .panel {
+      -webkit-flex: 1; flex: 1;
       background: #1a1a2e;
       border: 2px solid #333;
       border-radius: 6px;
-      display: flex; flex-direction: column;
+      display: -webkit-flex; display: flex;
+      -webkit-flex-direction: column; flex-direction: column;
       overflow: hidden;
+      min-width: 0;
     }
     .panel h2 {
-      font-size: 0.85rem;
-      padding: 6px;
+      font-size: 0.8rem;
+      padding: 5px;
       text-align: center;
       color: #e94560;
       background: #0f0f23;
-      flex-shrink: 0;
     }
     .panel h2.ref { color: #667eea; }
-    .svg-view {
-      flex: 1;
+    .view {
+      -webkit-flex: 1; flex: 1;
       background: #0a0a1a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
+      position: relative;
     }
-    .svg-view img, .svg-view object {
-      width: 100%; height: 100%; object-fit: contain;
+    .view img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
     }
     .status {
-      padding: 4px;
+      padding: 3px;
       background: #0f0f23;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       text-align: center;
       flex-shrink: 0;
       color: #888;
@@ -60,57 +65,66 @@
 </head>
 <body>
   <div class="header">
-    <h1>🎨 Multi-Agent SVG Demo</h1>
+    <h1>🎨 Multi-Agent SVG Demo — Qwen3.5-27B across 4 GPUs</h1>
     <div class="timer" id="timer">Waiting for agents...</div>
   </div>
-  <div class="grid">
+  <div class="row">
     <div class="panel">
       <h2 class="ref">📋 Reference</h2>
-      <div class="svg-view">
-        <img src="reference.jpg">
-      </div>
+      <div class="view"><img src="reference.jpg"></div>
       <div class="status">Target image</div>
     </div>
     <div class="panel">
-      <h2>🤖 Agent 1 — RTX PRO 6000</h2>
-      <div class="svg-view">
-        <object id="canvas1" data="canvas1.svg" type="image/svg+xml"></object>
-      </div>
-      <div class="status" id="status1">Waiting...</div>
+      <h2>🤖 RTX PRO 6000</h2>
+      <div class="view"><img id="c1" src="canvas1.svg"></div>
+      <div class="status" id="s1">Waiting...</div>
     </div>
     <div class="panel">
-      <h2>🤖 Agent 2 — RTX 5090</h2>
-      <div class="svg-view">
-        <object id="canvas2" data="canvas2.svg" type="image/svg+xml"></object>
-      </div>
-      <div class="status" id="status2">Waiting...</div>
+      <h2>🤖 RTX 5090</h2>
+      <div class="view"><img id="c2" src="canvas2.svg"></div>
+      <div class="status" id="s2">Waiting...</div>
     </div>
     <div class="panel">
-      <h2>🤖 Agent 3 — RTX 4090</h2>
-      <div class="svg-view">
-        <object id="canvas3" data="canvas3.svg" type="image/svg+xml"></object>
-      </div>
-      <div class="status" id="status3">Waiting...</div>
+      <h2>🤖 RTX 4090</h2>
+      <div class="view"><img id="c3" src="canvas3.svg"></div>
+      <div class="status" id="s3">Waiting...</div>
     </div>
     <div class="panel">
-      <h2>🤖 Agent 4 — RTX 3090</h2>
-      <div class="svg-view">
-        <object id="canvas4" data="canvas4.svg" type="image/svg+xml"></object>
-      </div>
-      <div class="status" id="status4">Waiting...</div>
+      <h2>🤖 RTX 3090</h2>
+      <div class="view"><img id="c4" src="canvas4.svg"></div>
+      <div class="status" id="s4">Waiting...</div>
     </div>
   </div>
   <script>
-    const start = Date.now();
-    setInterval(() => {
-      const elapsed = Math.floor((Date.now() - start) / 1000);
-      const m = Math.floor(elapsed / 60);
-      const s = elapsed % 60;
-      document.getElementById('timer').textContent = `${m}:${String(s).padStart(2,'0')} elapsed`;
-      for (let i = 1; i <= 4; i++) {
-        const obj = document.getElementById('canvas' + i);
-        obj.data = 'canvas' + i + '.svg?t=' + Date.now();
-        document.getElementById('status' + i).textContent = new Date().toLocaleTimeString();
+    var start = Date.now();
+    var lastEtag = {};
+    var iteration = {};
+
+    function checkCanvas(i) {
+      var url = 'canvas' + i + '.svg';
+      var xhr = new XMLHttpRequest();
+      xhr.open('HEAD', url + '?t=' + Date.now(), true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var etag = xhr.getResponseHeader('Content-Length') + '-' + xhr.getResponseHeader('Last-Modified');
+          if (etag !== lastEtag[i]) {
+            lastEtag[i] = etag;
+            iteration[i] = (iteration[i] || 0) + 1;
+            document.getElementById('c' + i).src = url + '?v=' + Date.now();
+            document.getElementById('s' + i).textContent = 'Iteration ' + iteration[i] + ' — ' + new Date().toLocaleTimeString();
+          }
+        }
+      };
+      xhr.send();
+    }
+
+    setInterval(function() {
+      var elapsed = Math.floor((Date.now() - start) / 1000);
+      var m = Math.floor(elapsed / 60);
+      var s = elapsed % 60;
+      document.getElementById('timer').textContent = m + ':' + (s < 10 ? '0' : '') + s + ' elapsed';
+      for (var i = 1; i <= 4; i++) {
+        checkCanvas(i);
       }
     }, 2000);
   </script>
