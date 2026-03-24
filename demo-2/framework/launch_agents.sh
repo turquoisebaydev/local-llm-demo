@@ -1,6 +1,6 @@
 #!/bin/bash
 # Launch 4 subagents for Demo 2 across 4 GPUs.
-# Model split: Q5 on pg1 (6000/5090), Q4 on turqette (4090/3090).
+# Model split: BF16 on 6000, Q5 on 5090, Q4 on turqette (4090/3090).
 # Metrics collected via sidecar polling llama.cpp /slots + nvidia-smi.
 
 set -e
@@ -18,7 +18,7 @@ mkdir -p "$OUTPUT_DIR" "$METRICS_DIR"
 # ── GPU backends / model labels ───────────────────────────────
 declare -A GPU_LABEL=( [1]="6000" [2]="5090" [3]="4090" [4]="3090" )
 declare -A GPU_MODEL=(
-    [1]="Qwen3.5-27B.Q5_K_M.gguf"
+    [1]="Qwen3.5-27B-BF16"
     [2]="Qwen3.5-27B.Q5_K_M.gguf"
     [3]="Qwen3.5-27B-Q4_K_M.gguf"
     [4]="Qwen3.5-27B-Q4_K_M.gguf"
