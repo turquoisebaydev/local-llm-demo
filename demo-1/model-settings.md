@@ -11,12 +11,12 @@ Timestamp: 2026-03-24 (Australia/Sydney)
 ### Per-GPU contexts / ports
 
 1. pg1 RTX PRO 6000
-   - context: `262144`
+   - context: `131072`
    - port: `18080`
    - unit: `llama-qwen27-6000.service`
 
 2. pg1 RTX 5090
-   - context: `196608`
+   - context: `131072`
    - port: `18181` *(18081 was occupied by docker-proxy)*
    - unit: `llama-qwen27-5090.service`
 
