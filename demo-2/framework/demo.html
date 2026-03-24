@@ -2,123 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multi-Agent SVG Framework</title>
+  <title>Multi-Agent SVG Demo</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      background: #0a0a1a; 
-      font-family: monospace; 
-      color: #fff;
-      padding: 20px;
+    html, body { 
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: #0a0a1a; font-family: monospace; color: #fff;
     }
-    h1 { 
-      text-align: center; 
-      margin-bottom: 20px; 
-      color: #667eea;
+    .header {
+      height: 50px; display: flex; align-items: center; justify-content: center; gap: 30px;
     }
+    .header h1 { font-size: 1.3rem; color: #667eea; }
+    .timer { font-size: 1.1rem; color: #e94560; }
     .grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 15px;
-      max-width: 1600px;
-      margin: 0 auto;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 8px;
+      padding: 0 10px 10px;
+      height: 1020px;
     }
     .panel {
       background: #1a1a2e;
       border: 2px solid #333;
-      border-radius: 8px;
-      padding: 10px;
+      border-radius: 6px;
+      display: flex; flex-direction: column;
+      overflow: hidden;
     }
     .panel h2 {
-      font-size: 1rem;
-      margin-bottom: 10px;
+      font-size: 0.85rem;
+      padding: 6px;
       text-align: center;
       color: #e94560;
+      background: #0f0f23;
+      flex-shrink: 0;
     }
     .panel h2.ref { color: #667eea; }
     .svg-view {
+      flex: 1;
       background: #0a0a1a;
-      border: 1px solid #444;
-      border-radius: 4px;
-      min-height: 450px;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
-    .svg-view object {
-      width: 100%;
-      height: 450px;
+    .svg-view img, .svg-view object {
+      width: 100%; height: 100%; object-fit: contain;
     }
     .status {
-      margin-top: 10px;
-      padding: 8px;
+      padding: 4px;
       background: #0f0f23;
-      border-radius: 4px;
-      font-size: 0.85rem;
+      font-size: 0.7rem;
       text-align: center;
-    }
-    .timer {
-      text-align: center;
-      margin: 20px 0;
-      font-size: 1.5rem;
-      color: #e94560;
+      flex-shrink: 0;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <h1>🎨 Multi-Agent SVG Framework</h1>
-  <div class="timer" id="timer">Setup Ready - Agents Not Started</div>
-  
+  <div class="header">
+    <h1>🎨 Multi-Agent SVG Demo</h1>
+    <div class="timer" id="timer">Waiting for agents...</div>
+  </div>
   <div class="grid">
     <div class="panel">
       <h2 class="ref">📋 Reference</h2>
       <div class="svg-view">
-        <img src="reference.jpg" style="max-width: 100%; max-height: 450px; border-radius: 4px;">
+        <img src="reference.jpg">
       </div>
-      <div class="status">Static reference image (JPG)</div>
+      <div class="status">Target image</div>
     </div>
-    
     <div class="panel">
-      <h2>🤖 Agent 1</h2>
+      <h2>🤖 Agent 1 — RTX PRO 6000</h2>
       <div class="svg-view">
         <object id="canvas1" data="canvas1.svg" type="image/svg+xml"></object>
       </div>
       <div class="status" id="status1">Waiting...</div>
     </div>
-    
     <div class="panel">
-      <h2>🤖 Agent 2</h2>
+      <h2>🤖 Agent 2 — RTX 5090</h2>
       <div class="svg-view">
         <object id="canvas2" data="canvas2.svg" type="image/svg+xml"></object>
       </div>
       <div class="status" id="status2">Waiting...</div>
     </div>
-    
     <div class="panel">
-      <h2>🤖 Agent 3</h2>
+      <h2>🤖 Agent 3 — RTX 4090</h2>
       <div class="svg-view">
         <object id="canvas3" data="canvas3.svg" type="image/svg+xml"></object>
       </div>
       <div class="status" id="status3">Waiting...</div>
     </div>
-    
     <div class="panel">
-      <h2>🤖 Agent 4</h2>
+      <h2>🤖 Agent 4 — RTX 3090</h2>
       <div class="svg-view">
         <object id="canvas4" data="canvas4.svg" type="image/svg+xml"></object>
       </div>
       <div class="status" id="status4">Waiting...</div>
     </div>
   </div>
-  
   <script>
-    // Auto-refresh all canvases every 2 seconds
+    const start = Date.now();
     setInterval(() => {
+      const elapsed = Math.floor((Date.now() - start) / 1000);
+      const m = Math.floor(elapsed / 60);
+      const s = elapsed % 60;
+      document.getElementById('timer').textContent = `${m}:${String(s).padStart(2,'0')} elapsed`;
       for (let i = 1; i <= 4; i++) {
         const obj = document.getElementById('canvas' + i);
-        obj.data = 'canvas' + i + '.svg?t=' + new Date().getTime();
-        document.getElementById('status' + i).textContent = 'Last update: ' + new Date().toLocaleTimeString();
+        obj.data = 'canvas' + i + '.svg?t=' + Date.now();
+        document.getElementById('status' + i).textContent = new Date().toLocaleTimeString();
       }
     }, 2000);
   </script>
