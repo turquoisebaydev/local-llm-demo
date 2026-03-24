@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark gray wall background -->
+  <rect width="800" height="600" fill="#4a4a4a"/>
+  
+  <!-- Light area at top (window light) -->
+  <rect x="0" y="0" width="800" height="150" fill="#6b6b6b"/>
+  
+  <!-- Tan wooden desk -->
+  <rect x="0" y="400" width="800" height="200" fill="#d4a574"/>
+  
+  <!-- White papers on left -->
+  <rect x="50" y="420" width="80" height="100" fill="#f5f5f5"/>
+  <rect x="60" y="430" width="60" height="80" fill="#ffffff"/>
+  
+  <!-- Orange cable -->
+  <path d="M150,400 Q180,420 200,450 T220,500" stroke="#ff8c00" stroke-width="4" fill="none"/>
+  
+  <!-- Cat body (cream/tan tabby) -->
+  <ellipse cx="400" cy="450" rx="80" ry="60" fill="#e8d4b8"/>
+  <!-- Tabby stripes on body -->
+  <path d="M360,440 Q380,430 400,440" stroke="#c9a961" stroke-width="3" fill="none"/>
+  <path d="M370,460 Q390,450 410,460" stroke="#c9a961" stroke-width="3" fill="none"/>
+  
+  <!-- Cat head -->
+  <circle cx="400" cy="380" r="50" fill="#e8d4b8"/>
+  <!-- Tabby stripes on head -->
+  <path d="M380,360 Q400,350 420,360" stroke="#c9a961" stroke-width="2" fill="none"/>
+  
+  <!-- White chest -->
+  <ellipse cx="400" cy="440" rx="30" ry="40" fill="#fffff0"/>
+  
+  <!-- Yellow-green eyes with highlights -->
+  <ellipse cx="385" cy="375" rx="6" ry="8" fill="#9acd32"/>
+  <ellipse cx="415" cy="375" rx="6" ry="8" fill="#9acd32"/>
+  <circle cx="385" cy="375" r="3" fill="#000"/>
+  <circle cx="415" cy="375" r="3" fill="#000"/>
+  <circle cx="383" cy="373" r="1.5" fill="#fff"/>
+  <circle cx="413" cy="373" r="1.5" fill="#fff"/>
+  
+  <!-- Pointed ears -->
+  <polygon points="360,340 370,310 390,335" fill="#e8d4b8"/>
+  <polygon points="410,335 430,310 440,340" fill="#e8d4b8"/>
+  <!-- Pink inner ears -->
+  <polygon points="365,335 372,320 385,333" fill="#ffb6c1"/>
+  <polygon points="415,333 428,320 435,335" fill="#ffb6c1"/>
+  
+  <!-- Nose and mouth -->
+  <polygon points="395,385 405,385 400,392" fill="#ffb6c1"/>
+  <path d="M400,392 Q395,400 390,395" stroke="#666" stroke-width="1" fill="none"/>
+  <path d="M400,392 Q405,400 410,395" stroke="#666" stroke-width="1" fill="none"/>
+  
+  <!-- Whiskers -->
+  <line x1="370" y1="390" x2="340" y2="385" stroke="#ddd" stroke-width="1"/>
+  <line x1="370" y1="395" x2="340" y2="400" stroke="#ddd" stroke-width="1"/>
+  <line x1="430" y1="390" x2="460" y2="385" stroke="#ddd" stroke-width="1"/>
+  <line x1="430" y1="395" x2="460" y2="400" stroke="#ddd" stroke-width="1"/>
+  
+  <!-- Gray collar with tag -->
+  <path d="M370,420 Q400,430 430,420" stroke="#808080" stroke-width="5" fill="none"/>
+  <circle cx="400" cy="435" r="6" fill="#c0c0c0"/>
+  
+  <!-- Silver MacBook with keyboard -->
+  <rect x="350" y="320" width="100" height="70" fill="#c0c0c0"/>
+  <rect x="350" y="320" width="100" height="5" fill="#a0a0a0"/>
+  <rect x="360" y="370" width="80" height="15" fill="#404040"/>
+  
+  <!-- Dark monitor in background -->
+  <rect x="320" y="200" width="160" height="120" fill="#2a2a2a"/>
+  <rect x="330" y="210" width="140" height="100" fill="#1a1a1a"/>
+  
+  <!-- Cat tail -->
+  <path d="M340,470 Q300,460 290,420" stroke="#e8d4b8" stroke-width="15" fill="none" stroke-linecap="round"/>
+</svg>

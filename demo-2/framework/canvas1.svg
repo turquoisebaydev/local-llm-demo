@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="deskGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574"/>
+      <stop offset="100%" style="stop-color:#c49564"/>
+    </linearGradient>
+    <linearGradient id="catGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e8d5b7"/>
+      <stop offset="50%" style="stop-color:#d4c4a0"/>
+      <stop offset="100%" style="stop-color:#e8d5b7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Dark gray wall -->
+  <rect width="800" height="600" fill="#4a4a4a"/>
+  
+  <!-- Window/light at top -->
+  <rect x="200" y="50" width="400" height="150" fill="#b8c8d8"/>
+  
+  <!-- Tan wooden desk with gradient -->
+  <rect x="0" y="400" width="800" height="200" fill="url(#deskGradient)"/>
+  
+  <!-- Monitor in background -->
+  <rect x="280" y="250" width="240" height="120" fill="#1a1a1a"/>
+  <rect x="285" y="255" width="230" height="110" fill="#0d4d22"/>
+  <rect x="300" y="270" width="200" height="80" fill="#1a6d2a"/>
+  
+  <!-- White papers on left -->
+  <rect x="50" y="420" width="80" height="100" fill="#faf8f0"/>
+  <rect x="60" y="430" width="60" height="80" fill="#f0f0f0"/>
+  <line x1="70" y1="440" x2="110" y2="440" stroke="#ccc" stroke-width="1"/>
+  <line x1="70" y1="450" x2="110" y2="450" stroke="#ccc" stroke-width="1"/>
+  <line x1="70" y1="460" x2="110" y2="460" stroke="#ccc" stroke-width="1"/>
+  
+  <!-- Orange cable -->
+  <path d="M140,420 Q160,440 145,470 Q130,500 150,520" stroke="#ff6b35" stroke-width="4" fill="none"/>
+  
+  <!-- Laptop MacBook -->
+  <rect x="340" y="380" width="120" height="60" fill="#c8d0d8" rx="3"/>
+  <rect x="350" y="390" width="100" height="40" fill="#1a1a1a"/>
+  <rect x="355" y="395" width="90" height="30" fill="#2d5a27"/>
+  
+  <!-- Cat body with gradient -->
+  <ellipse cx="400" cy="480" rx="60" ry="50" fill="url(#catGradient)"/>
+  
+  <!-- White chest/belly -->
+  <ellipse cx="400" cy="490" rx="35" ry="30" fill="#faf8f0"/>
+  
+  <!-- Cat head -->
+  <circle cx="400" cy="420" r="45" fill="url(#catGradient)"/>
+  
+  <!-- Tabby stripes on forehead -->
+  <path d="M390,395 Q400,385 410,395" stroke="#c4a574" stroke-width="2" fill="none"/>
+  <path d="M385,400 Q400,390 415,400" stroke="#c4a574" stroke-width="2" fill="none"/>
+  
+  <!-- Left ear -->
+  <polygon points="365,385 355,355 385,375" fill="#e8d5b7"/>
+  <polygon points="368,382 360,362 380,378" fill="#ffb6c1"/>
+  
+  <!-- Right ear -->
+  <polygon points="435,385 445,355 415,375" fill="#e8d5b7"/>
+  <polygon points="432,382 440,362 420,378" fill="#ffb6c1"/>
+  
+  <!-- Eyes - serious yellow-green -->
+  <ellipse cx="385" cy="415" rx="8" ry="10" fill="#7cb342"/>
+  <ellipse cx="415" cy="415" rx="8" ry="10" fill="#7cb342"/>
+  <circle cx="385" cy="415" r="4" fill="#1a1a1a"/>
+  <circle cx="415" cy="415" r="4" fill="#1a1a1a"/>
+  <circle cx="387" cy="413" r="2" fill="#ffffff"/>
+  <circle cx="417" cy="413" r="2" fill="#ffffff"/>
+  
+  <!-- Nose - pink triangle -->
+  <polygon points="395,425 405,425 400,432" fill="#ffb6c1"/>
+  
+  <!-- Mouth -->
+  <path d="M400,432 Q395,438 392,435" stroke="#8b7355" stroke-width="1" fill="none"/>
+  <path d="M400,432 Q405,438 408,435" stroke="#8b7355" stroke-width="1" fill="none"/>
+  
+  <!-- Whiskers - left side -->
+  <line x1="375" y1="425" x2="350" y2="420" stroke="#8b7355" stroke-width="1"/>
+  <line x1="375" y1="430" x2="350" y2="430" stroke="#8b7355" stroke-width="1"/>
+  <line x1="375" y1="435" x2="350" y2="440" stroke="#8b7355" stroke-width="1"/>
+  
+  <!-- Whiskers - right side -->
+  <line x1="425" y1="425" x2="450" y2="420" stroke="#8b7355" stroke-width="1"/>
+  <line x1="425" y1="430" x2="450" y2="430" stroke="#8b7355" stroke-width="1"/>
+  <line x1="425" y1="435" x2="450" y2="440" stroke="#8b7355" stroke-width="1"/>
+  
+  <!-- Gray collar -->
+  <path d="M375,455 Q400,465 425,455" stroke="#6b7280" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="400" cy="462" r="5" fill="#ffd700"/>
+</svg>

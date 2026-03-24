@@ -1,0 +1,94 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Cat fur gradient -->
+    <linearGradient id="catFur" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8d5b7"/>
+      <stop offset="50%" style="stop-color:#d4c4a0"/>
+      <stop offset="100%" style="stop-color:#c4b490"/>
+    </linearGradient>
+    
+    <!-- Desk wood gradient -->
+    <linearGradient id="deskWood" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574"/>
+      <stop offset="100%" style="stop-color:#b88a5c"/>
+    </linearGradient>
+    
+    <!-- MacBook gradient -->
+    <linearGradient id="macbook" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d0d0d0"/>
+      <stop offset="50%" style="stop-color:#c0c0c0"/>
+      <stop offset="100%" style="stop-color:#b0b0b0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background wall -->
+  <rect width="800" height="600" fill="#4a4a4a"/>
+  
+  <!-- Window light at top -->
+  <rect x="200" y="0" width="400" height="120" fill="#e8e8d0"/>
+  
+  <!-- Desk -->
+  <rect x="0" y="400" width="800" height="200" fill="url(#deskWood)"/>
+  
+  <!-- Monitor in background -->
+  <rect x="300" y="280" width="200" height="120" fill="#1a1a1a"/>
+  <rect x="310" y="290" width="180" height="100" fill="#0a0a1a"/>
+  
+  <!-- MacBook behind cat -->
+  <rect x="280" y="340" width="240" height="100" fill="url(#macbook)"/>
+  <rect x="285" y="345" width="230" height="90" fill="#1a1a2e"/>
+  <!-- Apple logo hint -->
+  <path d="M 400 380 Q 405 380 408 383 Q 410 386 408 390 L 405 392 L 402 390 Q 400 392 398 390 L 395 392 L 392 390 Q 390 386 392 383 Q 395 380 400 380" fill="#4a4a4a"/>
+  
+  <!-- White papers on left -->
+  <rect x="50" y="380" width="80" height="100" fill="#fff"/>
+  <rect x="60" y="385" width="60" height="5" fill="#ddd"/>
+  <rect x="60" y="395" width="50" height="5" fill="#ddd"/>
+  <rect x="60" y="405" width="55" height="5" fill="#ddd"/>
+  
+  <!-- Orange cable -->
+  <path d="M 200 400 Q 180 420 150 440 Q 120 460 100 450" stroke="#ff6600" stroke-width="4" fill="none"/>
+  
+  <!-- Cat tail -->
+  <path d="M 470 470 Q 520 440 530 400 Q 535 380 525 370" stroke="url(#catFur)" stroke-width="18" fill="none" stroke-linecap="round"/>
+  
+  <!-- Cat body -->
+  <ellipse cx="400" cy="450" rx="80" ry="60" fill="url(#catFur)"/>
+  
+  <!-- White chest -->
+  <ellipse cx="400" cy="460" rx="35" ry="40" fill="#fffef0"/>
+  
+  <!-- Cat head -->
+  <circle cx="400" cy="380" r="50" fill="url(#catFur)"/>
+  
+  <!-- Ears -->
+  <polygon points="360,340 370,310 390,335" fill="url(#catFur)"/>
+  <polygon points="410,335 430,310 440,340" fill="url(#catFur)"/>
+  <polygon points="365,335 370,320 380,333" fill="#ffcccb"/>
+  <polygon points="420,333 430,320 435,335" fill="#ffcccb"/>
+  
+  <!-- Eyes with yellow-green tint -->
+  <ellipse cx="385" cy="375" rx="8" ry="10" fill="#6b8e23"/>
+  <ellipse cx="415" cy="375" rx="8" ry="10" fill="#6b8e23"/>
+  <ellipse cx="385" cy="375" rx="3" ry="8" fill="#000"/>
+  <ellipse cx="415" cy="375" rx="3" ry="8" fill="#000"/>
+  <circle cx="387" cy="372" r="2" fill="#fff"/>
+  <circle cx="417" cy="372" r="2" fill="#fff"/>
+  
+  <!-- Nose -->
+  <polygon points="395,385 405,385 400,392" fill="#ff9999"/>
+  
+  <!-- Mouth -->
+  <path d="M 400 392 Q 393 402 388 398" stroke="#333" stroke-width="1.5" fill="none"/>
+  <path d="M 400 392 Q 407 402 412 398" stroke="#333" stroke-width="1.5" fill="none"/>
+  
+  <!-- Whiskers -->
+  <line x1="370" y1="385" x2="340" y2="380" stroke="#8b7355" stroke-width="1"/>
+  <line x1="370" y1="390" x2="340" y2="395" stroke="#8b7355" stroke-width="1"/>
+  <line x1="430" y1="385" x2="460" y2="380" stroke="#8b7355" stroke-width="1"/>
+  <line x1="430" y1="390" x2="460" y2="395" stroke="#8b7355" stroke-width="1"/>
+  
+  <!-- Gray collar with tag -->
+  <path d="M 375 420 Q 400 430 425 420" stroke="#696969" stroke-width="6" fill="none"/>
+  <circle cx="400" cy="428" r="6" fill="#c0c0c0"/>
+</svg>

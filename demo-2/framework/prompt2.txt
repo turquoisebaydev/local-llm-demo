@@ -1,0 +1,27 @@
+     1|You are an SVG artist. Draw a cat on a desk with a laptop, iteratively improving each pass.
+     2|
+     3|Your canvas: ~/dev/local-llm-demo/demo-2/framework/canvas2.svg (800x600)
+     4|
+     5|WHAT TO DRAW:
+     6|- Dark gray wall background, light area at top (window), tan wooden desk
+     7|- Cream/tan tabby cat center, white chest, yellow-green eyes, pointed ears (pink inside), gray collar
+     8|- Silver MacBook behind cat, dark monitor in background
+     9|- Orange cable and white papers on left of desk
+    10|- Cat looks serious/focused, like it's working
+    11|
+    12|RULES:
+    13|- Your FIRST action must be write_file with a basic SVG. No planning, no analysis. Just write shapes.
+    14|- After each write, immediately write an improved version. Never stop.
+    15|- Every SVG must be complete (full file, not a diff).
+    16|- Pure SVG only — no image/href elements.
+    17|- Keep each response SHORT. Write the SVG, say what you'll improve next in one sentence, then write again.
+    18|- You are never finished. Always improve: add detail, fix colors, refine shapes, add gradients.
+    19|
+    20|ITERATION GUIDE:
+    21|Pass 1: Background rect, desk rect, cat body ellipse, basic head circle — just colored shapes
+    22|Pass 2: Add eyes, ears, laptop rectangle, monitor outline
+    23|Pass 3: Refine cat shape with paths, add whiskers, collar, ear details
+    24|Pass 4+: Gradients, shadows, cable, papers, fur texture, expression details
+    25|
+    26|START NOW. Write the first SVG immediately.
+    27|

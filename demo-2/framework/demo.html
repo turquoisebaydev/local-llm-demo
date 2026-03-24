@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-Agent SVG Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1920px; height: 1080px; overflow: hidden;
+      background: #0a0a1a; font-family: monospace; color: #fff;
+    }
+    .header {
+      height: 40px; display: -webkit-flex; display: flex;
+      -webkit-align-items: center; align-items: center;
+      -webkit-justify-content: center; justify-content: center;
+      gap: 30px;
+    }
+    .header h1 { font-size: 1.2rem; color: #667eea; }
+    .timer { font-size: 1rem; color: #e94560; }
+    .row {
+      display: -webkit-flex; display: flex;
+      -webkit-flex-direction: row; flex-direction: row;
+      height: 1030px;
+      padding: 0 6px 6px;
+      gap: 6px;
+    }
+    .panel {
+      -webkit-flex: 1; flex: 1;
+      background: #1a1a2e;
+      border: 2px solid #333;
+      border-radius: 6px;
+      display: -webkit-flex; display: flex;
+      -webkit-flex-direction: column; flex-direction: column;
+      overflow: hidden;
+      min-width: 0;
+    }
+    .panel.prompt {
+      -webkit-flex: 0.8; flex: 0.8;
+    }
+    .panel h2 {
+      font-size: 0.8rem;
+      padding: 5px;
+      text-align: center;
+      color: #e94560;
+      background: #0f0f23;
+    }
+    .panel h2.ref { color: #667eea; }
+    .view {
+      -webkit-flex: 1; flex: 1;
+      background: #0a0a1a;
+      overflow: hidden;
+      position: relative;
+    }
+    .view img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .prompt-text {
+      -webkit-flex: 1; flex: 1;
+      padding: 10px;
+      font-size: 0.7rem;
+      line-height: 1.4;
+      color: #aab;
+      overflow: hidden;
+      background: #0a0a1a;
+    }
+    .prompt-text strong { color: #667eea; }
+    .prompt-text em { color: #e94560; font-style: normal; }
+    .status {
+      padding: 3px;
+      background: #0f0f23;
+      font-size: 0.65rem;
+      text-align: center;
+      flex-shrink: 0;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎨 Multi-Agent SVG Demo — Qwen3.5-27B across 4 GPUs</h1>
+    <div class="timer" id="timer">Waiting for agents...</div>
+  </div>
+  <div class="row">
+    <div class="panel prompt">
+      <h2 class="ref">📋 Prompt</h2>
+      <div class="prompt-text">
+        <strong>IMAGE TO REPRODUCE:</strong><br><br>
+        A <em>cat sitting on a desk</em> in front of a laptop.<br><br>
+        <strong>BACKGROUND:</strong> Dark gray/charcoal wall, lighter area at top (window), wooden desk surface (tan/light brown)<br><br>
+        <strong>CAT</strong> (center): Cream/tan tabby, light brown markings, white chest fur, large yellow-green eyes, pointed ears with pink inside, gray collar, stocky build, sitting upright<br><br>
+        <strong>LAPTOP:</strong> Silver/gray MacBook behind the cat<br><br>
+        <strong>MONITOR:</strong> Dark black, background<br><br>
+        <strong>DESK:</strong> Light brown wood, orange cable left side, white papers left<br><br>
+        <em>Expression: serious/focused, like it's working at the computer</em>
+      </div>
+      <div class="status">Text description → SVG</div>
+    </div>
+    <div class="panel">
+      <h2>🤖 RTX PRO 6000</h2>
+      <div class="view"><img id="c1" src="canvas1.svg"></div>
+      <div class="status" id="s1">Waiting...</div>
+    </div>
+    <div class="panel">
+      <h2>🤖 RTX 5090</h2>
+      <div class="view"><img id="c2" src="canvas2.svg"></div>
+      <div class="status" id="s2">Waiting...</div>
+    </div>
+    <div class="panel">
+      <h2>🤖 RTX 4090</h2>
+      <div class="view"><img id="c3" src="canvas3.svg"></div>
+      <div class="status" id="s3">Waiting...</div>
+    </div>
+    <div class="panel">
+      <h2>🤖 RTX 3090</h2>
+      <div class="view"><img id="c4" src="canvas4.svg"></div>
+      <div class="status" id="s4">Waiting...</div>
+    </div>
+  </div>
+  <script>
+    var start = Date.now();
+    var lastEtag = {};
+    var iteration = {};
+
+    function checkCanvas(i) {
+      var url = 'canvas' + i + '.svg';
+      var xhr = new XMLHttpRequest();
+      xhr.open('HEAD', url + '?t=' + Date.now(), true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var etag = xhr.getResponseHeader('Content-Length') + '-' + xhr.getResponseHeader('Last-Modified');
+          if (etag !== lastEtag[i]) {
+            lastEtag[i] = etag;
+            iteration[i] = (iteration[i] || 0) + 1;
+            document.getElementById('c' + i).src = url + '?v=' + Date.now();
+            document.getElementById('s' + i).textContent = 'Iteration ' + iteration[i] + ' \u2014 ' + new Date().toLocaleTimeString();
+          }
+        }
+      };
+      xhr.send();
+    }
+
+    setInterval(function() {
+      var elapsed = Math.floor((Date.now() - start) / 1000);
+      var m = Math.floor(elapsed / 60);
+      var s = elapsed % 60;
+      document.getElementById('timer').textContent = m + ':' + (s < 10 ? '0' : '') + s + ' elapsed';
+      for (var i = 1; i <= 4; i++) {
+        checkCanvas(i);
+      }
+    }, 2000);
+  </script>
+</body>
+</html>
