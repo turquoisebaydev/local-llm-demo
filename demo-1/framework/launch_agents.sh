@@ -50,8 +50,11 @@ auxiliary:
 _config_version: 10
 custom_providers: []
 EOF
-    # Symlink .env so auxiliary vision provider has API keys
-    ln -sf "$HOME/.hermes/.env" "$agent_home/.env" 2>/dev/null || true
+    # Generate prompt from template with correct vision URL
+    local proxy_url="http://127.0.0.1:${PROXY_PORT[$idx]}"
+    sed -e "s|__CANVAS_NUM__|${idx}|g" -e "s|__VISION_URL__|${proxy_url}|g" \
+        "$FRAMEWORK_DIR/prompt_template.txt" > "$FRAMEWORK_DIR/prompt${idx}.txt"
+
     echo "$agent_home"
 }
 
