@@ -1,14 +1,14 @@
 # Demo 2 — Multi-Agent SVG Reproduction + Performance Metrics
 
 Four AI agents race to reproduce a reference image as SVG.
-This Demo 2 profile is the **highest-quality practical per-GPU Qwen3.5 mapping** at 131072 context.
+This Demo 2 profile is the **highest practical per-GPU Qwen3.5 mapping** at 131072 context.
 A metrics proxy captures **TTFT**, **TPS**, and **duration** per API call.
 
 ## Models
 
 | Agent | GPU | Model | Backend |
 |-------|-----|-------|---------|
-| 1 | RTX PRO 6000 (pg1, 96GB) | Qwen3.5-27B BF16 | `http://10.0.20.9:18080/v1` |
+| 1 | RTX PRO 6000 (pg1, 96GB) | Qwen3.5-122B-A10B Q4_K_M | `http://10.0.20.9:18080/v1` |
 | 2 | RTX 5090 (pg1) | Qwen3.5-27B Q5_K_M | `http://10.0.20.9:18181/v1` |
 | 3 | RTX 4090 (turqette) | Qwen3.5-27B Q4_K_M | `http://10.0.20.107:8080/v1` |
 | 4 | RTX 3090 (turqette) | Qwen3.5-27B Q4_K_M | `http://10.0.20.107:8081/v1` |
@@ -16,7 +16,7 @@ A metrics proxy captures **TTFT**, **TPS**, and **duration** per API call.
 ## How it works
 
 ```
-  Hermes Agent 1 ──► nothink proxy :9101 ──► pg1:18080/v1  (27B BF16 on 6000)
+  Hermes Agent 1 ──► nothink proxy :9101 ──► pg1:18080/v1  (122B Q4 on 6000)
   Hermes Agent 2 ──► nothink proxy :9102 ──► pg1:18181/v1  (27B Q5 on 5090)
   Hermes Agent 3 ──► nothink proxy :9103 ──► turqette:8080/v1 (27B Q4 on 4090)
   Hermes Agent 4 ──► nothink proxy :9104 ──► turqette:8081/v1 (27B Q4 on 3090)

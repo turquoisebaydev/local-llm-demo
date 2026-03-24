@@ -4,7 +4,7 @@ Timestamp: 2026-03-25 (Australia/Sydney)
 
 ## Goal
 
-For each GPU, run the highest practical Qwen3.5-27B variant at `-c 131072`.
+For each GPU, run the highest practical Qwen3.5 model at `-c 131072`.
 
 ## Shared runtime targets
 
@@ -18,7 +18,7 @@ For each GPU, run the highest practical Qwen3.5-27B variant at `-c 131072`.
 ## Per-GPU model assignment
 
 1. pg1 RTX PRO 6000 (96GB)
-   - model: `/home/turq/models/Qwen3.5-27B-GGUF/BF16/Qwen3.5-27B-BF16-00001-of-00002.gguf`
+   - model: `/home/turq/models/Qwen3.5-122B-A10B-GGUF/Q4_K_M/Qwen3.5-122B-A10B-Q4_K_M-00001-of-00003.gguf`
    - unit: `llama-demo2-6000.service`
    - port: `18080`
 
@@ -39,5 +39,5 @@ For each GPU, run the highest practical Qwen3.5-27B variant at `-c 131072`.
 
 ## Notes
 
-- This is the canonical "best-per-GPU" Demo 2 mapping.
+- This is the canonical "best practical per-GPU Qwen3.5" Demo 2 mapping.
 - Demo 3/4 services should be stopped while Demo 2 is active to avoid GPU contention.
