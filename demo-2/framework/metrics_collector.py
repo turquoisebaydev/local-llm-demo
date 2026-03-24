@@ -5,8 +5,8 @@ llama.cpp /slots for token counts and timings.
 
 Usage:
     python3 metrics_collector.py \
-        --config '6000=pg1:0:18080,5090=pg1:1:18181,4090=local:0:8080,3090=local:1:8081' \
-        --pg1-host turq@10.0.20.9 \
+        --config '6000=local:0:18080,5090=local:1:18181,4090=turqette:0:8080,3090=turqette:1:8081' \
+        --turqette-host turqette \
         --metrics-dir ./metrics --interval 2 --duration 120
 """
 
@@ -20,6 +20,15 @@ import sys
 import time
 from pathlib import Path
 from urllib.request import urlopen
+
+
+def normalize_ssh_target(value):
+    if value is None:
+        return None
+    v = str(value).strip().lower()
+    if v in ('', 'none', 'local', 'localhost', '127.0.0.1'):
+        return None
+    return value
 
 
 def poll_nvidia_smi(host=None):
@@ -78,8 +87,9 @@ def calc_stats(vals):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", required=True,
-                        help="label=host_type:gpu_idx:port,... host_type is 'pg1' or 'local'")
+                        help="label=host_type:gpu_idx:port,... host_type in {local, pg1, turqette}")
     parser.add_argument("--pg1-host", default="turq@10.0.20.9")
+    parser.add_argument("--turqette-host", default="turqette")
     parser.add_argument("--metrics-dir", default="./metrics")
     parser.add_argument("--interval", type=float, default=2.0)
     parser.add_argument("--duration", type=int, default=120)
@@ -90,12 +100,19 @@ def main():
     for pair in args.config.split(","):
         label, spec = pair.split("=", 1)
         host_type, gpu_idx, port = spec.split(":")
-        if host_type == "pg1":
-            base_url = f"http://10.0.20.9:{port}"
-            ssh_host = args.pg1_host
-        else:
-            base_url = f"http://10.0.20.107:{port}"
+
+        if host_type == "local":
+            base_url = f"http://127.0.0.1:{port}"
             ssh_host = None
+        elif host_type == "pg1":
+            base_url = f"http://10.0.20.9:{port}"
+            ssh_host = normalize_ssh_target(args.pg1_host)
+        elif host_type == "turqette":
+            base_url = f"http://10.0.20.107:{port}"
+            ssh_host = normalize_ssh_target(args.turqette_host)
+        else:
+            raise ValueError(f"Unsupported host_type '{host_type}' in --config entry '{pair}'")
+
         gpus[label.strip()] = {
             "host_type": host_type,
             "gpu_idx": int(gpu_idx),
