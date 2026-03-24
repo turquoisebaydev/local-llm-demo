@@ -147,3 +147,6 @@ demo-2/
 │   └── canvas[1-4].svg       # Agent output (created at runtime)
 └── metrics/                  # (placeholder for saved results)
 ```
+
+
+Vision is enabled by adding `--mmproj` to each llama-server unit (see `services/`).

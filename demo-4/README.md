@@ -9,6 +9,9 @@ Both services target `-c 131072` and use q4_0 KV cache.
 
 ## Service specs
 
+Vision is enabled by adding `--mmproj` to each split service unit (see `services/`).
+
+
 - `services/pg1/llama-demo4-122b-q6-split.service`
 - `services/turqette/llama-demo4-27b-q6-split.service`
 

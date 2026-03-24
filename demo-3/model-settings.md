@@ -6,6 +6,7 @@ Timestamp: 2026-03-25 (Australia/Sydney)
 
 - Model: `/home/turq/models/Qwen3.5-small-GGUF/Qwen3.5-9B-Q4_K_M.gguf`
 - Chat template: `/home/turq/models/qwen3.5_chat_template.jinja`
+- Vision projector: `/home/turq/models/Qwen3.5-9B-GGUF/mmproj-F16.gguf`
 - Context: `-c 131072` (all 4 GPUs)
 - Slots: `-np 1`
 - KV quant: `-ctk q4_0 -ctv q4_0`

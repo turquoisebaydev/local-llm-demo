@@ -9,6 +9,9 @@ For each GPU, run the highest practical Qwen3.5 model at `-c 131072`.
 ## Shared runtime targets
 
 - Chat template: `/home/turq/models/qwen3.5_chat_template.jinja`
+- Vision projector files:
+  - 27B lanes: `/home/turq/models/Qwen3.5-27B-GGUF/mmproj-F16.gguf`
+  - 122B lane: `/home/turq/models/Qwen3.5-122B-A10B-GGUF/mmproj-F16.gguf`
 - Context: `-c 131072`
 - Slots: `-np 1`
 - KV quant: `-ctk q4_0 -ctv q4_0`

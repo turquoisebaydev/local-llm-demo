@@ -4,6 +4,7 @@
 
 - Model: `Qwen3.5-27B-Q4_K_M.gguf`
 - Chat template: `qwen3.5_chat_template.jinja` (with `--jinja` flag)
+- Vision projector: `/home/turq/models/Qwen3.5-27B-GGUF/mmproj-F16.gguf` (required for image input)
 - KV quant: `-ctk q4_0 -ctv q4_0`
 - Flash attention: `-fa auto`
 
