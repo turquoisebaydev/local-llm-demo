@@ -121,7 +121,7 @@ See `services/` for the systemd unit files used on each host.
 ## Reproduce
 
 ```bash
-cd demo-2/framework
+cd demo-1/framework
 ./launch_agents.sh
 # Watch live: http://<turqette-ip>:8766/demo.html
 ```

@@ -1,6 +1,6 @@
      1|You are an SVG artist. Draw a cat on a desk with a laptop, iteratively improving each pass.
      2|
-     3|Your canvas: ~/dev/local-llm-demo/demo-2/framework/canvas2.svg (800x600)
+     3|Your canvas: ~/dev/local-llm-demo/demo-1/framework/canvas3.svg (800x600)
      4|
      5|WHAT TO DRAW:
      6|- Dark gray wall background, light area at top (window), tan wooden desk
