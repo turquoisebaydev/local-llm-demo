@@ -100,11 +100,15 @@ class ProxyHandler(BaseHTTPRequestHandler):
 
         is_stream = req_json.get("stream", False)
 
+        # Disable Qwen3.5 thinking mode for reliable tool calling
+        if "/chat/completions" in self.path:
+            req_json["chat_template_kwargs"] = {"enable_thinking": False}
+
         # Force non-streaming for simpler metrics capture
         # (llama.cpp returns timings in non-stream responses)
         if is_stream:
             req_json["stream"] = False
-            body = json.dumps(req_json).encode()
+        body = json.dumps(req_json).encode()
 
         # Forward request
         req = Request(target, data=body, method="POST")
@@ -166,40 +170,13 @@ class ProxyHandler(BaseHTTPRequestHandler):
             "path": self.path,
         })
 
-        # If client wanted streaming, we need to re-serialize as SSE
-        if is_stream:
-            self.send_response(200)
-            self.send_header("Content-Type", "text/event-stream")
-            self.send_header("Cache-Control", "no-cache")
-            self.end_headers()
-            # Send the full response as a single SSE event
-            try:
-                resp_json = json.loads(resp_body)
-                # Convert completion to a streaming-style chunk
-                choices = resp_json.get("choices", [])
-                for choice in choices:
-                    msg = choice.get("message", {})
-                    chunk = {
-                        "id": resp_json.get("id", ""),
-                        "object": "chat.completion.chunk",
-                        "created": resp_json.get("created", 0),
-                        "model": resp_json.get("model", ""),
-                        "choices": [{
-                            "index": choice.get("index", 0),
-                            "delta": {"role": msg.get("role", "assistant"), "content": msg.get("content", "")},
-                            "finish_reason": choice.get("finish_reason"),
-                        }],
-                    }
-                    self.wfile.write(f"data: {json.dumps(chunk)}\n\n".encode())
-                self.wfile.write(b"data: [DONE]\n\n")
-            except Exception:
-                self.wfile.write(resp_body)
-        else:
-            # Forward response as-is
-            self.send_response(resp.status)
-            self.send_header("Content-Type", resp.headers.get("Content-Type", "application/json"))
-            self.end_headers()
-            self.wfile.write(resp_body)
+        # Always return as non-streaming JSON — the OpenAI SDK handles
+        # receiving a non-stream response even when stream=True was requested.
+        self.send_response(resp.status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(resp_body)))
+        self.end_headers()
+        self.wfile.write(resp_body)
 
     def do_GET(self):
         """Forward GET requests (e.g., /models)"""
@@ -235,11 +212,10 @@ def run_proxy(listen_host, listen_port, backend_url, label, metrics_dir):
         print(f"\n📈 Final metrics for [{label}]:")
         summary = store.summary()
         print(json.dumps(summary, indent=2))
-        # Write summary
         summary_path = Path(metrics_dir) / f"{label}_summary.json"
         summary_path.write_text(json.dumps(summary, indent=2))
         print(f"   Saved to {summary_path}")
-        server.shutdown()
+        os._exit(0)
 
     signal.signal(signal.SIGINT, shutdown)
     signal.signal(signal.SIGTERM, shutdown)

@@ -1,7 +1,7 @@
 Your task: Reproduce the reference image as closely as possible in SVG format.
 
-Reference image: ~/hermes_svg_framework/reference.jpg
-Your canvas: ~/hermes_svg_framework/canvas2.svg
+Reference image: ~/dev/local-llm-demo/demo-2/framework/reference.jpg
+Your canvas: ~/dev/local-llm-demo/demo-2/framework/canvas2.svg
 
 Instructions:
 1. Study the reference image carefully - analyze shapes, colors, layout, and details
