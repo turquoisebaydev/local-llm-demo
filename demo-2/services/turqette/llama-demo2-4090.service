@@ -1,0 +1,16 @@
+[Unit]
+Description=Demo2 llama.cpp Qwen3.5-27B Q4_K_M on RTX 4090 (turqette)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/turq
+Environment=CUDA_VISIBLE_DEVICES=0
+ExecStart=/home/turq/src/llama.cpp/build-dualarch-86-89/bin/llama-server -m /home/turq/models/Qwen3.5-27B-GGUF/Qwen3.5-27B-Q4_K_M.gguf --jinja --chat-template-file /home/turq/models/qwen3.5_chat_template.jinja -ngl 99 -c 131072 -np 1 -fa auto -ctk q4_0 -ctv q4_0 -sm none -mg 0 --fit off --reasoning-format none --reasoning-budget 0 --host 0.0.0.0 --port 8080
+Restart=always
+RestartSec=5
+TimeoutStartSec=0
+
+[Install]
+WantedBy=default.target

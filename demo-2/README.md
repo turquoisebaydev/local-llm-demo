@@ -5,28 +5,30 @@ Each agent uses a different model; a metrics proxy captures **TTFT**, **TPS**, a
 
 ## Models
 
-| Agent | Model | Backend |
-|-------|-------|---------|
-| 1 | Qwen3.5-27B Q4_K_M | pg1 LB `/qwen27` |
-| 2 | Qwen3.5-9B Q4_K_M | pg1 LB `/qwen9` |
-| 3 | Qwen3.5-122B Q6_K_XL | pg1 LB `/qwen122` |
-| 4 | Claude Opus 4 | Anthropic API |
+| Agent | GPU | Model | Backend |
+|-------|-----|-------|---------|
+| 1 | RTX PRO 6000 (pg1) | Qwen3.5-27B Q5_K_M | `http://10.0.20.9:18080/v1` |
+| 2 | RTX 5090 (pg1) | Qwen3.5-27B Q5_K_M | `http://10.0.20.9:18181/v1` |
+| 3 | RTX 4090 (turqette) | Qwen3.5-27B Q4_K_M | `http://10.0.20.107:8080/v1` |
+| 4 | RTX 3090 (turqette) | Qwen3.5-27B Q4_K_M | `http://10.0.20.107:8081/v1` |
 
 ## How it works
 
 ```
-  Hermes Agent 1 ──► proxy :9101 ──► pg1 LB /qwen27/v1   ──► llama.cpp (27B)
-  Hermes Agent 2 ──► proxy :9102 ──► pg1 LB /qwen9/v1    ──► llama.cpp (9B)
-  Hermes Agent 3 ──► proxy :9103 ──► pg1 LB /qwen122/v1  ──► llama.cpp (122B)
-  Hermes Agent 4 ──► proxy :9104 ──► Anthropic API        ──► Claude Opus 4
+  Hermes Agent 1 ──► nothink proxy :9101 ──► pg1:18080/v1  (27B Q5 on 6000)
+  Hermes Agent 2 ──► nothink proxy :9102 ──► pg1:18181/v1  (27B Q5 on 5090)
+  Hermes Agent 3 ──► nothink proxy :9103 ──► turqette:8080/v1 (27B Q4 on 4090)
+  Hermes Agent 4 ──► nothink proxy :9104 ──► turqette:8081/v1 (27B Q4 on 3090)
 ```
 
-Each proxy intercepts every `/chat/completions` request and records:
+The nothink proxy injects `chat_template_kwargs.enable_thinking=false` for reliable tool-calling behavior during iterative SVG writes.
 
-- **TTFT** (Time to First Token) — from llama.cpp `timings.prompt_ms` (exact); estimated for Anthropic
-- **TPS** (Tokens Per Second) — from llama.cpp `timings.predicted_per_second`; estimated for Anthropic
-- **Duration** — wall-clock request time
-- **Token counts** — prompt + completion tokens per request
+Collected metrics:
+
+- **TTFT** / **TPS** from llama.cpp timings where available
+- **Duration** per request
+- **Power/utilization/memory** from `nvidia-smi` sidecar sampling
+- **Token progress** from llama.cpp `/slots`
 
 ## Prerequisites
 
