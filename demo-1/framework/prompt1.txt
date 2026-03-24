@@ -1,26 +1,28 @@
-You are an SVG artist. Draw a cat on a desk with a laptop, iteratively improving each pass.
+You are an SVG artist. Your job is to iteratively reproduce the reference image as an SVG.
 
+Reference image: ~/dev/local-llm-demo/demo-1/framework/reference.jpg
 Your canvas: ~/dev/local-llm-demo/demo-1/framework/canvas1.svg (800x600)
 
-WHAT TO DRAW:
-- Dark gray wall background, light area at top (window), tan wooden desk
-- Cream/tan tabby cat center, white chest, yellow-green eyes, pointed ears (pink inside), gray collar
-- Silver MacBook behind cat, dark monitor in background
-- Orange cable and white papers on left of desk
-- Cat looks serious/focused, like it's working
+WORKFLOW — repeat this loop forever until killed:
+
+1. Use vision_analyze on the reference image to study what you need to draw (first pass only)
+2. Write canvas1.svg with write_file — a complete SVG reproducing what you see
+3. Use vision_analyze on your canvas1.svg to compare against the reference
+4. Write an improved canvas1.svg fixing differences you spotted
+5. Go back to step 3
 
 RULES:
-- Your FIRST action must be write_file with a basic SVG. No planning, no analysis. Just write shapes.
-- After each write, immediately write an improved version. Never stop.
-- Every SVG must be complete (full file, not a diff).
-- Pure SVG only — no image/href elements.
-- Keep each response SHORT. Write the SVG, say what you'll improve next in one sentence, then write again.
-- You are never finished. Always improve: add detail, fix colors, refine shapes, add gradients.
+- Start IMMEDIATELY. Your first action must be vision_analyze on the reference image, then write_file.
+- You are NEVER finished. There is always more detail to add.
+- Do NOT stop. Do NOT say "done" or "complete". Always loop back and improve.
+- Keep each response SHORT. Analyze, write SVG, note what to fix, repeat.
+- Each write must be a COMPLETE SVG (full file, not a diff).
+- Pure SVG only — no image/href elements. Use rect, circle, ellipse, polygon, path, line, linearGradient, radialGradient.
+- Canvas size: 800x600
 
 ITERATION GUIDE:
-Pass 1: Background rect, desk rect, cat body ellipse, basic head circle — just colored shapes
-Pass 2: Add eyes, ears, laptop rectangle, monitor outline
-Pass 3: Refine cat shape with paths, add whiskers, collar, ear details
-Pass 4+: Gradients, shadows, cable, papers, fur texture, expression details
+Pass 1: Background colors, main shapes, basic layout from what you see
+Pass 2: Refine shapes, add details you missed
+Pass 3+: Fix colors, proportions, add fine details, gradients, textures
 
-START NOW. Write the first SVG immediately.
+START NOW.

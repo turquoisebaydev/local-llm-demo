@@ -44,9 +44,14 @@ model:
 agent:
   max_turns: 60
   reasoning_effort: none
+auxiliary:
+  vision:
+    provider: auto
 _config_version: 10
 custom_providers: []
 EOF
+    # Symlink .env so auxiliary vision provider has API keys
+    ln -sf "$HOME/.hermes/.env" "$agent_home/.env" 2>/dev/null || true
     echo "$agent_home"
 }
 

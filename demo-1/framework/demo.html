@@ -34,9 +34,6 @@
       overflow: hidden;
       min-width: 0;
     }
-    .panel.prompt {
-      -webkit-flex: 0.8; flex: 0.8;
-    }
     .panel h2 {
       font-size: 0.8rem;
       padding: 5px;
@@ -56,17 +53,6 @@
       object-fit: contain;
       display: block;
     }
-    .prompt-text {
-      -webkit-flex: 1; flex: 1;
-      padding: 10px;
-      font-size: 0.7rem;
-      line-height: 1.4;
-      color: #aab;
-      overflow: hidden;
-      background: #0a0a1a;
-    }
-    .prompt-text strong { color: #667eea; }
-    .prompt-text em { color: #e94560; font-style: normal; }
     .status {
       padding: 3px;
       background: #0f0f23;
@@ -83,19 +69,10 @@
     <div class="timer" id="timer">Waiting for agents...</div>
   </div>
   <div class="row">
-    <div class="panel prompt">
-      <h2 class="ref">📋 Prompt</h2>
-      <div class="prompt-text">
-        <strong>IMAGE TO REPRODUCE:</strong><br><br>
-        A <em>cat sitting on a desk</em> in front of a laptop.<br><br>
-        <strong>BACKGROUND:</strong> Dark gray/charcoal wall, lighter area at top (window), wooden desk surface (tan/light brown)<br><br>
-        <strong>CAT</strong> (center): Cream/tan tabby, light brown markings, white chest fur, large yellow-green eyes, pointed ears with pink inside, gray collar, stocky build, sitting upright<br><br>
-        <strong>LAPTOP:</strong> Silver/gray MacBook behind the cat<br><br>
-        <strong>MONITOR:</strong> Dark black, background<br><br>
-        <strong>DESK:</strong> Light brown wood, orange cable left side, white papers left<br><br>
-        <em>Expression: serious/focused, like it's working at the computer</em>
-      </div>
-      <div class="status">Text description → SVG</div>
+    <div class="panel">
+      <h2 class="ref">📋 Reference</h2>
+      <div class="view"><img src="reference.jpg"></div>
+      <div class="status">Target image (vision)</div>
     </div>
     <div class="panel">
       <h2>🤖 RTX PRO 6000</h2>
