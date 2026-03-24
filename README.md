@@ -1,24 +1,18 @@
 # local-llm-demo
 
-Demo configs and benchmarks for local multi-GPU llama.cpp layouts.
+Benchmarks and demos for local multi-GPU llama.cpp inference.
 
-## Demos
+## Demo 1 — Same Model, Different GPUs
 
-### Demo 1 — Multi-GPU Context Scaling
+Qwen3.5-27B Q4_K_M running on four GPUs simultaneously (RTX PRO 6000, RTX 5090, RTX 4090, RTX 3090). Each GPU runs an independent agent that iteratively generates SVG artwork from a text description. Compares tokens/sec, power draw, and output quality.
 
-Qwen3.5-27B Q4_K_M loaded across all four GPUs simultaneously, each with different context sizes:
+**→ [Demo 1 Results](demo-1/)**
 
-| GPU | Host | Context | Port |
-|-----|------|---------|------|
-| RTX PRO 6000 | pg1 | 262144 | 18080 |
-| RTX 5090 | pg1 | 196608 | 18181 |
-| RTX 4090 | turqette | 131072 | 8080 |
-| RTX 3090 | turqette | 131072 | 8081 |
+## Framework
 
-See [`demo-1/`](demo-1/) for exact settings and systemd service files.
-
-### Demo 2 — Multi-Agent SVG Reproduction + Performance Metrics
-
-Four AI agents (27B, 9B, 122B, Claude Opus) race to reproduce a reference image as SVG. Metrics proxies capture **TTFT**, **TPS**, and **duration** per API call, producing a formatted comparison report.
-
-See [`demo-2/`](demo-2/) for the full framework, launcher, and docs.
+The test framework in [`demo-2/framework/`](demo-2/framework/) provides:
+- `launch_agents.sh` — orchestrates 4 parallel Hermes Agent instances
+- `nothink_proxy.py` — transparent proxy to disable Qwen3.5 thinking mode
+- `metrics_collector.py` — sidecar polling nvidia-smi + llama.cpp `/slots`
+- `demo.html` — live side-by-side viewer with flicker-free updates
+- `record_demo.sh` — screenshots → video via wkhtmltoimage + ffmpeg

@@ -115,6 +115,9 @@ def main():
     prev_decoded = {label: 0 for label in gpus}
     prev_time = {label: time.time() for label in gpus}
 
+    # Track completed turns (task ID changes = new request)
+    turn_count = {label: 0 for label in gpus}
+
     start = time.time()
     running = True
 
@@ -147,6 +150,9 @@ def main():
                 n_decoded = slots.get("n_decoded", 0)
                 dt = now - prev_time[label]
 
+                if prev_task[label] is not None and task_id != prev_task[label]:
+                    turn_count[label] += 1
+
                 if dt > 0 and prev_task[label] == task_id and n_decoded > prev_decoded[label]:
                     delta_tokens = n_decoded - prev_decoded[label]
                     tps = delta_tokens / dt
@@ -164,6 +170,7 @@ def main():
                 "tps": round(tps, 2) if tps else None,
                 "is_processing": slots.get("is_processing") if slots else None,
                 "n_decoded": slots.get("n_decoded") if slots else None,
+                "turns": turn_count[label],
             }
             jsonl_files[label].write(json.dumps(entry) + "\n")
             jsonl_files[label].flush()
@@ -190,8 +197,11 @@ def main():
         util = [r["util_pct"] for r in records if r.get("util_pct") is not None]
         tps_vals = [r["tps"] for r in records if r.get("tps")]
 
+        final_turns = records[-1]["turns"] if records else 0
+
         summary[label] = {
             "samples": len(records),
+            "turns": final_turns,
             "power_w": calc_stats(power),
             "util_pct": calc_stats(util),
             "tps": calc_stats(tps_vals),
@@ -205,6 +215,12 @@ def main():
         header += f"{l:>{col_w}}"
     print(header)
     print("-" * (22 + col_w * len(labels)))
+
+    # Turns row
+    row = f"{'Turns completed':<22}"
+    for l in labels:
+        row += f"{summary[l].get('turns', 0):>{col_w}}"
+    print(row)
 
     for section, key, unit in [
         ("⚡ Power Draw (W)", "power_w", ""),
