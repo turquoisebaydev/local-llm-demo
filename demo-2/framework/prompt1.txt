@@ -1,0 +1,25 @@
+Your task: Reproduce the reference image as closely as possible in SVG format.
+
+Reference image: ~/hermes_svg_framework/reference.jpg
+Your canvas: ~/hermes_svg_framework/canvas1.svg
+
+Instructions:
+1. Study the reference image carefully - analyze shapes, colors, layout, and details
+2. Create an SVG that replicates the visual appearance as closely as possible
+3. Use appropriate SVG elements: rect, circle, ellipse, polygon, path, line, text, gradients
+4. Each iteration, improve your reproduction - add more details, refine colors, adjust positions
+5. Work incrementally - don't need to complete in one pass
+6. Focus on visual accuracy - try to match the look and composition
+
+Elements to look for and replicate:
+- Overall composition and layout
+- Background colors/gradients
+- Main shapes and objects
+- Text elements (if any)
+- Colors, opacity, and styling
+- Details and decorations
+
+Read the reference image, then write your SVG to canvas1.svg.
+You have 2 minutes total - iterate and improve over multiple passes.
+
+Goal: Create the best SVG reproduction of the reference image you can.
