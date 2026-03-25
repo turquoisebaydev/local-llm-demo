@@ -7,7 +7,7 @@ Tests how different model sizes and quantizations compare on the same workload.
 
 | GPU | VRAM | Model | Quant |
 |-----|------|-------|-------|
-| RTX PRO 6000 Max-Q (300W) | 48 GB | Qwen3.5-122B-A10B | Q4_K_M |
+| RTX PRO 6000 Max-Q (300W) | 96 GB | Qwen3.5-122B-A10B | Q4_K_M |
 | RTX 5090 | 32 GB | Qwen3.5-27B | Q5_K_M |
 | RTX 4090 | 24 GB | Qwen3.5-27B | Q4_K_M |
 | RTX 3090 | 24 GB | Qwen3.5-27B | Q4_K_M |
@@ -66,7 +66,7 @@ Collected via `nvidia-smi` (power, utilization) and llama.cpp `/slots` (token th
 
 ### Key Takeaways
 
-- **122B on RTX PRO 6000** completed 11 iterations — impressively close to the 27B models despite being a 4.5x larger model. The 48GB VRAM on the Max-Q card makes running 122B-A10B (MoE) practical.
+- **122B on RTX PRO 6000** completed 11 iterations — impressively close to the 27B models despite being a 4.5x larger model. The 96GB VRAM on the Max-Q card makes running 122B-A10B (MoE) practical.
 - **5090 with Q5_K_M** quantization completed the most iterations (12), showing that higher quality quantization on the 27B doesn't hurt throughput meaningfully.
 - **4090 and 3090** running the same Q4_K_M 27B model show the expected generational gap (42.5 vs 33.1 tok/s).
 - All GPUs at 94-95% utilization — fully saturated.

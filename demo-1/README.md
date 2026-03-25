@@ -7,7 +7,7 @@ Each GPU runs an independent AI agent that uses **native vision** to analyze a r
 
 | GPU | VRAM | Context |
 |-----|------|---------|
-| NVIDIA RTX PRO 6000 Blackwell Max-Q (300W) | 48 GB | 131072 |
+| NVIDIA RTX PRO 6000 Blackwell Max-Q (300W) | 96 GB | 131072 |
 | NVIDIA GeForce RTX 5090 | 32 GB | 131072 |
 | NVIDIA GeForce RTX 4090 | 24 GB | 131072 |
 | NVIDIA GeForce RTX 3090 | 24 GB | 131072 |
