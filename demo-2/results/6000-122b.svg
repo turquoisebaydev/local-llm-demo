@@ -1,210 +1,292 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <defs>
-    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#5a5a5a"/>
-      <stop offset="100%" style="stop-color:#3a3a3a"/>
-    </linearGradient>
-    <linearGradient id="deskGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#b89474"/>
-      <stop offset="50%" style="stop-color:#d4b494"/>
-      <stop offset="100%" style="stop-color:#b89474"/>
-    </linearGradient>
-    <linearGradient id="catGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#e2c49c"/>
-      <stop offset="100%" style="stop-color:#c2a47c"/>
-    </linearGradient>
-    <linearGradient id="macGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#d0d0d0"/>
-      <stop offset="100%" style="stop-color:#a0a0a0"/>
-    </linearGradient>
-    <linearGradient id="screenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#4a4a6e"/>
-      <stop offset="100%" style="stop-color:#1a1a2e"/>
-    </linearGradient>
-    <linearGradient id="collarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#595959"/>
-      <stop offset="50%" style="stop-color:#797979"/>
-      <stop offset="100%" style="stop-color:#595959"/>
-    </linearGradient>
-    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-      <feOffset dx="0" dy="3" result="offsetblur"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
-      <feOffset dx="2" dy="4" result="offsetblur"/>
-      <feComponentTransfer><feFuncA type="linear" slope="0.25"/></feComponentTransfer>
-      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="70%" style="stop-color:#9acd32"/>
-      <stop offset="100%" style="stop-color:#6d8b12"/>
-    </radialGradient>
-  </defs>
-  
-  <!-- Wall -->
-  <rect width="800" height="600" fill="url(#wallGrad)"/>
-  <!-- Window -->
-  <rect x="200" y="0" width="400" height="150" fill="#7b7b7b"/>
-  <rect x="220" y="20" width="120" height="100" fill="#9b9b9b" opacity="0.5"/>
-  <rect x="460" y="20" width="120" height="100" fill="#9b9b9b" opacity="0.5"/>
-  <rect x="200" y="0" width="400" height="150" fill="none" stroke="#555" stroke-width="3"/>
-  <line x1="400" y1="0" x2="400" y2="150" stroke="#555" stroke-width="3"/>
-  <line x1="200" y1="75" x2="600" y2="75" stroke="#555" stroke-width="2"/>
-  
-  <!-- Desk -->
-  <rect x="0" y="400" width="800" height="200" fill="url(#deskGrad)"/>
-  <rect x="0" y="400" width="800" height="5" fill="#8b7355"/>
-  <!-- Wood grain -->
-  <line x1="100" y1="450" x2="150" y2="520" stroke="#8b7355" stroke-width="1" opacity="0.3"/>
-  <line x1="600" y1="480" x2="680" y2="550" stroke="#8b7355" stroke-width="1" opacity="0.3"/>
-  <line x1="700" y1="420" x2="760" y2="480" stroke="#8b7355" stroke-width="1" opacity="0.3"/>
-  <line x1="300" y1="460" x2="380" y2="520" stroke="#8b7355" stroke-width="1" opacity="0.2"/>
-  
-  <!-- MacBook with highlights -->
-  <g filter="url(#softShadow)">
-    <!-- Main body -->
-    <rect x="320" y="320" width="160" height="100" fill="url(#macGrad)"/>
-    <!-- Screen -->
-    <rect x="330" y="330" width="140" height="80" fill="url(#screenGlow)"/>
-    <!-- Code hints -->
-    <rect x="345" y="345" width="20" height="3" fill="#4a6" opacity="0.4"/>
-    <rect x="345" y="352" width="40" height="3" fill="#68a" opacity="0.4"/>
-    <rect x="345" y="359" width="30" height="3" fill="#a64" opacity="0.4"/>
-    <rect x="345" y="366" width="50" height="3" fill="#6a8" opacity="0.4"/>
-    <rect x="345" y="373" width="35" height="3" fill="#86a" opacity="0.4"/>
-    <rect x="345" y="380" width="45" height="3" fill="#68a" opacity="0.4"/>
-    <!-- Screen reflection -->
-    <rect x="350" y="340" width="80" height="20" fill="#fff" opacity="0.05"/>
-    <!-- Apple logo -->
-    <path d="M400 350 Q405 348 410 350 Q405 355 400 350" fill="#fff" opacity="0.8"/>
-    <!-- Keyboard area -->
-    <rect x="330" y="415" width="140" height="5" fill="#666" opacity="0.5"/>
-    <rect x="335" y="422" width="130" height="3" fill="#666" opacity="0.5"/>
-    <!-- Trackpad -->
-    <rect x="360" y="430" width="80" height="5" fill="#888" opacity="0.6"/>
-    <!-- Body highlight -->
-    <rect x="325" y="325" width="150" height="2" fill="#fff" opacity="0.3"/>
+  <!-- Background: Light wood desk -->
+  <rect width="800" height="600" fill="#E8DCC4"/>
+  <!-- Wood grain texture -->
+  <g stroke="#D4C4A8" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="580" x2="800" y2="575"/>
+    <line x1="0" y1="560" x2="800" y2="558"/>
+    <line x1="0" y1="540" x2="800" y2="542"/>
+    <line x1="0" y1="520" x2="800" y2="518"/>
+    <line x1="0" y1="500" x2="800" y2="503"/>
+    <line x1="0" y1="480" x2="800" y2="478"/>
+    <line x1="0" y1="460" x2="800" y2="462"/>
+    <line x1="0" y1="440" x2="800" y2="438"/>
   </g>
   
-  <!-- Monitor -->
-  <g filter="url(#dropShadow)">
-    <rect x="350" y="200" width="100" height="80" fill="#1a1a1a"/>
-    <rect x="355" y="205" width="90" height="70" fill="#2a2a3e" opacity="0.5"/>
-    <rect x="380" y="280" width="40" height="20" fill="#333"/>
+  <!-- Orange cable on left side -->
+  <path d="M 140 405 Q 120 420 100 440 Q 80 460 60 480 Q 45 500 35 520" 
+        fill="none" stroke="#FF8C00" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 140 405 Q 120 420 100 440 Q 80 460 60 480 Q 45 500 35 520" 
+        fill="none" stroke="#FFA030" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Paper in bottom-left foreground -->
+  <rect x="30" y="500" width="120" height="80" fill="#FAFAFA" rx="2"/>
+  <line x1="45" y1="515" x2="135" y2="515" stroke="#CCCCCC" stroke-width="1.5"/>
+  <line x1="45" y1="528" x2="125" y2="528" stroke="#CCCCCC" stroke-width="1.5"/>
+  <line x1="45" y1="541" x2="130" y2="541" stroke="#CCCCCC" stroke-width="1.5"/>
+  <line x1="45" y1="554" x2="115" y2="554" stroke="#CCCCCC" stroke-width="1.5"/>
+  <line x1="45" y1="567" x2="120" y2="567" stroke="#CCCCCC" stroke-width="1.5"/>
+  
+  <!-- Black remote/device behind cable -->
+  <rect x="85" y="445" width="35" height="18" fill="#1a1a1a" rx="3"/>
+  <circle cx="95" cy="454" r="3" fill="#333333"/>
+  <circle cx="105" cy="454" r="3" fill="#333333"/>
+  <circle cx="115" cy="454" r="3" fill="#333333"/>
+  <circle cx="125" cy="454" r="3" fill="#333333"/>
+  
+  <!-- White paper/envelope on right side -->
+  <rect x="660" y="385" width="70" height="90" fill="#F5F5F5" rx="2" transform="rotate(-5 695 430)"/>
+  <line x1="665" y1="395" x2="725" y2="395" stroke="#E0E0E0" stroke-width="1" transform="rotate(-5 695 430)"/>
+  <line x1="665" y1="410" x2="720" y2="410" stroke="#E0E0E0" stroke-width="1" transform="rotate(-5 695 430)"/>
+  <line x1="665" y1="425" x2="715" y2="425" stroke="#E0E0E0" stroke-width="1" transform="rotate(-5 695 430)"/>
+  
+  <!-- Black monitor in background -->
+  <rect x="180" y="40" width="440" height="280" fill="#1a1a1a" rx="10"/>
+  <rect x="195" y="55" width="410" height="250" fill="#0a0a0a"/>
+  <!-- Monitor reflections -->
+  <circle cx="280" cy="100" r="8" fill="#FFFFFF" opacity="0.05"/>
+  <circle cx="520" cy="95" r="6" fill="#FFFFFF" opacity="0.04"/>
+  <circle cx="350" cy="180" r="5" fill="#FFFFFF" opacity="0.03"/>
+  <!-- Monitor stand -->
+  <rect x="380" y="320" width="40" height="50" fill="#4a4a4a"/>
+  <rect x="340" y="370" width="120" height="18" fill="#3a3a3a" rx="3"/>
+  
+  <!-- Gold MacBook (aluminum body) -->
+  <!-- Base with gold color -->
+  <path d="M 120 390 L 680 390 L 645 435 L 155 435 Z" fill="#E5D4A8"/>
+  <!-- Highlights along edges (brushed metal) -->
+  <path d="M 120 390 L 680 390" fill="none" stroke="#F0E4C8" stroke-width="3" opacity="0.6"/>
+  <path d="M 155 435 L 120 390" fill="none" stroke="#F0E4C8" stroke-width="2" opacity="0.5"/>
+  <path d="M 645 435 L 680 390" fill="none" stroke="#F0E4C8" stroke-width="2" opacity="0.5"/>
+  <!-- Keyboard area (black) -->
+  <rect x="140" y="395" width="520" height="32" fill="#1a1a1a" rx="2"/>
+  <!-- Trackpad with subtle reflection -->
+  <rect x="370" y="402" width="60" height="20" fill="#2a2a2a" rx="3"/>
+  <ellipse cx="400" cy="406" rx="25" ry="6" fill="#FFFFFF" opacity="0.08"/>
+  <!-- Cat reflection on trackpad (faint) -->
+  <ellipse cx="400" cy="408" rx="18" ry="4" fill="#C4B8A8" opacity="0.15"/>
+  <!-- Keys with light reflections -->
+  <g fill="#0a0a0a" rx="1">
+    <!-- Row 1 -->
+    <rect x="150" y="398" width="14" height="10"/>
+    <rect x="168" y="398" width="14" height="10"/>
+    <rect x="186" y="398" width="14" height="10"/>
+    <rect x="204" y="398" width="14" height="10"/>
+    <rect x="222" y="398" width="14" height="10"/>
+    <rect x="240" y="398" width="14" height="10"/>
+    <rect x="258" y="398" width="14" height="10"/>
+    <rect x="276" y="398" width="14" height="10"/>
+    <rect x="294" y="398" width="14" height="10"/>
+    <rect x="312" y="398" width="14" height="10"/>
+    <rect x="330" y="398" width="14" height="10"/>
+    <rect x="348" y="398" width="14" height="10"/>
+    <rect x="366" y="398" width="14" height="10"/>
+    <rect x="384" y="398" width="14" height="10"/>
+    <rect x="402" y="398" width="14" height="10"/>
+    <rect x="420" y="398" width="14" height="10"/>
+    <rect x="438" y="398" width="14" height="10"/>
+    <rect x="456" y="398" width="14" height="10"/>
+    <rect x="474" y="398" width="14" height="10"/>
+    <rect x="492" y="398" width="14" height="10"/>
+    <rect x="510" y="398" width="14" height="10"/>
+    <rect x="528" y="398" width="14" height="10"/>
+    <rect x="546" y="398" width="14" height="10"/>
+    <rect x="564" y="398" width="14" height="10"/>
+    <rect x="582" y="398" width="14" height="10"/>
+    <!-- Row 2 -->
+    <rect x="155" y="408" width="14" height="10"/>
+    <rect x="173" y="408" width="14" height="10"/>
+    <rect x="191" y="408" width="14" height="10"/>
+    <rect x="209" y="408" width="14" height="10"/>
+    <rect x="227" y="408" width="14" height="10"/>
+    <rect x="245" y="408" width="14" height="10"/>
+    <rect x="263" y="408" width="14" height="10"/>
+    <rect x="281" y="408" width="14" height="10"/>
+    <rect x="299" y="408" width="14" height="10"/>
+    <rect x="317" y="408" width="14" height="10"/>
+    <rect x="335" y="408" width="14" height="10"/>
+    <rect x="353" y="408" width="14" height="10"/>
+    <rect x="371" y="408" width="14" height="10"/>
+    <rect x="389" y="408" width="14" height="10"/>
+    <rect x="407" y="408" width="14" height="10"/>
+    <rect x="425" y="408" width="14" height="10"/>
+    <rect x="443" y="408" width="14" height="10"/>
+    <rect x="461" y="408" width="14" height="10"/>
+    <rect x="479" y="408" width="14" height="10"/>
+    <rect x="497" y="408" width="14" height="10"/>
+    <rect x="515" y="408" width="14" height="10"/>
+    <rect x="533" y="408" width="14" height="10"/>
+    <rect x="551" y="408" width="14" height="10"/>
+    <rect x="569" y="408" width="14" height="10"/>
+    <rect x="587" y="408" width="14" height="10"/>
+  </g>
+  <!-- Key reflections (ambient light on spacebar and some keys) -->
+  <rect x="335" y="408" width="60" height="10" fill="#FFFFFF" opacity="0.06" rx="1"/>
+  <rect x="546" y="398" width="14" height="10" fill="#FFFFFF" opacity="0.05" rx="1"/>
+  <rect x="564" y="398" width="14" height="10" fill="#FFFFFF" opacity="0.05" rx="1"/>
+  <rect x="582" y="398" width="14" height="10" fill="#FFFFFF" opacity="0.05" rx="1"/>
+  
+  <!-- Laptop screen -->
+  <rect x="150" y="80" width="500" height="280" fill="#C0D8E8" rx="2"/>
+  <!-- Screen bezel -->
+  <rect x="145" y="75" width="510" height="290" fill="#E5D4A8" rx="4"/>
+  <!-- Desktop icons (left side) -->
+  <rect x="165" y="100" width="20" height="20" fill="#4A90D9" rx="3"/>
+  <rect x="165" y="130" width="20" height="20" fill="#50C878" rx="3"/>
+  <rect x="165" y="160" width="20" height="20" fill="#E85A4A" rx="3"/>
+  <rect x="165" y="190" width="20" height="20" fill="#F5A623" rx="3"/>
+  <!-- Dock at bottom -->
+  <rect x="280" y="335" width="240" height="15" fill="#FFFFFF" opacity="0.8" rx="5"/>
+  <circle cx="300" cy="342" r="6" fill="#4A90D9"/>
+  <circle cx="330" cy="342" r="6" fill="#50C878"/>
+  <circle cx="360" cy="342" r="6" fill="#E85A4A"/>
+  <circle cx="390" cy="342" r="6" fill="#F5A623"/>
+  <circle cx="420" cy="342" r="6" fill="#9B59B6"/>
+  <circle cx="450" cy="342" r="6" fill="#34495E"/>
+  
+  <!-- Shadow under laptop -->
+  <ellipse cx="400" cy="438" rx="270" ry="12" fill="#000000" opacity="0.15"/>
+  
+  <!-- Cat sitting on laptop (Devon Rex) -->
+  <!-- Tail wrapped around right side with distinct rings -->
+  <path d="M 420 410 Q 460 420 470 440 Q 475 455 465 465 Q 455 472 440 470" 
+        fill="none" stroke="#6B6B6B" stroke-width="16" stroke-linecap="round"/>
+  <!-- Tail rings - alternating dark and light -->
+  <path d="M 422 412 Q 438 416 448 424" fill="none" stroke="#9B9B9B" stroke-width="14" stroke-linecap="round"/>
+  <path d="M 446 426 Q 458 436 460 450" fill="none" stroke="#9B9B9B" stroke-width="14" stroke-linecap="round"/>
+  <path d="M 458 452 Q 458 462 450 468" fill="none" stroke="#9B9B9B" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- Hind legs (taupe-gray with marbling) -->
+  <ellipse cx="370" cy="425" rx="18" ry="25" fill="#C4B8A8"/>
+  <ellipse cx="430" cy="425" rx="18" ry="25" fill="#C4B8A8"/>
+  <!-- Marbled pattern on hind legs -->
+  <ellipse cx="368" cy="420" rx="10" ry="15" fill="#B8A898" opacity="0.4"/>
+  <ellipse cx="432" cy="422" rx="9" ry="14" fill="#B8A898" opacity="0.4"/>
+  <!-- Fur texture on legs (fine curls) -->
+  <path d="M 365 415 Q 368 420 365 425" fill="none" stroke="#A89888" stroke-width="1" opacity="0.4"/>
+  <path d="M 372 418 Q 375 423 372 428" fill="none" stroke="#A89888" stroke-width="1" opacity="0.4"/>
+  <path d="M 428 418 Q 431 423 428 428" fill="none" stroke="#A89888" stroke-width="1" opacity="0.4"/>
+  <path d="M 435 415 Q 438 420 435 425" fill="none" stroke="#A89888" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Body (cream/off-white with marbled taupe-gray patches) -->
+  <ellipse cx="400" cy="415" rx="55" ry="45" fill="#F5EFE0"/>
+  <!-- Marbled back fur - blended taupe-gray and light brown -->
+  <ellipse cx="385" cy="405" rx="25" ry="20" fill="#C4B8A8" opacity="0.5"/>
+  <ellipse cx="415" cy="408" rx="22" ry="18" fill="#B8A898" opacity="0.45"/>
+  <ellipse cx="395" cy="418" rx="20" ry="16" fill="#C8BCAC" opacity="0.4"/>
+  <!-- Subtle curly texture lines across body -->
+  <path d="M 365 395 Q 370 405 365 415" fill="none" stroke="#B8A898" stroke-width="1.5" opacity="0.3"/>
+  <path d="M 380 392 Q 385 402 380 412" fill="none" stroke="#B8A898" stroke-width="1.5" opacity="0.3"/>
+  <path d="M 395 390 Q 400 400 395 410" fill="none" stroke="#B8A898" stroke-width="1.5" opacity="0.3"/>
+  <path d="M 410 392 Q 415 402 410 412" fill="none" stroke="#B8A898" stroke-width="1.5" opacity="0.3"/>
+  <path d="M 425 395 Q 430 405 425 415" fill="none" stroke="#B8A898" stroke-width="1.5" opacity="0.3"/>
+  <path d="M 370 400 Q 375 410 370 420" fill="none" stroke="#B8A898" stroke-width="1.2" opacity="0.25"/>
+  <path d="M 430 400 Q 425 410 430 420" fill="none" stroke="#B8A898" stroke-width="1.2" opacity="0.25"/>
+  
+  <!-- Chest (warm cream, velvety texture) -->
+  <ellipse cx="400" cy="432" rx="38" ry="28" fill="#FAF5E8"/>
+  <!-- Chest fur texture (short fine curls) -->
+  <path d="M 385 428 Q 390 433 385 438" fill="none" stroke="#E8DCC4" stroke-width="1" opacity="0.4"/>
+  <path d="M 400 426 Q 405 431 400 436" fill="none" stroke="#E8DCC4" stroke-width="1" opacity="0.4"/>
+  <path d="M 415 428 Q 410 433 415 438" fill="none" stroke="#E8DCC4" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Front paws on trackpad area (warm white) -->
+  <ellipse cx="388" cy="442" rx="12" ry="16" fill="#FFFAF0"/>
+  <ellipse cx="412" cy="442" rx="12" ry="16" fill="#FFFAF0"/>
+  <!-- Paw toe lines -->
+  <path d="M 388 440 Q 385 448 390 452" fill="none" stroke="#E8E0D0" stroke-width="2"/>
+  <path d="M 412 440 Q 415 448 410 452" fill="none" stroke="#E8E0D0" stroke-width="2"/>
+  
+  <!-- Head (triangular with rounded chin) -->
+  <path d="M 365 370 Q 400 355 435 370 Q 440 400 425 410 Q 400 420 375 410 Q 360 400 365 370" fill="#F5EFE0"/>
+  <!-- Forehead M marking (faint smoky-gray tabby) -->
+  <path d="M 390 365 Q 395 358 400 362 Q 405 358 410 365 Q 405 370 400 368 Q 395 370 390 365" fill="#9B9185"/>
+  
+  <!-- Smoky-gray mask around eyes -->
+  <ellipse cx="375" cy="378" rx="18" ry="14" fill="#B8B0A8" opacity="0.25"/>
+  <ellipse cx="425" cy="378" rx="18" ry="14" fill="#B8B0A8" opacity="0.25"/>
+  
+  <!-- Ears (very large, broad base, pointed) -->
+  <!-- Left ear - outer gray-tan -->
+  <path d="M 368 368 L 335 320 L 372 360 Z" fill="#D4C8B8"/>
+  <path d="M 370 366 L 342 328 L 368 358 Z" fill="#FFD0D8"/>
+  <!-- Right ear - outer gray-tan -->
+  <path d="M 432 368 L 465 320 L 428 360 Z" fill="#D4C8B8"/>
+  <path d="M 430 366 L 458 328 L 432 358 Z" fill="#FFD0D8"/>
+  <!-- Ear inner fine hair texture -->
+  <line x1="352" y1="342" x2="358" y2="348" stroke="#C4B8A8" stroke-width="1" opacity="0.4"/>
+  <line x1="355" y1="338" x2="360" y2="344" stroke="#C4B8A8" stroke-width="1" opacity="0.4"/>
+  <line x1="350" y1="348" x2="355" y2="353" stroke="#C4B8A8" stroke-width="1" opacity="0.4"/>
+  <line x1="445" y1="342" x2="439" y2="348" stroke="#C4B8A8" stroke-width="1" opacity="0.4"/>
+  <line x1="442" y1="338" x2="437" y2="344" stroke="#C4B8A8" stroke-width="1" opacity="0.4"/>
+  <line x1="447" y1="348" x2="442" y2="353" stroke="#C4B8A8" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Eyes (vivid luminous green with golden ring around pupil) -->
+  <ellipse cx="380" cy="378" rx="12" ry="14" fill="#A8D868"/>
+  <ellipse cx="420" cy="378" rx="12" ry="14" fill="#A8D868"/>
+  <!-- Golden ring around pupil -->
+  <circle cx="380" cy="378" r="5" fill="none" stroke="#D4B868" stroke-width="2"/>
+  <circle cx="420" cy="378" r="5" fill="none" stroke="#D4B868" stroke-width="2"/>
+  <!-- Eye highlights (glassy reflective) -->
+  <circle cx="383" cy="375" r="3.5" fill="#FFFFFF"/>
+  <circle cx="423" cy="375" r="3.5" fill="#FFFFFF"/>
+  <circle cx="377" cy="381" r="1.5" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="417" cy="381" r="1.5" fill="#FFFFFF" opacity="0.6"/>
+  <!-- Pupils (vertical black slits, slightly dilated) -->
+  <ellipse cx="380" cy="378" rx="4" ry="10" fill="#1a1a1a"/>
+  <ellipse cx="420" cy="378" rx="4" ry="10" fill="#1a1a1a"/>
+  
+  <!-- Nose (pinkish-brown with darker outline) -->
+  <path d="M 394 392 L 406 392 L 400 400 Z" fill="#E8C4B8"/>
+  <path d="M 396 394 L 404 394 L 400 398 Z" fill="#D4A898"/>
+  <path d="M 394 392 L 406 392 L 400 400 Z" fill="none" stroke="#C4A090" stroke-width="1"/>
+  
+  <!-- Mouth (slight smile curve) -->
+  <path d="M 400 400 Q 392 408 388 406" fill="none" stroke="#8B7355" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 400 400 Q 408 408 412 406" fill="none" stroke="#8B7355" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Chin (white, clean, very short fine fur) -->
+  <ellipse cx="400" cy="408" rx="10" ry="6" fill="#FFFFFF" opacity="0.85"/>
+  <!-- Chin fur texture -->
+  <path d="M 396 406 Q 400 410 396 412" fill="none" stroke="#E8DCC4" stroke-width="0.8" opacity="0.5"/>
+  <path d="M 404 406 Q 400 410 404 412" fill="none" stroke="#E8DCC4" stroke-width="0.8" opacity="0.5"/>
+  
+  <!-- Whiskers (white or pale gray, long and prominent) -->
+  <g stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round">
+    <!-- Left side -->
+    <line x1="355" y1="388" x2="305" y2="380"/>
+    <line x1="357" y1="393" x2="310" y2="388"/>
+    <line x1="358" y1="398" x2="315" y2="398"/>
+    <line x1="357" y1="403" x2="312" y2="408"/>
+    <line x1="355" y1="408" x2="308" y2="415"/>
+    <line x1="358" y1="385" x2="315" y2="375"/>
+    <line x1="356" y1="412" x2="305" y2="420"/>
+    <line x1="360" y1="380" x2="318" y2="370"/>
+    <line x1="354" y1="395" x2="308" y2="395"/>
+    <line x1="359" y1="400" x2="312" y2="403"/>
+    <!-- Right side -->
+    <line x1="445" y1="388" x2="495" y2="380"/>
+    <line x1="443" y1="393" x2="490" y2="388"/>
+    <line x1="442" y1="398" x2="485" y2="398"/>
+    <line x1="443" y1="403" x2="488" y2="408"/>
+    <line x1="445" y1="408" x2="492" y2="415"/>
+    <line x1="442" y1="385" x2="485" y2="375"/>
+    <line x1="444" y1="412" x2="495" y2="420"/>
+    <line x1="440" y1="380" x2="482" y2="370"/>
+    <line x1="446" y1="395" x2="492" y2="395"/>
+    <line x1="441" y1="400" x2="488" y2="403"/>
   </g>
   
-  <!-- Orange cable -->
-  <path d="M200 400 Q250 450 320 420" stroke="#ff6600" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <rect x="195" y="398" width="10" height="6" fill="#333"/>
-  <path d="M200 402 Q250 452 320 422" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.2"/>
+  <!-- Subtle cheek shading (smoky-gray fading to cream) -->
+  <ellipse cx="368" cy="392" rx="10" ry="7" fill="#C4B8A8" opacity="0.35"/>
+  <ellipse cx="432" cy="392" rx="10" ry="7" fill="#C4B8A8" opacity="0.35"/>
   
-  <!-- Papers -->
-  <g filter="url(#dropShadow)">
-    <rect x="80" y="420" width="60" height="80" fill="#fff" opacity="0.95"/>
-    <rect x="100" y="430" width="50" height="70" fill="#f5f5f5" opacity="0.9"/>
-    <line x1="105" y1="445" x2="145" y2="445" stroke="#ccc" stroke-width="2"/>
-    <line x1="105" y1="455" x2="145" y2="455" stroke="#ccc" stroke-width="2"/>
-    <line x1="105" y1="465" x2="145" y2="465" stroke="#ccc" stroke-width="2"/>
-    <line x1="105" y1="475" x2="145" y2="475" stroke="#ccc" stroke-width="2"/>
-    <line x1="105" y1="485" x2="145" y2="485" stroke="#ccc" stroke-width="2"/>
-  </g>
+  <!-- Cat shadow on laptop -->
+  <ellipse cx="400" cy="425" rx="50" ry="35" fill="#000000" opacity="0.1"/>
   
-  <!-- Cat tail -->
-  <g filter="url(#dropShadow)">
-    <path d="M350 480 Q320 500 340 530 Q350 540 360 530 Q380 510 390 490" stroke="url(#catGrad)" stroke-width="15" fill="none" stroke-linecap="round"/>
-    <path d="M355 500 Q340 510 345 520" stroke="#8b7355" stroke-width="3" fill="none"/>
-    <path d="M365 515 Q355 525 360 530" stroke="#8b7355" stroke-width="3" fill="none"/>
-  </g>
-  
-  <!-- Cat body -->
-  <ellipse cx="400" cy="450" rx="60" ry="80" fill="url(#catGrad)" filter="url(#softShadow)"/>
-  <!-- Body stripes -->
-  <path d="M380 430 Q400 425 420 430" stroke="#8b7355" stroke-width="3" fill="none" opacity="0.6"/>
-  <path d="M375 450 Q400 445 425 450" stroke="#8b7355" stroke-width="3" fill="none" opacity="0.6"/>
-  <path d="M380 470 Q400 465 420 470" stroke="#8b7355" stroke-width="3" fill="none" opacity="0.6"/>
-  <path d="M385 490 Q400 485 415 490" stroke="#8b7355" stroke-width="2" fill="none" opacity="0.5"/>
-  <!-- Fur texture -->
-  <path d="M370 440 Q375 435 380 440" stroke="#b89474" stroke-width="1" fill="none" opacity="0.5"/>
-  <path d="M420 440 Q425 435 430 440" stroke="#b89474" stroke-width="1" fill="none" opacity="0.5"/>
-  <path d="M365 460 Q370 455 375 460" stroke="#b89474" stroke-width="1" fill="none" opacity="0.5"/>
-  <path d="M425 460 Q430 455 435 460" stroke="#b89474" stroke-width="1" fill="none" opacity="0.5"/>
-  <!-- Body shadow -->
-  <ellipse cx="390" cy="460" rx="40" ry="60" fill="#000" opacity="0.05"/>
-  
-  <!-- Front legs -->
-  <rect x="378" y="470" width="18" height="50" fill="url(#catGrad)"/>
-  <rect x="404" y="470" width="18" height="50" fill="url(#catGrad)"/>
-  <path d="M380 480 L390 485" stroke="#8b7355" stroke-width="2" opacity="0.4"/>
-  <path d="M406 480 L416 485" stroke="#8b7355" stroke-width="2" opacity="0.4"/>
-  
-  <!-- White chest -->
-  <ellipse cx="400" cy="440" rx="30" ry="40" fill="#fff8e7"/>
-  
-  <!-- Cat head -->
-  <circle cx="400" cy="370" r="50" fill="url(#catGrad)" filter="url(#dropShadow)"/>
-  <!-- Head stripes -->
-  <path d="M385 340 Q400 335 415 340" stroke="#8b7355" stroke-width="3" fill="none" opacity="0.6"/>
-  <path d="M380 350 Q400 345 420 350" stroke="#8b7355" stroke-width="3" fill="none" opacity="0.6"/>
-  <path d="M375 360 Q390 355 400 358" stroke="#8b7355" stroke-width="2" fill="none" opacity="0.5"/>
-  <path d="M425 360 Q410 355 400 358" stroke="#8b7355" stroke-width="2" fill="none" opacity="0.5"/>
-  <!-- Cheek fur -->
-  <path d="M370 390 Q365 395 370 400" stroke="#b89474" stroke-width="1" fill="none" opacity="0.4"/>
-  <path d="M430 390 Q435 395 430 400" stroke="#b89474" stroke-width="1" fill="none" opacity="0.4"/>
-  <!-- Head highlight -->
-  <ellipse cx="400" cy="355" rx="35" ry="20" fill="#fff" opacity="0.08"/>
-  
-  <!-- Left ear -->
-  <polygon points="360,330 370,300 390,325" fill="url(#catGrad)"/>
-  <polygon points="365,325 370,310 380,325" fill="#ffb6c1"/>
-  <path d="M368 322 L372 315 L378 323" stroke="#b89474" stroke-width="1" fill="none"/>
-  
-  <!-- Right ear -->
-  <polygon points="410,325 420,300 440,330" fill="url(#catGrad)"/>
-  <polygon points="420,325 430,310 435,325" fill="#ffb6c1"/>
-  <path d="M432 322 L428 315 L422 323" stroke="#b89474" stroke-width="1" fill="none"/>
-  
-  <!-- Eyes -->
-  <circle cx="385" cy="365" r="9" fill="url(#eyeGlow)"/>
-  <circle cx="415" cy="365" r="9" fill="url(#eyeGlow)"/>
-  <circle cx="387" cy="362" r="2" fill="#fff" opacity="0.8"/>
-  <circle cx="417" cy="362" r="2" fill="#fff" opacity="0.8"/>
-  <ellipse cx="385" cy="365" rx="2" ry="10" fill="#000"/>
-  <ellipse cx="415" cy="365" rx="2" ry="10" fill="#000"/>
-  <!-- Brows -->
-  <path d="M378 352 Q385 348 392 352" stroke="#8b7355" stroke-width="2" fill="none" opacity="0.6"/>
-  <path d="M408 352 Q415 348 422 352" stroke="#8b7355" stroke-width="2" fill="none" opacity="0.6"/>
-  
-  <!-- Nose -->
-  <polygon points="395,375 405,375 400,382" fill="#ffb6c1"/>
-  <!-- Mouth -->
-  <path d="M400 382 Q395 390 390 385" stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M400 382 Q405 390 410 385" stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M392 387 L408 387" stroke="#444" stroke-width="1" fill="none" opacity="0.6"/>
-  
-  <!-- Whiskers -->
-  <line x1="370" y1="380" x2="340" y2="375" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="370" y1="385" x2="340" y2="385" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="370" y1="390" x2="340" y2="395" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="430" y1="380" x2="460" y2="375" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="430" y1="385" x2="460" y2="385" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="430" y1="390" x2="460" y2="395" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-  
-  <!-- Collar -->
-  <ellipse cx="400" cy="405" rx="50" ry="12" fill="url(#collarGrad)"/>
-  <line x1="360" y1="400" x2="440" y2="400" stroke="#4a4a4a" stroke-width="1" opacity="0.6"/>
-  <circle cx="400" cy="415" r="5" fill="#ffd700"/>
-  <circle cx="400" cy="415" r="3" fill="#ffed4a"/>
-  <circle cx="400" cy="415" r="1" fill="#b8960c"/>
-  
-  <!-- Paws -->
-  <ellipse cx="385" cy="520" rx="12" ry="8" fill="#fff8e7"/>
-  <ellipse cx="415" cy="520" rx="12" ry="8" fill="#fff8e7"/>
-  <ellipse cx="385" cy="523" rx="6" ry="4" fill="#ffb6c1" opacity="0.6"/>
-  <ellipse cx="415" cy="523" rx="6" ry="4" fill="#ffb6c1" opacity="0.6"/>
-  
-  <!-- Desk shadow -->
-  <ellipse cx="400" cy="530" rx="70" ry="15" fill="#000" opacity="0.15"/>
+  <!-- Ambient lighting highlight on cat's head -->
+  <ellipse cx="400" cy="360" rx="25" ry="15" fill="#FFFFFF" opacity="0.15"/>
+  <!-- Shoulder highlights -->
+  <ellipse cx="380" cy="400" rx="15" ry="10" fill="#FFFFFF" opacity="0.1"/>
+  <ellipse cx="420" cy="402" rx="14" ry="9" fill="#FFFFFF" opacity="0.1"/>
 </svg>

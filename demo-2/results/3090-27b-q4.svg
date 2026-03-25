@@ -1,187 +1,157 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#7a8e6a;stop-opacity:1"/>
-      <stop offset="40%" style="stop-color:#5a6a5a;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#2a2a2a;stop-opacity:1"/>
-    </linearGradient>
-    <linearGradient id="catGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#faf0d0;stop-opacity:1"/>
-      <stop offset="40%" style="stop-color:#deb887;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#c4a562;stop-opacity:1"/>
-    </linearGradient>
-    <linearGradient id="deskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#d6ba92;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#b49462;stop-opacity:1"/>
-    </linearGradient>
-    <linearGradient id="macbookGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#f0f0f0;stop-opacity:1"/>
-      <stop offset="50%" style="stop-color:#d8d8d8;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#c0c0c0;stop-opacity:1"/>
-    </linearGradient>
-    <linearGradient id="keyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#f5f5f5;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#d0d0d0;stop-opacity:1"/>
-    </linearGradient>
-    <filter id="shadow">
-      <feDropShadow dx="3" dy="3" stdDeviation="4" flood-opacity="0.35"/>
-    </filter>
-    <filter id="softShadow">
-      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-opacity="0.25"/>
-    </filter>
-    <radialGradient id="windowGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#fff8e8;stop-opacity:0.8"/>
-      <stop offset="100%" style="stop-color:#e8d5b7;stop-opacity:0.3"/>
+    <radialGradient id="eyeGradient">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="35%" stop-color="#B8C95E"/>
+      <stop offset="70%" stop-color="#9AB84E"/>
+      <stop offset="100%" stop-color="#B8C95E"/>
     </radialGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c4d4e8"/>
+      <stop offset="100%" stop-color="#a8b8d8"/>
+    </linearGradient>
   </defs>
   
-  <!-- Wall -->
-  <rect width="800" height="400" fill="url(#wallGrad)"/>
+  <!-- Background with window/geometric panel -->
+  <rect width="800" height="380" fill="#0a0a0a"/>
+  <!-- Geometric window framing -->
+  <rect x="0" y="0" width="800" height="80" fill="#1a1a1a"/>
+  <line x1="0" y1="0" x2="800" y2="0" stroke="#2a2a2a" stroke-width="3"/>
+  <line x1="0" y1="80" x2="800" y2="80" stroke="#2a2a2a" stroke-width="3"/>
+  <line x1="200" y1="0" x2="200" y2="80" stroke="#2a2a2a" stroke-width="3"/>
+  <line x1="400" y1="0" x2="400" y2="80" stroke="#2a2a2a" stroke-width="3"/>
+  <line x1="600" y1="0" x2="600" y2="80" stroke="#2a2a2a" stroke-width="3"/>
+  <!-- Ceiling light squares -->
+  <rect x="210" y="10" width="40" height="40" fill="#3a3a3a"/>
+  <rect x="410" y="10" width="40" height="40" fill="#3a3a3a"/>
   
-  <!-- Window glow -->
-  <ellipse cx="400" cy="75" rx="180" ry="80" fill="url(#windowGlow)"/>
+  <!-- Black monitor behind -->
+  <rect x="180" y="120" width="440" height="260" fill="#000000" rx="3"/>
   
-  <!-- Window with panes -->
-  <rect x="200" y="0" width="400" height="150" fill="#e8d5b7" opacity="0.6"/>
-  <rect x="210" y="10" width="380" height="130" fill="none" stroke="#7a6b5a" stroke-width="4"/>
-  <line x1="400" y1="10" x2="400" y2="140" stroke="#7a6b5a" stroke-width="3"/>
-  <line x1="210" y1="80" x2="590" y2="80" stroke="#7a6b5a" stroke-width="3"/>
+  <!-- Desk surface - wooden -->
+  <rect y="380" width="800" height="220" fill="#c9a884"/>
+  <line x1="50" y1="420" x2="750" y2="420" stroke="#b89470" stroke-width="2" opacity="0.5"/>
+  <line x1="80" y1="480" x2="720" y2="480" stroke="#b89470" stroke-width="2" opacity="0.5"/>
+  <line x1="30" y1="540" x2="680" y2="540" stroke="#b89470" stroke-width="2" opacity="0.5"/>
   
-  <!-- Desk -->
-  <rect x="0" y="400" width="800" height="200" fill="url(#deskGrad)"/>
-  <rect x="0" y="400" width="800" height="10" fill="#8a6a4a"/>
-  <ellipse cx="400" cy="400" rx="350" ry="8" fill="#000" opacity="0.12"/>
+  <!-- Laptop - rose gold MacBook -->
+  <rect x="200" y="370" width="400" height="130" fill="#d4b494" rx="4"/>
   
-  <!-- Papers on left -->
-  <g transform="rotate(-5 100 485)">
-    <rect x="50" y="420" width="100" height="130" fill="#fafafa" stroke="#ddd" stroke-width="0.5" filter="url(#softShadow)"/>
-    <line x1="65" y1="440" x2="145" y2="440" stroke="#d0d0d0" stroke-width="1"/>
-    <line x1="65" y1="458" x2="145" y2="458" stroke="#d0d0d0" stroke-width="1"/>
-    <line x1="65" y1="476" x2="145" y2="476" stroke="#d0d0d0" stroke-width="1"/>
-    <line x1="65" y1="494" x2="145" y2="494" stroke="#d0d0d0" stroke-width="1"/>
-    <rect x="70" y="430" width="60" height="8" fill="#e0e0e0" rx="1"/>
-    <rect x="70" y="445" width="45" height="5" fill="#d5d5d5" rx="1"/>
+  <!-- Screen with desktop -->
+  <rect x="215" y="180" width="370" height="185" fill="url(#screenGradient)" rx="2"/>
+  <rect x="230" y="200" width="25" height="30" fill="#ffffff" opacity="0.9"/>
+  <rect x="230" y="240" width="25" height="30" fill="#ffffff" opacity="0.9"/>
+  <rect x="230" y="280" width="25" height="30" fill="#ffffff" opacity="0.9"/>
+  <rect x="215" y="180" width="370" height="18" fill="#d0d8e0"/>
+  
+  <!-- Keyboard area - cat sits ON it -->
+  <rect x="215" y="385" width="370" height="105" fill="#1a1a1a" rx="2"/>
+  <g fill="#333" opacity="0.6">
+    <rect x="230" y="395" width="8" height="8"/>
+    <rect x="245" y="395" width="8" height="8"/>
+    <rect x="260" y="395" width="8" height="8"/>
+    <rect x="275" y="395" width="8" height="8"/>
+    <rect x="290" y="395" width="8" height="8"/>
+    <rect x="305" y="395" width="8" height="8"/>
+    <rect x="320" y="395" width="8" height="8"/>
+    <rect x="335" y="395" width="8" height="8"/>
+    <rect x="230" y="410" width="8" height="8"/>
+    <rect x="245" y="410" width="8" height="8"/>
+    <rect x="260" y="410" width="8" height="8"/>
+    <rect x="275" y="410" width="8" height="8"/>
+    <rect x="290" y="410" width="8" height="8"/>
+    <rect x="305" y="410" width="8" height="8"/>
   </g>
-  <rect x="70" y="455" width="90" height="110" fill="#f0f0f0" stroke="#e0e0e0" stroke-width="0.5" transform="rotate(-8 115 510)" opacity="0.92"/>
+  <!-- Trackpad -->
+  <rect x="340" y="445" width="120" height="35" fill="#3a3a3a" rx="2"/>
   
-  <!-- Orange cable -->
-  <path d="M 320,440 Q 280,450 250,480 Q 220,510 200,540" stroke="#ff7f00" stroke-width="7" fill="none" stroke-linecap="round"/>
-  <path d="M 320,440 Q 280,450 250,480 Q 220,510 200,540" stroke="#ffaa44" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4" stroke-dasharray="3,2"/>
-  <ellipse cx="200" cy="540" rx="10" ry="5" fill="#cc6600" stroke="#994400" stroke-width="1"/>
+  <!-- Orange cable plugged into laptop -->
+  <path d="M 480 370 Q 500 365 520 380 Q 530 400 510 420 Q 480 440 450 430" 
+        stroke="#FF6600" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- USB-C connector -->
+  <rect x="475" y="368" width="10" height="4" fill="#FF6600" rx="1"/>
   
-  <!-- MacBook -->
-  <rect x="320" y="340" width="160" height="100" rx="5" fill="url(#macbookGrad)" stroke="#666" stroke-width="2" filter="url(#shadow)"/>
-  <rect x="325" y="345" width="150" height="80" rx="2" fill="#0a0a0a"/>
-  <rect x="328" y="348" width="144" height="74" rx="1" fill="none" stroke="#2a2a2a" stroke-width="1"/>
-  <text x="400" y="418" text-anchor="middle" fill="#ff5500" font-size="20" font-family="Arial" font-weight="bold"></text>
+  <!-- Devon Rex Cat - sitting DIRECTLY on keyboard -->
+  <!-- Tail with dark rings - wrapped around front paws -->
+  <path d="M 465 445 Q 495 435 505 405 Q 510 375 500 355 Q 490 340 480 350" 
+        stroke="#4a4a4a" stroke-width="13" fill="none" stroke-linecap="round"/>
+  <path d="M 485 365" stroke="#2a2a2a" stroke-width="14" stroke-linecap="round"/>
+  <path d="M 493 385" stroke="#2a2a2a" stroke-width="14" stroke-linecap="round"/>
+  <path d="M 500 405" stroke="#2a2a2a" stroke-width="14" stroke-linecap="round"/>
   
-  <!-- Keyboard below MacBook -->
-  <rect x="340" y="445" width="120" height="25" rx="3" fill="#2a2a2a" filter="url(#softShadow)"/>
-  <!-- Keys -->
-  <g fill="url(#keyGrad)">
-    <rect x="345" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="356" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="367" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="378" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="389" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="400" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="411" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="422" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="433" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-    <rect x="444" y="450" width="8" height="15" rx="1" opacity="0.9"/>
-  </g>
+  <!-- Slender body - white chest/belly -->
+  <ellipse cx="400" cy="425" rx="38" ry="50" fill="#F8F4F0"/>
   
-  <!-- Monitor -->
-  <rect x="250" y="250" width="300" height="180" fill="#151515" stroke="#252525" stroke-width="5" filter="url(#shadow)"/>
-  <rect x="260" y="260" width="280" height="160" fill="#030303"/>
-  <rect x="380" y="430" width="40" height="18" fill="#151515"/>
+  <!-- Back/shoulders - wavy/curled fur texture -->
+  <ellipse cx="398" cy="390" rx="42" ry="42" fill="#C9B8A8"/>
+  <!-- Wavy fur lines -->
+  <path d="M 370 375 Q 378 370 385 374 Q 392 370 400 373" stroke="#7A6B5E" stroke-width="2" fill="none"/>
+  <path d="M 375 385 Q 382 380 390 383 Q 398 380 405 382" stroke="#7A6B5E" stroke-width="2" fill="none"/>
+  <path d="M 415 375 Q 422 370 430 373 Q 438 370 445 373" stroke="#7A6B5E" stroke-width="2" fill="none"/>
   
-  <!-- Cat body -->
-  <path d="M 315,455 Q 315,525 400,525 Q 485,525 485,455 Q 485,395 452,382 L 400,402 L 348,382 Q 315,395 315,455 Z" fill="url(#catGrad)" filter="url(#shadow)"/>
+  <!-- Slender legs -->
+  <ellipse cx="385" cy="460" rx="11" ry="14" fill="#F8F4F0"/>
+  <ellipse cx="415" cy="460" rx="11" ry="14" fill="#F8F4F0"/>
+  <!-- Paws on trackpad -->
+  <ellipse cx="385" cy="468" rx="10" ry="8" fill="#F8F4F0"/>
+  <ellipse cx="415" cy="468" rx="10" ry="8" fill="#F8F4F0"/>
+  <!-- Paw pads -->
+  <ellipse cx="385" cy="472" rx="5" ry="3.5" fill="#D4A79C"/>
+  <ellipse cx="415" cy="472" rx="5" ry="3.5" fill="#D4A79C"/>
   
-  <!-- Tabby stripes -->
-  <path d="M 335,445 Q 345,465 335,485" stroke="#b59055" stroke-width="4" fill="none" opacity="0.5"/>
-  <path d="M 355,448 Q 365,468 355,488" stroke="#b59055" stroke-width="4" fill="none" opacity="0.45"/>
-  <path d="M 375,450 Q 385,470 375,490" stroke="#b59055" stroke-width="3" fill="none" opacity="0.4"/>
-  <path d="M 455,448 Q 465,468 455,488" stroke="#b59055" stroke-width="4" fill="none" opacity="0.45"/>
-  <path d="M 475,445 Q 485,465 475,485" stroke="#b59055" stroke-width="4" fill="none" opacity="0.5"/>
+  <!-- Head -->
+  <ellipse cx="400" cy="325" rx="42" ry="38" fill="#F8F4F0"/>
   
-  <!-- Cat head -->
-  <ellipse cx="400" cy="380" rx="58" ry="50" fill="url(#catGrad)"/>
+  <!-- Tabby patches -->
+  <ellipse cx="390" cy="310" rx="22" ry="18" fill="#C9B8A8"/>
+  <ellipse cx="410" cy="310" rx="22" ry="18" fill="#C9B8A8"/>
+  <!-- M marking -->
+  <path d="M 390 300 L 385 290 L 395 300 L 400 295 L 405 300 L 415 290 L 410 300" 
+        stroke="#7A6B5E" stroke-width="2" fill="none"/>
   
-  <!-- Forehead M -->
-  <path d="M 392,352 L 388,368" stroke="#b59055" stroke-width="3" fill="none" opacity="0.5"/>
-  <path d="M 408,352 L 412,368" stroke="#b59055" stroke-width="3" fill="none" opacity="0.5"/>
-  <path d="M 392,352 L 408,355 L 412,368" stroke="#b59055" stroke-width="2" fill="none" opacity="0.4"/>
+  <!-- Large ears -->
+  <polygon points="365,295 355,250 380,285" fill="#F8F4F0" stroke="#7A6B5E" stroke-width="1.5"/>
+  <polygon points="435,295 445,250 420,285" fill="#F8F4F0" stroke="#7A6B5E" stroke-width="1.5"/>
+  <polygon points="368,290 360,260 375,282" fill="#FFD9CC"/>
+  <polygon points="432,290 440,260 425,282" fill="#FFD9CC"/>
   
-  <!-- Ears -->
-  <polygon points="358,342 348,308 388,342" fill="url(#catGrad)" stroke="#c4a562" stroke-width="1"/>
-  <polygon points="442,342 452,308 412,342" fill="url(#catGrad)" stroke="#c4a562" stroke-width="1"/>
-  <polygon points="362,340 354,315 382,340" fill="#ffc0cb"/>
-  <polygon points="438,340 446,315 418,340" fill="#ffc0cb"/>
-  <path d="M 365,338 L 378,342" stroke="#b59055" stroke-width="2" opacity="0.5"/>
-  <path d="M 435,338 L 422,342" stroke="#b59055" stroke-width="2" opacity="0.5"/>
+  <!-- Green eyes -->
+  <circle cx="388" cy="325" r="10" fill="url(#eyeGradient)"/>
+  <circle cx="412" cy="325" r="10" fill="url(#eyeGradient)"/>
+  <circle cx="385" cy="322" r="2.5" fill="#FFFFFF"/>
+  <circle cx="409" cy="322" r="2.5" fill="#FFFFFF"/>
   
-  <!-- Eyes -->
-  <ellipse cx="383" cy="373" rx="6" ry="10" fill="#7cbf5a"/>
-  <ellipse cx="417" cy="373" rx="6" ry="10" fill="#7cbf5a"/>
-  <ellipse cx="383" cy="373" rx="3" ry="8" fill="#050505"/>
-  <ellipse cx="417" cy="373" rx="3" ry="8" fill="#050505"/>
-  <circle cx="381" cy="370" r="2.5" fill="#fff" opacity="0.9"/>
-  <circle cx="415" cy="370" r="2.5" fill="#fff" opacity="0.9"/>
-  <ellipse cx="383" cy="373" rx="6" ry="10" fill="none" stroke="#2a4a1a" stroke-width="1" opacity="0.4"/>
-  <ellipse cx="417" cy="373" rx="6" ry="10" fill="none" stroke="#2a4a1a" stroke-width="1" opacity="0.4"/>
+  <!-- Pink nose -->
+  <polygon points="397,338 403,338 400,344" fill="#D4A79C"/>
   
-  <!-- Serious eyebrows -->
-  <path d="M 375,362 L 388,365" stroke="#b59055" stroke-width="2" opacity="0.6"/>
-  <path d="M 425,362 L 412,365" stroke="#b59055" stroke-width="2" opacity="0.6"/>
-  
-  <!-- Nose and mouth -->
-  <polygon points="395,383 405,383 400,393" fill="#ffb6c1"/>
-  <line x1="400" y1="393" x2="400" y2="402" stroke="#454545" stroke-width="1.5"/>
-  <path d="M 395,395 Q 388,392 383,388" stroke="#555555" stroke-width="1.2" fill="none"/>
-  <path d="M 405,395 Q 412,392 417,388" stroke="#555555" stroke-width="1.2" fill="none"/>
-  
-  <!-- Cheek stripes -->
-  <path d="M 372,375 L 368,370" stroke="#b59055" stroke-width="2" opacity="0.5"/>
-  <path d="M 372,380 L 368,375" stroke="#b59055" stroke-width="2" opacity="0.5"/>
-  <path d="M 428,375 L 432,370" stroke="#b59055" stroke-width="2" opacity="0.5"/>
-  <path d="M 428,380 L 432,375" stroke="#b59055" stroke-width="2" opacity="0.5"/>
-  
-  <!-- Collar -->
-  <ellipse cx="400" cy="412" rx="48" ry="14" fill="#5a5a5a"/>
-  <ellipse cx="400" cy="412" rx="45" ry="11" fill="#4a4a4a"/>
-  <rect x="395" y="408" width="10" height="8" fill="#d4af37" rx="1"/>
-  <circle cx="400" cy="412" r="2" fill="#f0e0a0"/>
-  
-  <!-- White chest -->
-  <ellipse cx="400" cy="425" rx="28" ry="32" fill="#fff" opacity="0.95"/>
-  <ellipse cx="400" cy="425" rx="20" ry="24" fill="#fafafa"/>
-  
-  <!-- Paws -->
-  <ellipse cx="350" cy="520" rx="15" ry="10" fill="#fff"/>
-  <ellipse cx="450" cy="520" rx="15" ry="10" fill="#fff"/>
-  <path d="M 345,515 L 350,512 L 355,515" stroke="#e0e0e0" stroke-width="1" fill="none"/>
-  <path d="M 445,515 L 450,512 L 455,515" stroke="#e0e0e0" stroke-width="1" fill="none"/>
-  
-  <!-- Tail -->
-  <path d="M 485,462 Q 525,482 525,505 Q 525,528 500,538" stroke="url(#catGrad)" stroke-width="20" fill="none" stroke-linecap="round"/>
-  <path d="M 490,468 L 500,478" stroke="#b59055" stroke-width="4" opacity="0.5"/>
-  <path d="M 505,492 L 515,502" stroke="#b59055" stroke-width="4" opacity="0.5"/>
-  <path d="M 515,515 L 522,525" stroke="#b59055" stroke-width="4" opacity="0.5"/>
+  <!-- Upturned mouth - curious expression -->
+  <path d="M 400 344 Q 394 350 391 348" stroke="#888" stroke-width="1" fill="none"/>
+  <path d="M 400 344 Q 406 350 409 348" stroke="#888" stroke-width="1" fill="none"/>
   
   <!-- Whiskers -->
-  <line x1="368" y1="378" x2="338" y2="373" stroke="#aaa" stroke-width="1.2" opacity="0.6"/>
-  <line x1="368" y1="383" x2="338" y2="383" stroke="#aaa" stroke-width="1.2" opacity="0.6"/>
-  <line x1="368" y1="388" x2="338" y2="393" stroke="#aaa" stroke-width="1.2" opacity="0.6"/>
-  <line x1="432" y1="378" x2="462" y2="373" stroke="#aaa" stroke-width="1.2" opacity="0.6"/>
-  <line x1="432" y1="383" x2="462" y2="383" stroke="#aaa" stroke-width="1.2" opacity="0.6"/>
-  <line x1="432" y1="388" x2="462" y2="393" stroke="#aaa" stroke-width="1.2" opacity="0.6"/>
+  <g stroke="#eeeeee" stroke-width="1">
+    <line x1="375" y1="335" x2="350" y2="338"/>
+    <line x1="375" y1="340" x2="352" y2="342"/>
+    <line x1="375" y1="345" x2="355" y2="350"/>
+    <line x1="425" y1="335" x2="450" y2="338"/>
+    <line x1="425" y1="340" x2="448" y2="342"/>
+    <line x1="425" y1="345" x2="445" y2="350"/>
+  </g>
   
-  <!-- Shadow under cat -->
-  <ellipse cx="400" cy="530" rx="90" ry="15" fill="#000" opacity="0.2"/>
+  <!-- Collar -->
+  <rect x="378" y="358" width="44" height="8" fill="#D4C8B8" rx="2"/>
+  <rect x="393" y="360" width="8" height="4" fill="#C0C0C0" rx="1"/>
   
-  <!-- Light reflection on cat head -->
-  <ellipse cx="400" cy="365" rx="25" ry="15" fill="#fff" opacity="0.1"/>
+  <!-- Remote on desk left -->
+  <rect x="100" y="480" width="22" height="55" rx="3" fill="#2d2d2d"/>
+  <circle cx="111" cy="492" r="3.5" fill="#555"/>
+  <circle cx="111" cy="504" r="3" fill="#777"/>
+  <circle cx="111" cy="516" r="3" fill="#777"/>
+  
+  <!-- Paper on desk right -->
+  <rect x="580" y="420" width="95" height="120" fill="#ffffff"/>
+  <line x1="600" y1="450" x2="655" y2="450" stroke="#d0d0d0" stroke-width="1"/>
+  <line x1="600" y1="465" x2="645" y2="465" stroke="#d0d0d0" stroke-width="1"/>
+  <line x1="600" y1="480" x2="660" y2="480" stroke="#d0d0d0" stroke-width="1"/>
+  <line x1="600" y1="495" x2="650" y2="495" stroke="#d0d0d0" stroke-width="1"/>
 </svg>

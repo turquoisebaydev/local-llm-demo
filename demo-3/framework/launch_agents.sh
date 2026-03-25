@@ -1,36 +1,35 @@
 #!/bin/bash
-# Launch 4 subagents for Demo 2 across 4 GPUs.
-# Model split: 122B Q4 on 6000, 27B Q5 on 5090, 27B Q4 on turqette (4090/3090).
+# Launch 4 subagents for Demo 3 — Qwen3.5-9B Q4_K_M on all 4 GPUs.
 # Metrics collected via sidecar polling llama.cpp /slots + nvidia-smi.
 
 set -e
 
-echo "🎬 Starting demo with metrics collection..."
+echo "🎬 Starting Demo 3 with metrics collection..."
 
 DURATION=${DURATION:-120}  # default 2 minutes, override with env
 TIMESTAMP=$(date +%s)
-OUTPUT_DIR="/tmp/svg_demo_${TIMESTAMP}"
+OUTPUT_DIR="/tmp/svg_demo3_${TIMESTAMP}"
 METRICS_DIR="${OUTPUT_DIR}/metrics"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 FRAMEWORK_DIR="$SCRIPT_DIR"
 mkdir -p "$OUTPUT_DIR" "$METRICS_DIR"
 
 # ── GPU backends / model labels ───────────────────────────────
-declare -A GPU_LABEL=( [1]="6000" [2]="5090" [3]="4090" [4]="3090" )
-declare -A GPU_MODEL=(
-    [1]="Qwen3.5-122B-A10B-Q4_K_M"
-    [2]="Qwen3.5-27B.Q5_K_M.gguf"
-    [3]="Qwen3.5-27B-Q4_K_M.gguf"
-    [4]="Qwen3.5-27B-Q4_K_M.gguf"
-)
 HOST_A="${HOST_A:-192.168.1.10}"   # Host with RTX PRO 6000 + RTX 5090
 HOST_B="${HOST_B:-192.168.1.11}"   # Host with RTX 4090 + RTX 3090
 
+declare -A GPU_LABEL=( [1]="6000" [2]="5090" [3]="4090" [4]="3090" )
+declare -A GPU_MODEL=(
+    [1]="Qwen3.5-9B-Q4_K_M"
+    [2]="Qwen3.5-9B-Q4_K_M"
+    [3]="Qwen3.5-9B-Q4_K_M"
+    [4]="Qwen3.5-9B-Q4_K_M"
+)
 declare -A GPU_BACKEND=(
-    [1]="http://${HOST_A}:18080/v1"
-    [2]="http://${HOST_A}:18181/v1"
-    [3]="http://${HOST_B}:8080/v1"
-    [4]="http://${HOST_B}:8081/v1"
+    [1]="http://${HOST_A}:19080/v1"
+    [2]="http://${HOST_A}:19181/v1"
+    [3]="http://${HOST_B}:9080/v1"
+    [4]="http://${HOST_B}:9081/v1"
 )
 # ── Proxy ports (nothink proxy injects chat_template_kwargs) ──
 declare -A PROXY_PORT=( [1]=9101 [2]=9102 [3]=9103 [4]=9104 )
@@ -88,7 +87,7 @@ cleanup() {
     python3 "$FRAMEWORK_DIR/metrics_report.py" "$METRICS_DIR" 2>/dev/null || true
 
     echo ""
-    echo "✅ Demo complete!"
+    echo "✅ Demo 3 complete!"
     echo "   📁 Canvas files: $FRAMEWORK_DIR/canvas[1-4].svg"
     echo "   📊 Metrics: $METRICS_DIR/"
     echo "   📂 Output dir: $OUTPUT_DIR"
@@ -120,20 +119,18 @@ sleep 1
 # ── 3. Start metrics collector (nvidia-smi + /slots) ─────────
 echo "   Starting metrics collector..."
 python3 "$FRAMEWORK_DIR/metrics_collector.py" \
-    --config "6000=pg1:0:18080,5090=pg1:1:18181,4090=local:0:8080,3090=local:1:8081" \
+    --config "6000=pg1:0:19080,5090=pg1:1:19181,4090=local:0:9080,3090=local:1:9081" \
     --metrics-dir "$METRICS_DIR" \
     --interval 2 \
     --duration "$DURATION" &
 COLLECTOR_PID=$!
 
-# ── 3. Start video recorder (optional) ───────────────────────
+# ── 3b. Start video recorder (optional) ──────────────────────
 DEMO_PORT=8766
 HTTP_PID=""
 RECORDER_PID=""
 if command -v wkhtmltoimage &>/dev/null; then
     echo "   Starting video recorder..."
-    # HTTP server should already be running on 8766 from user
-    # If not, start one
     if ! ss -tlnp | grep -q ":${DEMO_PORT}"; then
         cd "$FRAMEWORK_DIR"
         python3 -m http.server "$DEMO_PORT" --bind 0.0.0.0 >/dev/null 2>&1 &
@@ -146,7 +143,7 @@ if command -v wkhtmltoimage &>/dev/null; then
 fi
 
 # ── 4. Launch 4 agents directly at GPU backends ──────────────
-echo "   Launching 4 agents (Demo2 model split across 4 GPUs)..."
+echo "   Launching 4 agents (Demo3 — 9B on all GPUs)..."
 declare -a AGENT_PIDS
 for i in 1 2 3 4; do
     agent_home=$(make_agent_home $i)
