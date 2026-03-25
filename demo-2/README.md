@@ -7,7 +7,7 @@ Each agent uses **native vision** to analyze the reference photograph, then iter
 
 | GPU | VRAM | Model | Quant |
 |-----|------|-------|-------|
-| RTX PRO 6000 Max-Q (300W) | 48 GB | Qwen3.5-122B-A10B | Q4_K_M |
+| RTX PRO 6000 Max-Q (300W) | 96 GB | Qwen3.5-122B-A10B | Q4_K_M |
 | RTX 5090 | 32 GB | Qwen3.5-27B | Q5_K_M |
 | RTX 4090 | 24 GB | Qwen3.5-27B | Q4_K_M |
 | RTX 3090 | 24 GB | Qwen3.5-27B | Q4_K_M |
@@ -80,7 +80,7 @@ The RTX PRO 6000 Max-Q (300W TDP) running the **122B MoE model** delivers **2.5x
 
 ### Key Takeaways
 
-- **122B-A10B on RTX PRO 6000 Max-Q** is the surprise winner — 71.9 tok/s average, faster than all 27B instances. The MoE architecture (10B active parameters) runs efficiently on the 48GB card at only 292W.
+- **122B-A10B on RTX PRO 6000 Max-Q** is the surprise winner — 71.9 tok/s average, faster than all 27B instances. The MoE architecture (10B active parameters) runs efficiently on the 96GB card at only 292W.
 - **RTX 5090 with Q5_K_M** is second at 55.0 tok/s but draws nearly double the power (553W).
 - **RTX 3090** completed the most iterations (22) despite being the slowest in tok/s — the 27B Q4 model generates shorter responses, allowing more round-trips.
 - The 122B model achieves **0.246 tokens per watt** — best efficiency by a wide margin, demonstrating that MoE models are exceptionally power-efficient for inference.

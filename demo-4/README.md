@@ -10,7 +10,7 @@ Each agent uses **native vision** to analyze a reference photograph, then iterat
 
 | GPU Pair | GPUs | VRAM (combined) | Model | Quant | Tensor Split |
 |----------|------|-----------------|-------|-------|:------------:|
-| pg1 | RTX PRO 6000 Max-Q + RTX 5090 | 48 + 32 = 80 GB | Qwen3.5-122B-A10B | UD-Q6_K_XL | 3:1 |
+| pg1 | RTX PRO 6000 Max-Q + RTX 5090 | 96 + 32 = 128 GB | Qwen3.5-122B-A10B | UD-Q6_K_XL | 3:1 |
 | turqette | RTX 4090 + RTX 3090 | 24 + 24 = 48 GB | Qwen3.5-27B | Q6_K | 1:1 |
 
 All running:
