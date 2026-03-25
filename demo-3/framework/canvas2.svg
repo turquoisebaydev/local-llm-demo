@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700" viewBox="0 0 500 700">
+  <!-- Background -->
+  <rect x="0" y="0" width="500" height="700" fill="#1a1a1a"/>
+  
+  <!-- Monitor (top portion) -->
+  <rect x="20" y="10" width="460" height="280" fill="#0a0a0a"/>
+  <rect x="25" y="15" width="450" height="270" fill="#111111"/>
+  
+  <!-- Desk area (bottom left) -->
+  <rect x="0" y="400" width="400" height="300" fill="#6b5545"/>
+  
+  <!-- White paper/object (right side) -->
+  <rect x="380" y="420" width="120" height="280" fill="#f5f5f5"/>
+  
+  <!-- Cat (center, sitting on laptop) -->
+  <!-- Body -->
+  <ellipse cx="250" cy="480" rx="100" ry="85" fill="#ffffff"/>
+  <!-- Head -->
+  <ellipse cx="250" cy="380" rx="65" ry="55" fill="#ffffff"/>
+  <!-- Ears -->
+  <polygon points="220,345 240,320 260,345" fill="#e8d5a8"/>
+  <polygon points="280,345 260,320 240,345" fill="#e8d5a8"/>
+  <!-- Eyes -->
+  <circle cx="235" cy="365" r="9" fill="#b8d47e"/>
+  <circle cx="265" cy="365" r="9" fill="#b8d47e"/>
+  <circle cx="237" cy="363" r="4" fill="#0a3d0a"/>
+  <circle cx="267" cy="363" r="4" fill="#0a3d0a"/>
+  <!-- Nose -->
+  <ellipse cx="250" cy="388" rx="6" ry="4" fill="#ffb3c6"/>
+  <!-- Mouth -->
+  <path d="M243 395 Q250 400 257 395" stroke="#2a2a2a" stroke-width="2" fill="none"/>
+  <!-- Collar -->
+  <ellipse cx="250" cy="445" rx="55" ry="18" fill="#d0d0d0"/>
+  <!-- Collar buckle -->
+  <rect x="235" y="438" width="30" height="18" fill="#a8a8a8"/>
+  <!-- Cat fur stripes -->
+  <path d="M225 375 Q250 378 275 375" stroke="#d0c090" stroke-width="6" fill="none" opacity="0.6"/>
+  
+  <!-- Cat paws -->
+  <ellipse cx="205" cy="515" rx="20" ry="16" fill="#ffffff"/>
+  <ellipse cx="295" cy="515" rx="20" ry="16" fill="#ffffff"/>
+  <ellipse cx="250" cy="540" rx="30" ry="14" fill="#ffffff"/>
+  
+  <!-- Laptop (under cat) -->
+  <!-- Screen area -->
+  <rect x="190" y="440" width="120" height="100" fill="#1a3a5c"/>
+  <rect x="200" y="450" width="100" height="80" fill="#0a1a2a"/>
+  <!-- Keyboard area -->
+  <rect x="175" y="490" width="150" height="10" fill="#2a2a2a"/>
+  <rect x="175" y="500" width="150" height="85" fill="#1a1a1a"/>
+  <!-- Laptop body -->
+  <rect x="165" y="480" width="170" height="90" fill="#c8c8c8"/>
+  
+  <!-- Orange cable (left side) -->
+  <path d="M20 400 Q5 400 20 450 Q5 450 20 500" stroke="#ff8500" stroke-width="14" fill="none"/>
+  
+  <!-- Keyboard keys (simplified) -->
+  <rect x="180" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="195" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="210" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="225" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="240" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="255" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="270" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="285" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="300" y="510" width="10" height="6" fill="#0a0a0a"/>
+  <rect x="315" y="510" width="10" height="6" fill="#0a0a0a"/>
+</svg>

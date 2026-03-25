@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+  <defs>
+    <linearGradient id="catFurLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="45%" style="stop-color:#F0E8DC"/>
+      <stop offset="100%" style="stop-color:#D4C4B0"/>
+    </linearGradient>
+    <linearGradient id="catFurDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A88870"/>
+      <stop offset="100%" style="stop-color:#8B6A4C"/>
+    </linearGradient>
+    <linearGradient id="laptopGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5E6C8"/>
+      <stop offset="100%" style="stop-color:#D8C494"/>
+    </linearGradient>
+    <linearGradient id="screenDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#353535"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <linearGradient id="greenEyes" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C8F0C8"/>
+      <stop offset="100%" style="stop-color:#66CD66"/>
+    </linearGradient>
+    <linearGradient id="orangeCable" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFA000"/>
+      <stop offset="100%" style="stop-color:#FF7000"/>
+    </linearGradient>
+    <linearGradient id="paperWhite" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#FAFAFA"/>
+    </linearGradient>
+    <linearGradient id="tailStriped" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4C4B0"/>
+      <stop offset="25%" style="stop-color:#6B4E35"/>
+      <stop offset="50%" style="stop-color:#D4C4B0"/>
+      <stop offset="75%" style="stop-color:#6B4E35"/>
+      <stop offset="100%" style="stop-color:#8B6A4C"/>
+    </linearGradient>
+    <filter id="furTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="3" result="noise"/>
+      <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="2">
+        <feDistantLight azimuth="45" elevation="60"/>
+      </feDiffuseLighting>
+      <feComposite operator="arithmetic" k2="0.5" in2="SourceGraphic"/>
+    </filter>
+    <filter id="buttonHighlight">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feSpecularLighting in="blur" lighting-color="#fff" surfaceScale="2" result="specular">
+        <fePointLight x="-50" y="-100" z="200"/>
+      </feSpecularLighting>
+      <feComposite operator="arithmetic" k2="0.3" in2="SourceGraphic"/>
+    </filter>
+    <filter id="paperShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="1" dy="2"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Dark monitor background -->
+  <rect x="0" y="0" width="800" height="600" fill="#1a1a1a"/>
+  <rect x="15" y="15" width="770" height="570" fill="#252525"/>
+  
+  <!-- Laptop (scaled down for 600px height) -->
+  <rect x="160" y="460" width="480" height="120" fill="url(#laptopGold)"/>
+  <rect x="170" y="470" width="460" height="100" fill="#2c2c2c"/>
+  
+  <!-- Laptop screen area -->
+  <rect x="160" y="320" width="480" height="160" fill="url(#screenDark)"/>
+  <rect x="160" y="320" width="480" height="160" fill="#0d0d0d"/>
+  
+  <!-- Screen: Finder window UI -->
+  <rect x="170" y="330" width="460" height="140" fill="#e8e8e8"/>
+  <rect x="170" y="330" width="460" height="30" fill="#f5f5f5"/>
+  <text x="240" y="355" font-family="Arial" font-size="12" fill="#000" text-anchor="middle">Finder</text>
+  
+  <!-- Finder icons (proper macOS style) -->
+  <circle cx="200" cy="370" r="12" fill="#3498db"/>
+  <circle cx="240" cy="370" r="12" fill="#3498db"/>
+  <circle cx="280" cy="370" r="12" fill="#3498db"/>
+  <circle cx="320" cy="370" r="12" fill="#3498db"/>
+  <circle cx="360" cy="370" r="12" fill="#3498db"/>
+  <circle cx="400" cy="370" r="12" fill="#3498db"/>
+  
+  <!-- Finder window content -->
+  <rect x="170" y="360" width="460" height="80" fill="#f9f9f9"/>
+  <rect x="170" y="360" width="460" height="20" fill="#e0e0e0"/>
+  
+  <!-- macOS dock at bottom of screen -->
+  <rect x="170" y="470" width="460" height="20" fill="#1a1a1a"/>
+  <circle cx="200" cy="480" r="8" fill="#007AFF"/>
+  <circle cx="240" cy="480" r="8" fill="#34C759"/>
+  <circle cx="280" cy="480" r="8" fill="#FF9500"/>
+  <circle cx="320" cy="480" r="8" fill="#5856D6"/>
+  <circle cx="360" cy="480" r="8" fill="#FF2D55"/>
+  
+  <!-- Cat body (centered, large) -->
+  <ellipse cx="400" cy="450" rx="165" ry="125" fill="url(#catFurLight)" filter="url(#furTexture)"/>
+  
+  <!-- Cat head -->
+  <ellipse cx="400" cy="350" rx="100" ry="90" fill="url(#catFurLight)" filter="url(#furTexture)"/>
+  
+  <!-- Cat ears -->
+  <polygon points="335,290 355,250 375,290" fill="url(#catFurLight)" filter="url(#furTexture)"/>
+  <polygon points="425,290 405,250 385,290" fill="url(#catFurLight)" filter="url(#furTexture)"/>
+  <ellipse cx="355" cy="270" rx="16" ry="13" fill="#5a4a3a"/>
+  <ellipse cx="385" cy="270" rx="16" ry="13" fill="#5a4a3a"/>
+  
+  <!-- Cat face -->
+  <circle cx="365" cy="340" r="17" fill="url(#greenEyes)"/>
+  <circle cx="365" cy="340" r="7.5" fill="#000"/>
+  <circle cx="365" cy="340" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="435" cy="340" r="17" fill="url(#greenEyes)"/>
+  <circle cx="435" cy="340" r="7.5" fill="#000"/>
+  <circle cx="435" cy="340" r="3" fill="#fff" opacity="0.8"/>
+  
+  <!-- Nose and mouth -->
+  <ellipse cx="400" cy="365" rx="11" ry="9" fill="#d4a996"/>
+  <path d="M395 375 Q400 385 405 375" stroke="#946f54" stroke-width="2" fill="none"/>
+  
+  <!-- Whiskers -->
+  <line x1="370" y1="370" x2="320" y2="365" stroke="#e8dcc8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="370" y1="377" x2="330" y2="377" stroke="#e8dcc8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="370" y1="384" x2="340" y2="384" stroke="#e8dcc8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="430" y1="370" x2="480" y2="365" stroke="#e8dcc8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="430" y1="377" x2="470" y2="377" stroke="#e8dcc8" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="430" y1="384" x2="460" y2="384" stroke="#e8dcc8" stroke-width="1.2" stroke-linecap="round"/>
+  
+  <!-- Collar with stitching -->
+  <rect x="355" y="335" width="90" height="14" fill="#c9ad84"/>
+  <rect x="370" y="340" width="60" height="4" fill="#8b7355"/>
+  <line x1="365" y1="339" x2="365" y2="343" stroke="#8b7355" stroke-width="1.1"/>
+  <line x1="395" y1="339" x2="395" y2="343" stroke="#8b7355" stroke-width="1.1"/>
+  <line x1="425" y1="339" x2="425" y2="343" stroke="#8b7355" stroke-width="1.1"/>
+  
+  <!-- Collar buckle -->
+  <rect x="392" y="340" width="16" height="8" fill="#8b7355"/>
+  
+  <!-- Cat paws on keyboard -->
+  <ellipse cx="315" cy="540" rx="28" ry="22" fill="#f0e8d8"/>
+  <ellipse cx="425" cy="540" rx="28" ry="22" fill="#f0e8d8"/>
+  
+  <!-- Cat tail with 4 blended stripes (curled to right) -->
+  <path d="M575 450 Q650 465 600 505 Q550 525 520 485" fill="none" stroke="url(#tailStriped)" stroke-width="32" stroke-linecap="round"/>
+  <path d="M575 450 Q650 465 600 505 Q550 525 520 485" fill="url(#catFurDark)" opacity="0.5"/>
+  
+  <!-- Orange cable (tight spiral/loop on left) -->
+  <ellipse cx="70" cy="500" rx="35" ry="26" fill="url(#orangeCable)"/>
+  <ellipse cx="70" cy="500" rx="24" ry="18" fill="#ff8500"/>
+  <rect x="30" y="510" width="100" height="9" fill="#ff8500"/>
+  <circle cx="40" cy="490" r="16" fill="#ff8500"/>
+  <circle cx="40" cy="490" r="12" fill="#ff7000"/>
+  
+  <!-- Black remote (left of cable) with button highlights -->
+  <rect x="20" y="450" width="42" height="70" fill="#3a3a3a"/>
+  <circle cx="41" cy="470" r="4.5" fill="#e74c3c" opacity="0.9"/>
+  <circle cx="41" cy="470" r="2" fill="#fff" opacity="0.4" filter="url(#buttonHighlight)"/>
+  <circle cx="41" cy="492" r="4.5" fill="#3498db" opacity="0.9"/>
+  <circle cx="41" cy="492" r="2" fill="#fff" opacity="0.4" filter="url(#buttonHighlight)"/>
+  <circle cx="41" cy="514" r="4.5" fill="#2ecc71" opacity="0.9"/>
+  <circle cx="41" cy="514" r="2" fill="#fff" opacity="0.4" filter="url(#buttonHighlight)"/>
+  
+  <!-- Papers (right side with realistic text + highlighted section) -->
+  <rect x="620" y="400" width="95" height="100" fill="url(#paperWhite)" filter="url(#paperShadow)"/>
+  <rect x="650" y="430" width="65" height="70" fill="#ffffff" opacity="0.7"/>
+  <line x1="663" y1="440" x2="713" y2="440" stroke="#c0c0c0" stroke-width="1.4"/>
+  <line x1="663" y1="457" x2="713" y2="457" stroke="#c0c0c0" stroke-width="1.4"/>
+  <line x1="663" y1="474" x2="713" y2="474" stroke="#c0c0c0" stroke-width="1.4"/>
+  <line x1="663" y1="491" x2="713" y2="491" stroke="#c0c0c0" stroke-width="1.4"/>
+  <line x1="663" y1="508" x2="713" y2="508" stroke="#c0c0c0" stroke-width="1.4"/>
+  <text x="645" y="430" font-family="Arial" font-size="10" fill="#999">Document</text>
+  <rect x="665" y="445" width="55" height="55" fill="#ffffff" opacity="0.5"/>
+  <line x1="675" y1="455" x2="705" y2="455" stroke="#d0d0d0" stroke-width="0.8"/>
+  <line x1="675" y1="468" x2="705" y2="468" stroke="#d0d0d0" stroke-width="0.8"/>
+  <rect x="680" y="475" width="20" height="8" fill="#ffffff" opacity="0.3"/>
+  
+  <!-- Papers shadow -->
+  <ellipse cx="665" cy="425" rx="65" ry="18" fill="#000" opacity="0.35"/>
+  
+  <!-- Monitor stand -->
+  <rect x="170" y="580" width="460" height="18" fill="#444"/>
+  <rect x="355" y="595" width="38" height="22" fill="#333"/>
+</svg>
