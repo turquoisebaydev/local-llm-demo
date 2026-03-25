@@ -1,104 +1,157 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
   <defs>
-    <!-- Wall gradient -->
-    <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#4a4a4a"/>
-      <stop offset="100%" style="stop-color:#3d3d3d"/>
-    </linearGradient>
-    
+    <!-- Screen reflection gradient -->
+    <radialGradient id="screenGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#2a2a3a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    </radialGradient>
     <!-- Cat fur gradient -->
-    <linearGradient id="catGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#e8c8a8"/>
-      <stop offset="100%" style="stop-color:#c49668"/>
+    <linearGradient id="catFur" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff8e7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0e0c8;stop-opacity:1" />
     </linearGradient>
-    
-    <!-- Desk gradient -->
-    <linearGradient id="deskGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#d4b87a"/>
-      <stop offset="100%" style="stop-color:#b8965e"/>
-    </linearGradient>
-    
-    <!-- Laptop gradient -->
-    <linearGradient id="laptopGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#c8d0d8"/>
-      <stop offset="100%" style="stop-color:#a8b0b8"/>
+    <!-- Gray patch gradient -->
+    <linearGradient id="grayPatch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c0c0c0;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#a0a0a0;stop-opacity:0.5" />
     </linearGradient>
   </defs>
   
-  <!-- Background wall -->
-  <rect width="800" height="600" fill="url(#wallGrad)"/>
+  <!-- Background wall (off-white/beige) -->
+  <rect width="800" height="600" fill="#eae6da"/>
   
-  <!-- Window light area -->
-  <rect x="200" y="50" width="400" height="150" fill="#7b7b7b"/>
-  <rect x="220" y="70" width="360" height="110" fill="#a8a8a8"/>
+  <!-- Frosted glass panel behind monitor (subtle) -->
+  <rect x="140" y="60" width="520" height="280" fill="#d8d8d0" opacity="0.3"/>
+  <line x1="140" y1="140" x2="660" y2="140" stroke="#c0c0b8" stroke-width="0.5" opacity="0.4"/>
+  <line x1="140" y1="220" x2="660" y2="220" stroke="#c0c0b8" stroke-width="0.5" opacity="0.4"/>
+  <line x1="140" y1="300" x2="660" y2="300" stroke="#c0c0b8" stroke-width="0.5" opacity="0.4"/>
+  <line x1="280" y1="60" x2="280" y2="340" stroke="#c0c0b8" stroke-width="0.5" opacity="0.4"/>
+  <line x1="420" y1="60" x2="420" y2="340" stroke="#c0c0b8" stroke-width="0.5" opacity="0.4"/>
+  <line x1="560" y1="60" x2="560" y2="340" stroke="#c0c0b8" stroke-width="0.5" opacity="0.4"/>
   
-  <!-- Monitor -->
-  <rect x="260" y="180" width="280" height="140" fill="#1a1a1a"/>
-  <rect x="270" y="190" width="260" height="120" fill="#0a0a0a"/>
-  <rect x="220" y="320" width="360" height="15" fill="#3a3a3a"/>
+  <!-- Monitor stand -->
+  <rect x="365" y="365" width="70" height="55" fill="#303030"/>
+  <rect x="335" y="410" width="130" height="10" rx="2" fill="#404040"/>
+  
+  <!-- Monitor frame -->
+  <rect x="155" y="95" width="490" height="265" rx="4" fill="#050505"/>
+  <!-- Screen (off/dark with subtle glow) -->
+  <rect x="160" y="100" width="480" height="255" fill="url(#screenGlow)"/>
+  <!-- Subtle reflection -->
+  <ellipse cx="400" cy="200" rx="120" ry="60" fill="#404050" opacity="0.15"/>
   
   <!-- Desk -->
-  <rect x="0" y="400" width="800" height="200" fill="url(#deskGrad)"/>
+  <rect x="0" y="445" width="800" height="155" fill="#c4a484"/>
+  <rect x="0" y="445" width="800" height="8" fill="#d4b494"/>
   
-  <!-- Papers on desk -->
-  <rect x="50" y="420" width="80" height="100" fill="#f5f5f5"/>
-  <rect x="60" y="430" width="60" height="5" fill="#ddd"/>
-  <rect x="60" y="440" width="50" height="5" fill="#ddd"/>
-  <rect x="60" y="450" width="55" height="5" fill="#ddd"/>
-  <rect x="45" y="480" width="90" height="80" fill="#fff"/>
-  <rect x="55" y="490" width="70" height="4" fill="#ddd"/>
-  <rect x="55" y="500" width="65" height="4" fill="#ddd"/>
+  <!-- Laptop base (rose gold) -->
+  <rect x="225" y="375" width="350" height="70" rx="4" fill="#d4b896"/>
+  <!-- Keyboard area -->
+  <rect x="245" y="385" width="310" height="40" rx="2" fill="#151515"/>
+  <!-- Subtle key hints -->
+  <g opacity="0.4">
+    <rect x="250" y="390" width="6" height="6" rx="1" fill="#353535"/>
+    <rect x="261" y="390" width="6" height="6" rx="1" fill="#353535"/>
+    <rect x="272" y="390" width="6" height="6" rx="1" fill="#353535"/>
+    <rect x="283" y="390" width="6" height="6" rx="1" fill="#353535"/>
+    <rect x="294" y="390" width="6" height="6" rx="1" fill="#353535"/>
+    <rect x="250" y="398" width="6" height="6" rx="1" fill="#353535"/>
+    <rect x="261" y="398" width="6" height="6" rx="1" fill="#353535"/>
+    <rect x="272" y="398" width="6" height="6" rx="1" fill="#353535"/>
+    <rect x="283" y="398" width="6" height="6" rx="1" fill="#353535"/>
+  </g>
+  <!-- Trackpad -->
+  <rect x="325" y="428" width="150" height="8" rx="2" fill="#b0b0b0"/>
   
-  <!-- Orange cable -->
-  <path d="M150,420 Q180,440 200,460 T240,480" stroke="#ff6600" stroke-width="4" fill="none"/>
+  <!-- CAT - Main Subject -->
+  <!-- Body (curly/wavy fur appearance using multiple shapes) -->
+  <ellipse cx="400" cy="325" rx="68" ry="52" fill="url(#catFur)"/>
+  <!-- Gray patches on body (tabby markings) -->
+  <path d="M 360 310 Q 375 300 395 312 Q 385 325 360 310" fill="url(#grayPatch)"/>
+  <path d="M 405 305 Q 425 298 440 310 Q 435 328 405 305" fill="url(#grayPatch)"/>
+  <path d="M 380 320 Q 400 315 420 322 Q 410 335 380 320" fill="url(#grayPatch)"/>
   
-  <!-- MacBook -->
-  <rect x="280" y="340" width="240" height="180" fill="url(#laptopGrad)"/>
-  <rect x="290" y="350" width="220" height="160" fill="#0a0a0a"/>
-  <rect x="280" y="520" width="240" height="10" fill="#98a0a8"/>
+  <!-- Head -->
+  <ellipse cx="400" cy="252" rx="46" ry="43" fill="url(#catFur)"/>
+  <!-- Gray patches on head -->
+  <ellipse cx="378" cy="232" rx="16" ry="11" fill="url(#grayPatch)"/>
+  <ellipse cx="422" cy="235" rx="15" ry="10" fill="url(#grayPatch)"/>
+  <!-- Forehead M marking -->
+  <path d="M 395 228 Q 400 238 398 248 M 405 228 Q 400 238 402 248" stroke="#909090" stroke-width="2.5" fill="none"/>
   
-  <!-- Cat body with curves -->
-  <path d="M350,400 Q340,450 350,500 Q375,520 400,520 Q425,520 450,500 Q460,450 450,400 Q425,380 400,380 Q375,380 350,400" fill="url(#catGrad)"/>
+  <!-- Ears -->
+  <polygon points="362,222 376,248 352,238" fill="url(#catFur)"/>
+  <polygon points="438,222 424,248 448,238" fill="url(#catFur)"/>
+  <!-- Inner ears (pink) -->
+  <polygon points="365,226 374,244 355,236" fill="#ffb6c1" opacity="0.7"/>
+  <polygon points="435,226 426,244 443,236" fill="#ffb6c1" opacity="0.7"/>
   
-  <!-- Cat white chest/belly -->
-  <path d="M375,430 Q370,480 400,500 Q430,480 425,430 Q400,440 375,430" fill="#f5f5dc"/>
-  
-  <!-- Cat head -->
-  <ellipse cx="400" cy="380" rx="48" ry="42" fill="url(#catGrad)"/>
-  
-  <!-- Cat ears -->
-  <polygon points="360,345 372,315 400,340" fill="url(#catGrad)"/>
-  <polygon points="372,332 378,322 388,335" fill="#ffb6c1"/>
-  <polygon points="440,345 428,315 400,340" fill="url(#catGrad)"/>
-  <polygon points="428,332 422,322 412,335" fill="#ffb6c1"/>
-  
-  <!-- Tabby stripes on head -->
-  <path d="M380,360 Q390,355 400,360" stroke="#b89668" stroke-width="3" fill="none"/>
-  <path d="M410,360 Q420,355 430,360" stroke="#b89668" stroke-width="3" fill="none"/>
-  
-  <!-- Eyes - yellow-green focused -->
-  <ellipse cx="385" cy="378" rx="7" ry="9" fill="#6b8e23"/>
-  <ellipse cx="415" cy="378" rx="7" ry="9" fill="#6b8e23"/>
-  <ellipse cx="385" cy="376" rx="2" ry="6" fill="#0a0a0a"/>
-  <ellipse cx="415" cy="376" rx="2" ry="6" fill="#0a0a0a"/>
-  <circle cx="387" cy="374" r="2" fill="#fff"/>
-  <circle cx="417" cy="374" r="2" fill="#fff"/>
+  <!-- Eyes (green, expressive) -->
+  <ellipse cx="380" cy="248" rx="9" ry="11" fill="#7fd97f"/>
+  <ellipse cx="420" cy="248" rx="9" ry="11" fill="#7fd97f"/>
+  <!-- Pupils -->
+  <ellipse cx="382" cy="245" rx="4" ry="6" fill="#0a0a0a"/>
+  <ellipse cx="422" cy="245" rx="4" ry="6" fill="#0a0a0a"/>
+  <!-- Eye highlights -->
+  <circle cx="384" cy="242" r="2" fill="#fff"/>
+  <circle cx="424" cy="242" r="2" fill="#fff"/>
   
   <!-- Nose -->
-  <polygon points="396,388 404,388 400,395" fill="#ffb6c1"/>
+  <polygon points="397,265 403,265 400,271" fill="#ffb6c1"/>
   
-  <!-- Mouth -->
-  <path d="M400,395 Q395,405 390,400" stroke="#8b7355" stroke-width="1.5" fill="none"/>
-  <path d="M400,395 Q405,405 410,400" stroke="#8b7355" stroke-width="1.5" fill="none"/>
-  
-  <!-- Collar with tag -->
-  <path d="M368,412 Q400,428 432,412" stroke="#696969" stroke-width="7" fill="none"/>
-  <circle cx="400" cy="420" r="8" fill="#ffd700"/>
+  <!-- Mouth (w shape) -->
+  <path d="M 397 271 Q 399 276 400 279 Q 401 276 403 271" stroke="#707070" stroke-width="1.2" fill="none"/>
   
   <!-- Whiskers -->
-  <line x1="355" y1="388" x2="325" y2="383" stroke="#f5f5dc" stroke-width="1.5"/>
-  <line x1="355" y1="393" x2="325" y2="395" stroke="#f5f5dc" stroke-width="1.5"/>
-  <line x1="445" y1="388" x2="475" y2="383" stroke="#f5f5dc" stroke-width="1.5"/>
-  <line x1="445" y1="393" x2="475" y2="395" stroke="#f5f5dc" stroke-width="1.5"/>
+  <line x1="370" y1="266" x2="342" y2="270" stroke="#e0e0d8" stroke-width="0.8"/>
+  <line x1="370" y1="270" x2="340" y2="276" stroke="#e0e0d8" stroke-width="0.8"/>
+  <line x1="430" y1="266" x2="458" y2="270" stroke="#e0e0d8" stroke-width="0.8"/>
+  <line x1="430" y1="270" x2="460" y2="276" stroke="#e0e0d8" stroke-width="0.8"/>
+  
+  <!-- Collar (gray leather) -->
+  <path d="M 376 292 Q 400 298 424 292" stroke="#a8a8a8" stroke-width="4.5" fill="none"/>
+  <path d="M 376 292 Q 400 298 424 292" stroke="#c0c0c0" stroke-width="1" fill="none" opacity="0.5"/>
+  <!-- Collar buckle -->
+  <rect x="394" y="295" width="12" height="8" rx="2" fill="#e8c070"/>
+  <circle cx="400" cy="299" r="2" fill="#b89040"/>
+  
+  <!-- Front paws -->
+  <ellipse cx="370" cy="372" rx="13" ry="11" fill="url(#catFur)"/>
+  <ellipse cx="430" cy="372" rx="13" ry="11" fill="url(#catFur)"/>
+  <!-- Paw pads -->
+  <ellipse cx="370" cy="378" rx="5" ry="3.5" fill="#c4a484" opacity="0.7"/>
+  <ellipse cx="430" cy="378" rx="5" ry="3.5" fill="#c4a484" opacity="0.7"/>
+  
+  <!-- Tail (curled around with stripes) -->
+  <path d="M 462 335 Q 495 355 488 395 Q 470 415 438 405 Q 415 395 408 375" stroke="url(#catFur)" stroke-width="13" fill="none"/>
+  <!-- Tail stripes -->
+  <path d="M 472 348 Q 482 365 478 382" stroke="#808080" stroke-width="2.5" fill="none" opacity="0.6"/>
+  <path d="M 485 392 Q 468 408 448 402" stroke="#808080" stroke-width="2.5" fill="none" opacity="0.6"/>
+  
+  <!-- Orange cable on desk -->
+  <path d="M 115 465 Q 210 505 310 485 Q 375 475 445 495" stroke="#ff8c00" stroke-width="4.5" fill="none"/>
+  <path d="M 115 465 Q 210 505 310 485 Q 375 475 445 495" stroke="#ffaa33" stroke-width="1" fill="none" opacity="0.5"/>
+  <!-- Cable plug -->
+  <rect x="445" y="490" width="14" height="9" rx="2" fill="#2a2a2a"/>
+  
+  <!-- Remote control -->
+  <rect x="98" y="468" width="28" height="72" rx="4" fill="#252525"/>
+  <circle cx="112" cy="482" r="5.5" fill="#353535"/>
+  <circle cx="112" cy="482" r="2.5" fill="#505050"/>
+  <circle cx="112" cy="508" r="4" fill="#404040"/>
+  <circle cx="112" cy="528" r="4" fill="#404040"/>
+  
+  <!-- Paper/notebook on right -->
+  <rect x="585" y="458" width="92" height="112" fill="#faf8f5"/>
+  <!-- Lines on paper -->
+  <line x1="600" y1="478" x2="662" y2="478" stroke="#d5d5d5" stroke-width="0.8"/>
+  <line x1="600" y1="492" x2="650" y2="492" stroke="#d5d5d5" stroke-width="0.8"/>
+  <line x1="600" y1="506" x2="662" y2="506" stroke="#d5d5d5" stroke-width="0.8"/>
+  <line x1="600" y1="520" x2="645" y2="520" stroke="#d5d5d5" stroke-width="0.8"/>
+  <line x1="600" y1="534" x2="660" y2="534" stroke="#d5d5d5" stroke-width="0.8"/>
+  
+  <!-- Mouse -->
+  <ellipse cx="515" cy="518" rx="18" ry="12" fill="#353535"/>
+  <path d="M 507 515 Q 515 512 523 515" fill="#454545"/>
+  <line x1="515" y1="512" x2="515" y2="524" stroke="#2a2a2a" stroke-width="1.5"/>
 </svg>

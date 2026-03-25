@@ -7,7 +7,7 @@ set -e
 
 echo "🎬 Starting demo with metrics collection..."
 
-DURATION=120  # 2 minutes
+DURATION=${DURATION:-120}  # default 2 minutes, override with env
 TIMESTAMP=$(date +%s)
 OUTPUT_DIR="/tmp/svg_demo_${TIMESTAMP}"
 METRICS_DIR="${OUTPUT_DIR}/metrics"
@@ -119,7 +119,7 @@ sleep 1
 echo "   Starting metrics collector..."
 python3 "$FRAMEWORK_DIR/metrics_collector.py" \
     --config "6000=remote:0:18080,5090=remote:1:18181,4090=local:0:8080,3090=local:1:8081" \
-    --remote-host "user@${HOST_A}" \
+    --remote-host "${REMOTE_SSH_USER:-turq}@${HOST_A}" \
     --metrics-dir "$METRICS_DIR" \
     --interval 2 \
     --duration "$DURATION" &

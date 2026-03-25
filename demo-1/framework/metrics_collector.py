@@ -234,7 +234,7 @@ def main():
             row = f"  {stat.upper():<20}"
             for l in labels:
                 val = summary[l].get(key, {}).get(stat, "-")
-                row += f"{val:>{col_w}}"
+                row += f"{val if val is not None else '-':>{col_w}}"
             print(row)
 
     print("\n" + "=" * 80)
