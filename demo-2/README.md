@@ -1,152 +1,94 @@
-# Demo 2 — Multi-Agent SVG Reproduction + Performance Metrics
+# Demo 2 — Highest Practical Qwen3.5 per GPU: Iterative SVG Generation
 
-Four AI agents race to reproduce a reference image as SVG.
-This Demo 2 profile is the **highest practical per-GPU Qwen3.5 mapping** at 131072 context.
-A metrics proxy captures **TTFT**, **TPS**, and **duration** per API call.
+Each GPU runs the **largest Qwen3.5 model it can fit** at 131K context, same task, 10 minutes each.
+Tests how different model sizes and quantizations compare on the same workload.
 
-## Models
+## GPUs & Models
 
-| Agent | GPU | Model | Backend |
-|-------|-----|-------|---------|
-| 1 | RTX PRO 6000 (pg1, 96GB) | Qwen3.5-122B-A10B Q4_K_M | `http://10.0.20.9:18080/v1` |
-| 2 | RTX 5090 (pg1) | Qwen3.5-27B Q5_K_M | `http://10.0.20.9:18181/v1` |
-| 3 | RTX 4090 (turqette) | Qwen3.5-27B Q4_K_M | `http://10.0.20.107:8080/v1` |
-| 4 | RTX 3090 (turqette) | Qwen3.5-27B Q4_K_M | `http://10.0.20.107:8081/v1` |
+| GPU | VRAM | Model | Quant |
+|-----|------|-------|-------|
+| RTX PRO 6000 Max-Q (300W) | 48 GB | Qwen3.5-122B-A10B | Q4_K_M |
+| RTX 5090 | 32 GB | Qwen3.5-27B | Q5_K_M |
+| RTX 4090 | 24 GB | Qwen3.5-27B | Q4_K_M |
+| RTX 3090 | 24 GB | Qwen3.5-27B | Q4_K_M |
 
-## How it works
+All running:
+- **Server:** llama.cpp with `--jinja --chat-template-file qwen3.5_chat_template.jinja`
+- **Context:** 131072 tokens
+- **KV cache:** Q4_0 keys + Q4_0 values
+- **Thinking:** Disabled via `chat_template_kwargs` proxy
+
+## Reference Image
+
+<img src="results/reference.jpg" width="300">
+
+## Task
+
+Same as Demo 1 — each agent iteratively draws an SVG reproduction of a cat on a desk, writing and improving in a loop for 10 minutes.
+
+> **Note:** This run used text-description prompts. Vision prompt template is prepared for re-run with native multimodal vision.
+
+## Results
+
+### SVG Output (after 10 minutes)
+
+<table>
+<tr>
+<td align="center"><strong>RTX PRO 6000 Max-Q</strong><br>122B Q4_K_M<br>(11 iterations)</td>
+<td align="center"><strong>RTX 5090</strong><br>27B Q5_K_M<br>(12 iterations)</td>
+<td align="center"><strong>RTX 4090</strong><br>27B Q4_K_M<br>(10 iterations)</td>
+<td align="center"><strong>RTX 3090</strong><br>27B Q4_K_M<br>(9 iterations)</td>
+</tr>
+<tr>
+<td><img src="results/6000-122b.svg" width="250"></td>
+<td><img src="results/5090-27b-q5.svg" width="250"></td>
+<td><img src="results/4090-27b-q4.svg" width="250"></td>
+<td><img src="results/3090-27b-q4.svg" width="250"></td>
+</tr>
+</table>
+
+### Performance Metrics
+
+Collected via `nvidia-smi` (power, utilization) and llama.cpp `/slots` (token throughput) polled every 2 seconds during the 10-minute run.
+
+| Metric | RTX PRO 6000 Max-Q (122B) | RTX 5090 (27B Q5) | RTX 4090 (27B Q4) | RTX 3090 (27B Q4) |
+|--------|:-------------------------:|:-----------------:|:-----------------:|:-----------------:|
+| **Iterations completed** | 11 | **12** | 10 | 9 |
+| **TPS (avg)** | — | — | 42.5 | 33.1 |
+| TPS (median) | — | — | 42.8 | 33.2 |
+| TPS (max) | — | — | 50.6 | 40.1 |
+| **Power avg (W)** | **375** | 336 | 374 | 336 |
+| Power max (W) | 457 | 343 | 449 | 342 |
+| GPU utilization (avg) | 94% | 95% | 94% | 95% |
+| GPU utilization (max) | 100% | 100% | 100% | 100% |
+
+*TPS for RTX PRO 6000 and RTX 5090 not captured due to remote `/slots` polling issue — to be fixed in next run.*
+
+### Key Takeaways
+
+- **122B on RTX PRO 6000** completed 11 iterations — impressively close to the 27B models despite being a 4.5x larger model. The 48GB VRAM on the Max-Q card makes running 122B-A10B (MoE) practical.
+- **5090 with Q5_K_M** quantization completed the most iterations (12), showing that higher quality quantization on the 27B doesn't hurt throughput meaningfully.
+- **4090 and 3090** running the same Q4_K_M 27B model show the expected generational gap (42.5 vs 33.1 tok/s).
+- All GPUs at 94-95% utilization — fully saturated.
+- The 122B model draws more power (375W avg vs 336W for the 27B lanes) on the 6000, which is near its 300W TDP — likely boosting above rated power under sustained load.
+
+## Infrastructure
 
 ```
-  Hermes Agent 1 ──► nothink proxy :9101 ──► pg1:18080/v1  (122B Q4 on 6000)
-  Hermes Agent 2 ──► nothink proxy :9102 ──► pg1:18181/v1  (27B Q5 on 5090)
-  Hermes Agent 3 ──► nothink proxy :9103 ──► turqette:8080/v1 (27B Q4 on 4090)
-  Hermes Agent 4 ──► nothink proxy :9104 ──► turqette:8081/v1 (27B Q4 on 3090)
+  Agent 1 ──► nothink proxy ──► llama.cpp (122B Q4 on RTX PRO 6000 Max-Q)
+  Agent 2 ──► nothink proxy ──► llama.cpp (27B Q5 on RTX 5090)
+  Agent 3 ──► nothink proxy ──► llama.cpp (27B Q4 on RTX 4090)
+  Agent 4 ──► nothink proxy ──► llama.cpp (27B Q4 on RTX 3090)
+                                     │
+  metrics_collector.py ── polls nvidia-smi + /slots ─┘
 ```
 
-The nothink proxy injects `chat_template_kwargs.enable_thinking=false` for reliable tool-calling behavior during iterative SVG writes.
+## Reproduce
 
-Collected metrics:
-
-- **TTFT** / **TPS** from llama.cpp timings where available
-- **Duration** per request
-- **Power/utilization/memory** from `nvidia-smi` sidecar sampling
-- **Token progress** from llama.cpp `/slots`
-
-## Prerequisites
-
-```bash
-# System packages (for video recording — optional)
-apt install xvfb ffmpeg chromium
-
-# Hermes Agent CLI
-hermes --version
-```
-
-## Quick start
+See `framework/` for the launcher, proxies, metrics collector, and live viewer.
+See `services/` for the systemd unit files.
 
 ```bash
 cd demo-2/framework
-
-# Optional: start the live viewer
-python3 -m http.server 8766 --bind 0.0.0.0 &
-
-# Run the demo (2 minutes, auto-records video)
-./launch_agents.sh
+HOST_A=<gpu-host-1> HOST_B=<gpu-host-2> DURATION=600 ./launch_agents.sh
 ```
-
-## Output
-
-```
-/tmp/svg_demo_<timestamp>/
-├── demo.mp4                  # Screen recording (if Xvfb/ffmpeg available)
-├── initial.png               # Screenshot at start
-└── metrics/
-    ├── 27b.jsonl             # Per-request metrics (Agent 1)
-    ├── 9b.jsonl              # Per-request metrics (Agent 2)
-    ├── 122b.jsonl            # Per-request metrics (Agent 3)
-    ├── opus.jsonl            # Per-request metrics (Agent 4)
-    ├── *_summary.json        # Per-model summary
-    └── combined_report.json  # Combined comparison
-```
-
-Final SVGs are written to `framework/canvas[1-4].svg`.
-
-## Metrics report
-
-The report is auto-generated on exit. To re-run manually:
-
-```bash
-python3 framework/metrics_report.py /tmp/svg_demo_<timestamp>/metrics
-```
-
-Example output:
-
-```
-================================================================================
-  📊 MODEL PERFORMANCE COMPARISON
-================================================================================
-Metric                         27b           9b          122b          opus
---------------------------------------------------------------------------------
-Requests                        12           18             8             6
-Completion tokens            3,200        4,800         1,600         2,400
-Prompt tokens                2,400        3,600         1,200         1,800
-
-  ⏱️  Time to First Token (ms)
-  ------------------------------------------------------------------
-  MIN                        85.2         42.1         320.5             -
-  MAX                       450.3        180.6       1,200.4             -
-  MEDIAN                    120.5         65.3         580.2             -
-  AVG                       148.7         78.4         620.1             -
-
-  🚀 Tokens Per Second
-  ------------------------------------------------------------------
-  MIN                        28.4         58.2          12.1          35.0
-  MAX                        45.6         82.4          18.9          52.0
-  MEDIAN                     38.2         72.1          15.4          44.0
-  AVG                        37.5         70.8          15.0          43.5
-================================================================================
-  Note: TTFT from llama.cpp timings (exact); Anthropic TTFT unavailable
-        TPS for Anthropic estimated from total duration (includes network)
-================================================================================
-```
-
-*(Numbers are illustrative — actual results depend on hardware load, context length, and quantization.)*
-
-## Customization
-
-| Setting | Where | Default |
-|---------|-------|---------|
-| Duration | `launch_agents.sh` → `DURATION` | 120s |
-| Models / endpoints | `launch_agents.sh` → proxy `--backend` URLs | See above |
-| Reference image | `framework/reference.jpg` | Included |
-| Agent prompts | `framework/prompt[1-4].txt` | Identical task |
-| Video resolution | `launch_agents.sh` → Xvfb args | 1920×1080 |
-
-## Live viewer
-
-`demo.html` shows 5 panels: reference image + 4 agent canvases (auto-refreshes every 2s).
-
-```bash
-cd framework
-python3 -m http.server 8766 --bind 0.0.0.0
-# Open http://<your-ip>:8766/demo.html
-```
-
-## Files
-
-```
-demo-2/
-├── README.md                 # This file
-├── framework/
-│   ├── launch_agents.sh      # Main launcher (agents + proxies + recording)
-│   ├── metrics_proxy.py      # HTTP proxy capturing TTFT/TPS per request
-│   ├── metrics_report.py     # Report generator (table + JSON)
-│   ├── demo.html             # 5-panel live viewer
-│   ├── reference.jpg         # Target image
-│   ├── reference.svg         # Reference SVG (ground truth)
-│   ├── prompt[1-4].txt       # Agent prompts
-│   └── canvas[1-4].svg       # Agent output (created at runtime)
-└── metrics/                  # (placeholder for saved results)
-```
-
-
-Vision is enabled by adding `--mmproj` to each llama-server unit (see `services/`).

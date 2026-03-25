@@ -8,6 +8,12 @@ Qwen3.5-27B Q4_K_M running on four GPUs simultaneously (RTX PRO 6000 Max-Q, RTX 
 
 **→ [Demo 1 Results](demo-1/)**
 
+## Demo 2 — Highest Practical Model per GPU
+
+Each GPU runs the largest Qwen3.5 it can fit: 122B-A10B Q4_K_M on the RTX PRO 6000 Max-Q (48GB), 27B Q5_K_M on the 5090, 27B Q4_K_M on the 4090/3090. Same SVG task, comparing how model size affects output quality and throughput.
+
+**→ [Demo 2 Results](demo-2/)**
+
 
 ## Demo 2 — 27B split baseline
 

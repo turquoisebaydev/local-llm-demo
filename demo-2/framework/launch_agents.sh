@@ -7,7 +7,7 @@ set -e
 
 echo "🎬 Starting demo with metrics collection..."
 
-DURATION=120  # 2 minutes
+DURATION=${DURATION:-120}  # default 2 minutes, override with env
 TIMESTAMP=$(date +%s)
 OUTPUT_DIR="/tmp/svg_demo_${TIMESTAMP}"
 METRICS_DIR="${OUTPUT_DIR}/metrics"
@@ -49,6 +49,11 @@ agent:
 _config_version: 10
 custom_providers: []
 EOF
+    # Generate prompt from template with correct vision URL
+    local proxy_url="http://127.0.0.1:${PROXY_PORT[$idx]}"
+    sed -e "s|__CANVAS_NUM__|${idx}|g" -e "s|__VISION_URL__|${proxy_url}|g" \
+        "$FRAMEWORK_DIR/prompt_template.txt" > "$FRAMEWORK_DIR/prompt${idx}.txt"
+
     echo "$agent_home"
 }
 
