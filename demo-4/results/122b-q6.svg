@@ -1,0 +1,202 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d2d2d;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background - dark monitor fills upper 2/3 -->
+  <rect width="800" height="600" fill="url(#bgGradient)"/>
+  
+  <!-- Large monitor behind (turned off, dark) -->
+  <rect x="0" y="0" width="800" height="400" fill="#1a1a1a"/>
+  <rect x="10" y="10" width="780" height="380" fill="#222" stroke="#333" stroke-width="2"/>
+  
+  <!-- Desk surface (light wood, bottom 15%) -->
+  <rect x="0" y="450" width="800" height="150" fill="#d4c4a8"/>
+  
+  <!-- Smartphone (black, left of laptop, face down) -->
+  <rect x="60" y="480" width="55" height="100" rx="6" ry="6" fill="#1a1a1a" stroke="#444" stroke-width="2"/>
+  
+  <!-- Orange cable (from left, loops around phone, to laptop) -->
+  <path d="M0 520 Q40 510 70 530 Q90 540 130 520 Q180 500 240 490" fill="none" stroke="#ff7722" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- White paper/note under cable -->
+  <rect x="120" y="530" width="60" height="45" fill="#f5f5f5" transform="rotate(-5 120 530)"/>
+  
+  <!-- White object on right (notepad/envelope) -->
+  <rect x="700" y="470" width="80" height="100" fill="#ffffff" transform="rotate(3 700 470)"/>
+  
+  <!-- Laptop (rose gold/copper aluminum) - spans x=10% to x=90% -->
+  <!-- Laptop base -->
+  <rect x="80" y="460" width="640" height="80" rx="10" ry="10" fill="#c9a880" stroke="#a08060" stroke-width="2"/>
+  
+  <!-- Laptop screen frame -->
+  <rect x="120" y="280" width="560" height="185" rx="8" ry="8" fill="#1a1a1a" stroke="#555" stroke-width="3"/>
+  
+  <!-- Laptop screen content (macOS desktop) -->
+  <rect x="128" y="288" width="544" height="169" fill="#6ba3d6"/>
+  
+  <!-- Menu bar at top of screen -->
+  <rect x="128" y="288" width="544" height="22" fill="#2a2a2a"/>
+  <text x="140" y="304" font-family="sans-serif" font-size="11" fill="#fff">  File  Edit  View</text>
+  
+  <!-- Desktop icons on left side of screen -->
+  <rect x="140" y="320" width="28" height="28" rx="4" fill="#4285f4"/>
+  <text x="142" y="340" font-family="sans-serif" font-size="8" fill="#fff">Doc</text>
+  
+  <rect x="140" y="355" width="28" height="28" rx="4" fill="#34a853"/>
+  <text x="142" y="375" font-family="sans-serif" font-size="8" fill="#fff">Fold</text>
+  
+  <rect x="140" y="390" width="28" height="28" rx="4" fill="#ea4335"/>
+  <text x="142" y="410" font-family="sans-serif" font-size="8" fill="#fff">App</text>
+  
+  <!-- Dock at bottom of screen -->
+  <rect x="180" y="435" width="440" height="18" rx="6" fill="#2a2a2a" opacity="0.7"/>
+  <rect x="195" y="438" width="14" height="14" rx="3" fill="#4285f4"/>
+  <rect x="215" y="438" width="14" height="14" rx="3" fill="#34a853"/>
+  <rect x="235" y="438" width="14" height="14" rx="3" fill="#ea4335"/>
+  <rect x="255" y="438" width="14" height="14" rx="3" fill="#fbbc04"/>
+  <rect x="275" y="438" width="14" height="14" rx="3" fill="#9c27b0"/>
+  <rect x="295" y="438" width="14" height="14" rx="3" fill="#00bcd4"/>
+  
+  <!-- Keyboard area (black) -->
+  <rect x="140" y="475" width="520" height="25" fill="#1a1a1a"/>
+  <!-- Keyboard keys (simplified rows) -->
+  <g fill="#2a2a2a" stroke="#444" stroke-width="0.3">
+    <!-- Row 1 -->
+    <rect x="150" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="166" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="182" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="198" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="214" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="230" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="246" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="262" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="278" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="294" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="310" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="326" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="342" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="358" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="374" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="390" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="406" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="422" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="438" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="454" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="470" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="486" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="502" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="518" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="534" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="550" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="566" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="582" y="478" width="14" height="12" rx="1.5"/>
+    <rect x="598" y="478" width="14" height="12" rx="1.5"/>
+    <!-- Row 2 -->
+    <rect x="150" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="166" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="182" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="198" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="214" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="230" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="246" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="262" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="278" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="294" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="310" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="326" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="342" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="358" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="374" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="390" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="406" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="422" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="438" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="454" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="470" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="486" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="502" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="518" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="534" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="550" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="566" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="582" y="491" width="14" height="12" rx="1.5"/>
+    <rect x="598" y="491" width="14" height="12" rx="1.5"/>
+  </g>
+  
+  <!-- Trackpad (silver, centered below keyboard) -->
+  <rect x="340" y="505" width="120" height="75" rx="6" ry="6" fill="#c9a880" stroke="#a08060" stroke-width="1.5"/>
+  
+  <!-- Cat - Devon Rex, centered, sitting upright -->
+  <!-- Cat body (white/cream with gray tabby patches) -->
+  <ellipse cx="400" cy="420" rx="55" ry="85" fill="#f9f9f9" stroke="#ccc" stroke-width="2"/>
+  
+  <!-- Back patch (gray/silver tabby) -->
+  <ellipse cx="395" cy="390" rx="30" ry="45" fill="#9a8b7a" opacity="0.75"/>
+  
+  <!-- Cat head (heart-shaped) -->
+  <ellipse cx="400" cy="260" rx="52" ry="48" fill="#f9f9f9" stroke="#ccc" stroke-width="2"/>
+  
+  <!-- Head mask (gray tabby stripes over eyes and ears) -->
+  <ellipse cx="400" cy="255" rx="42" ry="32" fill="#9a8b7a" opacity="0.65"/>
+  <!-- Tabby stripes on forehead -->
+  <path d="M390 235 L400 250 L410 235" fill="none" stroke="#7a6b5a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M388 242 L400 255 L412 242" fill="none" stroke="#7a6b5a" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Large ears (high-set, triangular) -->
+  <path d="M355 235 L335 185 L368 230 Z" fill="#e8dcc8" stroke="#9a8b7a" stroke-width="2"/>
+  <path d="M445 235 L465 185 L432 230 Z" fill="#e8dcc8" stroke="#9a8b7a" stroke-width="2"/>
+  <!-- Inner ears (pink) -->
+  <path d="M358 233 L343 200 L365 231 Z" fill="#ffc9c9" opacity="0.85"/>
+  <path d="M442 233 L457 200 L435 231 Z" fill="#ffc9c9" opacity="0.85"/>
+  
+  <!-- Large green-yellow eyes (wide-set) -->
+  <ellipse cx="375" cy="255" rx="13" ry="16" fill="#9acd32" stroke="#2d4a15" stroke-width="1.2"/>
+  <ellipse cx="425" cy="255" rx="13" ry="16" fill="#9acd32" stroke="#2d4a15" stroke-width="1.2"/>
+  <!-- Pupils -->
+  <ellipse cx="375" cy="255" rx="5" ry="7" fill="#1a1a1a"/>
+  <ellipse cx="425" cy="255" rx="5" ry="7" fill="#1a1a1a"/>
+  <!-- Eye highlights -->
+  <circle cx="377" cy="252" r="2.5" fill="#fff" opacity="0.95"/>
+  <circle cx="427" cy="252" r="2.5" fill="#fff" opacity="0.95"/>
+  
+  <!-- Pink nose -->
+  <path d="M394 272 L406 272 L400 282 Z" fill="#ffb6c1" stroke="#cc8899" stroke-width="0.8"/>
+  
+  <!-- Mouth (subtle) -->
+  <path d="M396 288 Q400 293 404 288" fill="none" stroke="#888" stroke-width="1.2"/>
+  
+  <!-- Whiskers (6 per side, white) -->
+  <line x1="350" y1="272" x2="305" y2="266" stroke="#fff" stroke-width="1"/>
+  <line x1="350" y1="278" x2="305" y2="278" stroke="#fff" stroke-width="1"/>
+  <line x1="350" y1="284" x2="305" y2="290" stroke="#fff" stroke-width="1"/>
+  <line x1="450" y1="272" x2="495" y2="266" stroke="#fff" stroke-width="1"/>
+  <line x1="450" y1="278" x2="495" y2="278" stroke="#fff" stroke-width="1"/>
+  <line x1="450" y1="284" x2="495" y2="290" stroke="#fff" stroke-width="1"/>
+  
+  <!-- Collar (light beige/taupe with buckle) -->
+  <path d="M355 310 Q400 330 445 310" fill="none" stroke="#d0c4b8" stroke-width="16" stroke-linecap="round"/>
+  <rect x="392" y="315" width="16" height="14" fill="#b8a898" stroke="#988878" stroke-width="1"/>
+  
+  <!-- Front paws (on trackpad, side by side) -->
+  <ellipse cx="375" cy="515" rx="14" ry="18" fill="#f9f9f9" stroke="#ccc" stroke-width="2"/>
+  <ellipse cx="425" cy="515" rx="14" ry="18" fill="#f9f9f9" stroke="#ccc" stroke-width="2"/>
+  <!-- Paw toes -->
+  <ellipse cx="370" cy="530" rx="5" ry="4" fill="#f9f9f9" stroke="#ccc" stroke-width="0.8"/>
+  <ellipse cx="378" cy="532" rx="5" ry="4" fill="#f9f9f9" stroke="#ccc" stroke-width="0.8"/>
+  <ellipse cx="420" cy="530" rx="5" ry="4" fill="#f9f9f9" stroke="#ccc" stroke-width="0.8"/>
+  <ellipse cx="428" cy="532" rx="5" ry="4" fill="#f9f9f9" stroke="#ccc" stroke-width="0.8"/>
+  
+  <!-- Hind legs (body behind paws) -->
+  <ellipse cx="400" cy="460" rx="22" ry="28" fill="#f9f9f9" stroke="#ccc" stroke-width="2"/>
+  
+  <!-- Tail (curled around right hind leg, striped) -->
+  <path d="M430 470 Q470 500 475 525 Q480 545 465 550 Q445 555 430 535" fill="none" stroke="#f9f9f9" stroke-width="20" stroke-linecap="round"/>
+  <!-- Tail stripes -->
+  <path d="M435 478 Q465 505 470 525" fill="none" stroke="#9a8b7a" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+  <path d="M442 495 Q468 520 472 538" fill="none" stroke="#9a8b7a" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+  <path d="M450 512 Q470 532 473 547" fill="none" stroke="#9a8b7a" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+</svg>

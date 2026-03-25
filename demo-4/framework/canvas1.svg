@@ -1,0 +1,321 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d2d2d;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Fur gradient for cat body -->
+    <radialGradient id="furGradient" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" style="stop-color:#fafafa;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f0f0f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e0e0;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Tabby patch gradient -->
+    <radialGradient id="tabbyGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a09080;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#8b7d6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7a6d5a;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Eye gradient -->
+    <radialGradient id="eyeGradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#b8e64a;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#8bc34a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5d8c1e;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Screen glow -->
+    <linearGradient id="screenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7bb8e8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5a9fd4;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Laptop metallic gradient -->
+    <linearGradient id="metallicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4b896;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#c9a880;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b89466;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Soft shadow filter -->
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+    
+    <!-- Fur texture pattern -->
+    <pattern id="furTexture" patternUnits="userSpaceOnUse" width="4" height="4">
+      <path d="M0 2 Q2 0 4 2 M0 3 Q2 1 4 3" fill="none" stroke="#ccc" stroke-width="0.3" opacity="0.4"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGradient)"/>
+  
+  <!-- Large monitor behind (turned off) -->
+  <rect x="0" y="0" width="800" height="400" fill="#1a1a1a"/>
+  <rect x="8" y="8" width="784" height="384" fill="#1f1f1f" stroke="#333" stroke-width="2"/>
+  <!-- Subtle screen reflection -->
+  <rect x="20" y="20" width="760" height="360" fill="url(#bgGradient)" opacity="0.15"/>
+  
+  <!-- Desk surface (light wood) -->
+  <rect x="0" y="450" width="800" height="150" fill="#d8c8b0"/>
+  <!-- Wood grain texture -->
+  <g opacity="0.3">
+    <line x1="0" y1="470" x2="800" y2="470" stroke="#c4b498" stroke-width="1"/>
+    <line x1="0" y1="495" x2="800" y2="495" stroke="#c4b498" stroke-width="0.8"/>
+    <line x1="0" y1="520" x2="800" y2="520" stroke="#c4b498" stroke-width="1.2"/>
+    <line x1="0" y1="545" x2="800" y2="545" stroke="#c4b498" stroke-width="0.6"/>
+    <line x1="0" y1="570" x2="800" y2="570" stroke="#c4b498" stroke-width="1"/>
+    <line x1="0" y1="595" x2="800" y2="595" stroke="#c4b498" stroke-width="0.8"/>
+  </g>
+  
+  <!-- Smartphone -->
+  <rect x="58" y="478" width="58" height="104" rx="7" ry="7" fill="#151515" stroke="#444" stroke-width="2.5"/>
+  <rect x="68" y="492" width="38" height="56" fill="#222" rx="3"/>
+  <!-- Phone screen reflection -->
+  <ellipse cx="87" cy="515" rx="12" ry="20" fill="#fff" opacity="0.08"/>
+  
+  <!-- Orange cable -->
+  <path d="M0 518 Q35 505 65 528 Q85 542 125 518 Q175 495 235 485 Q280 478 320 475" 
+        fill="none" stroke="#ff7722" stroke-width="6" stroke-linecap="round" filter="url(#softShadow)"/>
+  <!-- Cable highlight -->
+  <path d="M0 516 Q35 503 65 526" fill="none" stroke="#ff9955" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  
+  <!-- White paper -->
+  <rect x="118" y="528" width="64" height="48" fill="#f8f8f8" transform="rotate(-5 118 528)" filter="url(#softShadow)"/>
+  <text x="128" y="545" font-family="sans-serif" font-size="9" fill="#666" transform="rotate(-5 128 545)">Note</text>
+  
+  <!-- White object on right -->
+  <rect x="698" y="468" width="84" height="104" fill="#fff" transform="rotate(3 698 468)" filter="url(#softShadow)"/>
+  
+  <!-- Laptop base -->
+  <rect x="75" y="458" width="650" height="84" rx="12" ry="12" fill="url(#metallicGradient)" stroke="#a08060" stroke-width="2.5" filter="url(#softShadow)"/>
+  <!-- Base highlight -->
+  <rect x="85" y="465" width="630" height="15" rx="8" fill="#fff" opacity="0.12"/>
+  
+  <!-- Laptop screen frame -->
+  <rect x="118" y="278" width="564" height="188" rx="9" ry="9" fill="#151515" stroke="#444" stroke-width="3.5"/>
+  <!-- Frame bevel -->
+  <rect x="123" y="283" width="554" height="178" rx="6" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+  
+  <!-- Laptop screen -->
+  <rect x="126" y="286" width="552" height="174" fill="url(#screenGlow)"/>
+  <!-- Screen glow overlay -->
+  <rect x="126" y="286" width="552" height="174" fill="#fff" opacity="0.08"/>
+  
+  <!-- Menu bar -->
+  <rect x="126" y="286" width="552" height="24" fill="#282828"/>
+  <text x="138" y="303" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#fff" font-weight="500">  File  Edit  View  Window</text>
+  
+  <!-- Desktop icons -->
+  <g>
+    <!-- Icon 1 -->
+    <rect x="138" y="322" width="32" height="32" rx="5" fill="#4285f4"/>
+    <rect x="144" y="328" width="20" height="20" fill="#fff" opacity="0.9"/>
+    <text x="140" y="358" font-family="sans-serif" font-size="8" fill="#fff">Docs</text>
+    
+    <!-- Icon 2 -->
+    <rect x="138" y="360" width="32" height="32" rx="5" fill="#34a853"/>
+    <rect x="144" y="366" width="20" height="20" fill="#fff" opacity="0.9"/>
+    <text x="140" y="396" font-family="sans-serif" font-size="8" fill="#fff">Folder</text>
+    
+    <!-- Icon 3 -->
+    <rect x="138" y="398" width="32" height="32" rx="5" fill="#ea4335"/>
+    <rect x="144" y="404" width="20" height="20" fill="#fff" opacity="0.9"/>
+    <text x="140" y="434" font-family="sans-serif" font-size="8" fill="#fff">App</text>
+  </g>
+  
+  <!-- Dock -->
+  <rect x="178" y="442" width="444" height="16" rx="6" fill="#252525" opacity="0.75"/>
+  <g>
+    <rect x="192" y="445" width="16" height="16" rx="3.5" fill="#4285f4"/>
+    <rect x="213" y="445" width="16" height="16" rx="3.5" fill="#34a853"/>
+    <rect x="234" y="445" width="16" height="16" rx="3.5" fill="#ea4335"/>
+    <rect x="255" y="445" width="16" height="16" rx="3.5" fill="#fbbc04"/>
+    <rect x="276" y="445" width="16" height="16" rx="3.5" fill="#9c27b0"/>
+    <rect x="297" y="445" width="16" height="16" rx="3.5" fill="#00bcd4"/>
+    <rect x="318" y="445" width="16" height="16" rx="3.5" fill="#ff5722"/>
+    <rect x="339" y="445" width="16" height="16" rx="3.5" fill="#607d8b"/>
+  </g>
+  
+  <!-- Keyboard -->
+  <rect x="138" y="473" width="524" height="28" fill="#121212"/>
+  <!-- Key rows -->
+  <g fill="#252525" stroke="#3a3a3a" stroke-width="0.4">
+    <!-- Row 1 -->
+    <g>
+      <rect x="148" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="165" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="182" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="199" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="216" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="233" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="250" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="267" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="284" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="301" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="318" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="335" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="352" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="369" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="386" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="403" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="420" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="437" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="454" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="471" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="488" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="505" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="522" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="539" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="556" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="573" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="590" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="607" y="476" width="15" height="13" rx="1.8"/>
+      <rect x="624" y="476" width="15" height="13" rx="1.8"/>
+    </g>
+    <!-- Row 2 -->
+    <g>
+      <rect x="148" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="165" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="182" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="199" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="216" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="233" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="250" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="267" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="284" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="301" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="318" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="335" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="352" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="369" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="386" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="403" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="420" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="437" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="454" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="471" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="488" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="505" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="522" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="539" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="556" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="573" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="590" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="607" y="489" width="15" height="13" rx="1.8"/>
+      <rect x="624" y="489" width="15" height="13" rx="1.8"/>
+    </g>
+  </g>
+  
+  <!-- Trackpad -->
+  <rect x="338" y="503" width="124" height="78" rx="7" ry="7" fill="url(#metallicGradient)" stroke="#a08060" stroke-width="1.5" filter="url(#softShadow)"/>
+  <!-- Trackpad subtle highlight -->
+  <rect x="343" y="508" width="114" height="20" rx="5" fill="#fff" opacity="0.1"/>
+  
+  <!-- Cat - Devon Rex -->
+  <g filter="url(#softShadow)">
+    <!-- Cat body with fur gradient -->
+    <ellipse cx="400" cy="418" rx="58" ry="88" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="2"/>
+    <!-- Fur texture overlay -->
+    <ellipse cx="400" cy="418" rx="58" ry="88" fill="url(#furTexture)"/>
+    
+    <!-- Back patch with gradient -->
+    <ellipse cx="393" cy="388" rx="33" ry="48" fill="url(#tabbyGradient)" opacity="0.8"/>
+    <!-- Tabby stripes on patch -->
+    <path d="M385 365 Q393 375 401 365" fill="none" stroke="#6a5d4a" stroke-width="3" opacity="0.7"/>
+    <path d="M382 378 Q393 390 404 378" fill="none" stroke="#6a5d4a" stroke-width="3" opacity="0.7"/>
+    <path d="M380 392 Q393 405 406 392" fill="none" stroke="#6a5d4a" stroke-width="3" opacity="0.7"/>
+    <path d="M382 408 Q393 420 404 408" fill="none" stroke="#6a5d4a" stroke-width="3" opacity="0.7"/>
+    
+    <!-- Cat head -->
+    <ellipse cx="400" cy="258" rx="54" ry="50" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="2"/>
+    <!-- Head fur texture -->
+    <ellipse cx="400" cy="258" rx="54" ry="50" fill="url(#furTexture)"/>
+    
+    <!-- Head mask -->
+    <ellipse cx="400" cy="253" rx="44" ry="34" fill="url(#tabbyGradient)" opacity="0.7"/>
+    <!-- Forehead tabby stripes -->
+    <path d="M388 232 L400 248 L412 232" fill="none" stroke="#6a5d4a" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M385 240 L400 255 L415 240" fill="none" stroke="#6a5d4a" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M383 248 L400 262 L417 248" fill="none" stroke="#6a5d4a" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Ears -->
+    <path d="M353 233 L332 182 L366 228 Z" fill="#e8dcc8" stroke="#9a8b7a" stroke-width="2.5"/>
+    <path d="M447 233 L468 182 L434 228 Z" fill="#e8dcc8" stroke="#9a8b7a" stroke-width="2.5"/>
+    <!-- Inner ears -->
+    <path d="M356 231 L341 198 L363 229 Z" fill="radial-gradient(circle, #ffc9c9 0%, #eebbbb 100%)" opacity="0.9"/>
+    <path d="M444 231 L459 198 L437 229 Z" fill="radial-gradient(circle, #ffc9c9 0%, #eebbbb 100%)" opacity="0.9"/>
+    <!-- Ear fur texture -->
+    <path d="M358 228 Q345 210 350 195 M442 228 Q455 210 450 195" fill="none" stroke="#c0b0a0" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Eyes with gradient -->
+    <ellipse cx="373" cy="253" rx="14" ry="17" fill="url(#eyeGradient)" stroke="#2d4a15" stroke-width="1.5"/>
+    <ellipse cx="427" cy="253" rx="14" ry="17" fill="url(#eyeGradient)" stroke="#2d4a15" stroke-width="1.5"/>
+    <!-- Pupils -->
+    <ellipse cx="373" cy="253" rx="6" ry="8" fill="#0d0d0d"/>
+    <ellipse cx="427" cy="253" rx="6" ry="8" fill="#0d0d0d"/>
+    <!-- Catchlights (eye reflections) -->
+    <ellipse cx="375" cy="250" rx="3" ry="3.5" fill="#fff" opacity="0.95"/>
+    <ellipse cx="429" cy="250" rx="3" ry="3.5" fill="#fff" opacity="0.95"/>
+    <ellipse cx="371" cy="256" rx="1.5" ry="2" fill="#fff" opacity="0.7"/>
+    <ellipse cx="425" cy="256" rx="1.5" ry="2" fill="#fff" opacity="0.7"/>
+    
+    <!-- Nose -->
+    <path d="M392 270 L408 270 L400 283 Z" fill="#ffb6c1" stroke="#d48899" stroke-width="1"/>
+    <!-- Nose texture -->
+    <ellipse cx="400" cy="276" rx="4" ry="3" fill="#e899aa" opacity="0.4"/>
+    
+    <!-- Mouth -->
+    <path d="M394 290 Q400 296 406 290" fill="none" stroke="#777" stroke-width="1.5"/>
+    <path d="M395 290 Q400 298 398 302" fill="none" stroke="#777" stroke-width="1.2"/>
+    <path d="M405 290 Q400 298 402 302" fill="none" stroke="#777" stroke-width="1.2"/>
+    
+    <!-- Whiskers (varying thickness and length) -->
+    <g stroke="#fff" stroke-linecap="round">
+      <line x1="348" y1="270" x2="298" y2="262" stroke-width="1.2"/>
+      <line x1="349" y1="276" x2="300" y2="276" stroke-width="1.1"/>
+      <line x1="350" y1="282" x2="302" y2="290" stroke-width="1.0"/>
+      <line x1="352" y1="288" x2="308" y2="296" stroke-width="0.9"/>
+      <line x1="452" y1="270" x2="502" y2="262" stroke-width="1.2"/>
+      <line x1="451" y1="276" x2="500" y2="276" stroke-width="1.1"/>
+      <line x1="450" y1="282" x2="498" y2="290" stroke-width="1.0"/>
+      <line x1="448" y1="288" x2="492" y2="296" stroke-width="0.9"/>
+    </g>
+    
+    <!-- Collar -->
+    <path d="M353 308 Q400 332 447 308" fill="none" stroke="#d4c8b8" stroke-width="17" stroke-linecap="round"/>
+    <path d="M353 308 Q400 332 447 308" fill="none" stroke="#c4b8a8" stroke-width="14" stroke-linecap="round" opacity="0.7"/>
+    <rect x="390" y="314" width="20" height="16" rx="2" fill="#c8b8a8" stroke="#988878" stroke-width="1.2"/>
+    <circle cx="400" cy="322" r="3" fill="#887868"/>
+    
+    <!-- Front paws -->
+    <ellipse cx="372" cy="513" rx="15" ry="19" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="2"/>
+    <ellipse cx="428" cy="513" rx="15" ry="19" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="2"/>
+    <!-- Paw texture -->
+    <ellipse cx="372" cy="513" rx="15" ry="19" fill="url(#furTexture)"/>
+    <ellipse cx="428" cy="513" rx="15" ry="19" fill="url(#furTexture)"/>
+    <!-- Paw toes -->
+    <ellipse cx="367" cy="528" rx="5.5" ry="4.5" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="1"/>
+    <ellipse cx="377" cy="531" rx="5.5" ry="4.5" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="1"/>
+    <ellipse cx="423" cy="528" rx="5.5" ry="4.5" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="1"/>
+    <ellipse cx="433" cy="531" rx="5.5" ry="4.5" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="1"/>
+    
+    <!-- Hind leg -->
+    <ellipse cx="400" cy="458" rx="24" ry="30" fill="url(#furGradient)" stroke="#c0c0c0" stroke-width="2"/>
+    <ellipse cx="400" cy="458" rx="24" ry="30" fill="url(#furTexture)"/>
+    
+    <!-- Tail -->
+    <path d="M428 468 Q468 498 473 523 Q478 543 463 548 Q443 553 428 533" 
+          fill="none" stroke="url(#furGradient)" stroke-width="21" stroke-linecap="round"/>
+    <path d="M428 468 Q468 498 473 523 Q478 543 463 548 Q443 553 428 533" 
+          fill="none" stroke="url(#furTexture)" stroke-width="21" stroke-linecap="round"/>
+    <!-- Tail stripes -->
+    <path d="M433 476 Q463 503 468 521" fill="none" stroke="url(#tabbyGradient)" stroke-width="11" stroke-linecap="round" opacity="0.75"/>
+    <path d="M440 493 Q465 518 469 534" fill="none" stroke="url(#tabbyGradient)" stroke-width="11" stroke-linecap="round" opacity="0.75"/>
+    <path d="M448 510 Q467 528 470 543" fill="none" stroke="url(#tabbyGradient)" stroke-width="11" stroke-linecap="round" opacity="0.75"/>
+    <path d="M456 526 Q470 538 472 548" fill="none" stroke="url(#tabbyGradient)" stroke-width="11" stroke-linecap="round" opacity="0.75"/>
+  </g>
+</svg>

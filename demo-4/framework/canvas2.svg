@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Background wall -->
+  <rect width="800" height="600" fill="#252530"/>
+  
+  <!-- Black monitor - behind cat's upper body, thick bezel -->
+  <rect x="200" y="30" width="400" height="280" rx="6" fill="#1a1a1a"/>
+  <rect x="215" y="48" width="370" height="245" rx="3" fill="#050505"/>
+  <!-- Subtle reflection on screen -->
+  <ellipse cx="385" cy="140" rx="120" ry="60" fill="#151515" opacity="0.4"/>
+  
+  <!-- Light wood desk -->
+  <rect x="0" y="340" width="800" height="260" fill="#e8dcc8"/>
+  <!-- Wood grain texture -->
+  <g stroke="#d4c4a8" stroke-width="2" opacity="0.4">
+    <line x1="30" y1="365" x2="200" y2="375"/>
+    <line x1="220" y1="410" x2="450" y2="425"/>
+    <line x1="480" y1="455" x2="720" y2="470"/>
+    <line x1="100" y1="500" x2="320" y2="515"/>
+    <line x1="550" y1="540" x2="780" y2="555"/>
+  </g>
+  
+  <!-- Orange cable -->
+  <path d="M 200 380 Q 160 410 175 455 Q 190 500 165 540" stroke="#ff6600" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="165" cy="540" rx="7" ry="10" fill="#c0c0c0"/>
+  
+  <!-- LAPTOP (Gold MacBook) -->
+  <rect x="180" y="250" width="440" height="95" rx="5" fill="#e6c8a8"/>
+  <rect x="190" y="260" width="420" height="80" rx="3" fill="#d4af37"/>
+  
+  <!-- Laptop screen -->
+  <rect x="200" y="90" width="400" height="155" rx="4" fill="#3a3a3a"/>
+  <rect x="210" y="100" width="380" height="135" fill="#f5fbff"/>
+  <!-- macOS desktop -->
+  <rect x="220" y="115" width="360" height="100" fill="#e8f0f8"/>
+  <!-- Finder window hint -->
+  <rect x="280" y="130" width="240" height="70" rx="4" fill="#fff" opacity="0.9"/>
+  <!-- Dock icons at bottom -->
+  <circle cx="300" cy="195" r="12" fill="#fff" opacity="0.8"/>
+  <circle cx="340" cy="195" r="12" fill="#fff" opacity="0.7"/>
+  <circle cx="380" cy="195" r="12" fill="#fff" opacity="0.75"/>
+  <circle cx="420" cy="195" r="12" fill="#fff" opacity="0.65"/>
+  <circle cx="460" cy="195" r="12" fill="#fff" opacity="0.7"/>
+  <!-- Screen glare -->
+  <ellipse cx="400" cy="150" rx="150" ry="40" fill="#fff" opacity="0.1"/>
+  
+  <!-- Keyboard (black keys on gold palm rest) -->
+  <rect x="220" y="275" width="360" height="40" fill="#1a1a1a"/>
+  <!-- Individual keys -->
+  <g fill="#2a2a2a">
+    <rect x="230" y="280" width="15" height="9"/>
+    <rect x="250" y="280" width="15" height="9"/>
+    <rect x="270" y="280" width="15" height="9"/>
+    <rect x="290" y="280" width="15" height="9"/>
+    <rect x="310" y="280" width="15" height="9"/>
+    <rect x="235" y="294" width="15" height="9"/>
+    <rect x="255" y="294" width="15" height="9"/>
+    <rect x="275" y="294" width="15" height="9"/>
+  </g>
+  
+  <!-- Trackpad (gold) -->
+  <rect x="330" y="315" width="170" height="48" rx="4" fill="#e8d0b0"/>
+  
+  <!-- CAT - White cat with light gray tabby markings -->
+  <!-- Tail wrapping around right side (viewer's left) -->
+  <ellipse cx="230" cy="375" rx="28" ry="18" fill="#f5f5f5"/>
+  <ellipse cx="245" cy="368" rx="24" ry="15" fill="#c4c4c4"/>
+  <ellipse cx="258" cy="362" rx="18" ry="12" fill="#4a4a4a"/>
+  <ellipse cx="265" cy="358" rx="14" ry="10" fill="#2e2e2e"/>
+  
+  <!-- Body - white with gray patches -->
+  <ellipse cx="400" cy="305" rx="68" ry="50" fill="#f5f5f5"/>
+  <!-- Light gray tabby patches on back -->
+  <ellipse cx="355" cy="290" rx="32" ry="24" fill="#c4c4c4"/>
+  <ellipse cx="445" cy="288" rx="34" ry="26" fill="#c4c4c4"/>
+  <ellipse cx="400" cy="280" rx="40" ry="20" fill="#b8b8b8"/>
+  
+  <!-- Front paws on palm rest (not trackpad) -->
+  <ellipse cx="355" cy="350" rx="18" ry="24" fill="#ffffff"/>
+  <ellipse cx="445" cy="350" rx="18" ry="24" fill="#ffffff"/>
+  <!-- Pink paw pads -->
+  <ellipse cx="355" cy="355" rx="10" ry="6" fill="#ffc0c8"/>
+  <ellipse cx="445" cy="355" rx="10" ry="6" fill="#ffc0c8"/>
+  
+  <!-- Head - mostly white -->
+  <ellipse cx="400" cy="210" rx="48" ry="44" fill="#f5f5f5"/>
+  <ellipse cx="400" cy="203" rx="38" ry="36" fill="#ffffff"/>
+  
+  <!-- Ears -->
+  <polygon points="358,178 368,145 393,175" fill="#d4d4d4"/>
+  <polygon points="442,178 432,145 407,175" fill="#d4d4d4"/>
+  <!-- Inner ear pink -->
+  <polygon points="370,155 375,167 389,162" fill="#ffb6c1"/>
+  <polygon points="430,155 425,167 411,162" fill="#ffb6c1"/>
+  
+  <!-- Tabby stripes on top of head -->
+  <path d="M 387 175 Q 400 170 413 175" stroke="#b8b8b8" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 384 181 Q 400 177 416 181" stroke="#b8b8b8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Eyes - bright lime green -->
+  <ellipse cx="375" cy="205" rx="13" ry="15" fill="#fff"/>
+  <ellipse cx="425" cy="207" rx="13" ry="15" fill="#fff"/>
+  <!-- Lime green irises -->
+  <circle cx="375" cy="205" r="8.5" fill="#9acd32"/>
+  <circle cx="425" cy="207" r="8.5" fill="#9acd32"/>
+  <!-- Black pupils -->
+  <circle cx="375" cy="205" r="4.5" fill="#000"/>
+  <circle cx="425" cy="207" r="4.5" fill="#000"/>
+  <!-- White eye highlights -->
+  <circle cx="373" cy="203" r="2.5" fill="#fff"/>
+  <circle cx="423" cy="205" r="2.5" fill="#fff"/>
+  
+  <!-- Pink nose -->
+  <polygon points="400,222 392,230 408,230" fill="#ffb6c1"/>
+  
+  <!-- Mouth -->
+  <path d="M 400 230 Q 392 239 388 237" stroke="#666" stroke-width="1.5" fill="none"/>
+  <path d="M 400 230 Q 408 239 412 237" stroke="#666" stroke-width="1.5" fill="none"/>
+  
+  <!-- Whiskers -->
+  <g stroke="#555" stroke-width="1">
+    <line x1="356" y1="225" x2="315" y2="220"/>
+    <line x1="356" y1="230" x2="315" y2="230"/>
+    <line x1="356" y1="235" x2="315" y2="242"/>
+    <line x1="444" y1="225" x2="485" y2="220"/>
+    <line x1="444" y1="230" x2="485" y2="230"/>
+    <line x1="444" y1="235" x2="485" y2="242"/>
+  </g>
+  
+  <!-- Light gray fabric collar with buckle -->
+  <rect x="376" y="242" width="48" height="11" rx="3" fill="#d3d3d3"/>
+  <!-- Collar texture/folds -->
+  <path d="M 380 242 Q 400 248 420 242" stroke="#c0c0c0" stroke-width="1" fill="none"/>
+  <!-- Silver buckle -->
+  <circle cx="400" cy="247" r="5.5" fill="#c0c0c0"/>
+  <circle cx="400" cy="247" r="3" fill="#e8e8e8"/>
+  
+  <!-- White chest fur -->
+  <ellipse cx="400" cy="275" rx="32" ry="38" fill="#ffffff"/>
+</svg>

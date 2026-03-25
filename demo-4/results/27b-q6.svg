@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Background wall -->
+  <rect width="800" height="600" fill="#1f1f2a"/>
+  
+  <!-- Large black monitor - spans most of background -->
+  <rect x="50" y="40" width="700" height="320" rx="8" fill="#0a0a0a"/>
+  <rect x="65" y="60" width="670" height="280" rx="4" fill="#050505"/>
+  <!-- Subtle screen reflection -->
+  <ellipse cx="400" cy="180" rx="200" ry="80" fill="#1a1a1a" opacity="0.3"/>
+  
+  <!-- Light wood desk -->
+  <rect x="0" y="340" width="800" height="260" fill="#e8d4b8"/>
+  <!-- Wood grain -->
+  <g stroke="#d4c0a0" stroke-width="2" opacity="0.5">
+    <line x1="20" y1="360" x2="180" y2="368"/>
+    <line x1="200" y1="400" x2="400" y2="410"/>
+    <line x1="450" y1="440" x2="700" y2="455"/>
+    <line x1="80" y1="480" x2="280" y2="490"/>
+    <line x1="500" y1="520" x2="750" y2="535"/>
+  </g>
+  
+  <!-- Orange cable with connector -->
+  <path d="M 180 380 Q 150 400 160 440 Q 175 480 150 520" stroke="#ff6600" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <ellipse cx="150" cy="520" rx="8" ry="12" fill="#c0c0c0"/>
+  
+  <!-- LAPTOP (space gray, not rose gold) -->
+  <rect x="180" y="260" width="440" height="95" rx="5" fill="#5a5a5a"/>
+  <rect x="190" y="270" width="420" height="80" rx="3" fill="#4a4a4a"/>
+  
+  <!-- Laptop screen -->
+  <rect x="200" y="100" width="400" height="155" rx="4" fill="#3a3a3a"/>
+  <rect x="210" y="110" width="380" height="135" fill="#f0f8ff"/>
+  <!-- Screen content (desktop icons) -->
+  <rect x="220" y="125" width="360" height="105" fill="#e0ecf4"/>
+  <circle cx="320" cy="170" r="22" fill="#fff" opacity="0.8"/>
+  <circle cx="390" cy="155" r="18" fill="#fff" opacity="0.6"/>
+  <circle cx="460" cy="185" r="20" fill="#fff" opacity="0.7"/>
+  <circle cx="520" cy="165" r="16" fill="#fff" opacity="0.5"/>
+  
+  <!-- Keyboard (black keys) -->
+  <rect x="210" y="285" width="380" height="45" fill="#1a1a1a"/>
+  <!-- Individual keys with white lettering -->
+  <g>
+    <rect x="220" y="290" width="16" height="10" fill="#2a2a2a"/>
+    <rect x="241" y="290" width="16" height="10" fill="#2a2a2a"/>
+    <rect x="262" y="290" width="16" height="10" fill="#2a2a2a"/>
+    <rect x="283" y="290" width="16" height="10" fill="#2a2a2a"/>
+    <rect x="304" y="290" width="16" height="10" fill="#2a2a2a"/>
+    <rect x="225" y="305" width="16" height="10" fill="#2a2a2a"/>
+    <rect x="246" y="305" width="16" height="10" fill="#2a2a2a"/>
+    <rect x="267" y="305" width="16" height="10" fill="#2a2a2a"/>
+  </g>
+  
+  <!-- Trackpad (gray) -->
+  <rect x="340" y="325" width="160" height="50" rx="4" fill="#7a7a7a"/>
+  
+  <!-- CAT - sitting on laptop keyboard -->
+  <!-- Tail with ring pattern -->
+  <ellipse cx="240" cy="380" rx="32" ry="20" fill="#8b7d6b"/>
+  <ellipse cx="255" cy="372" rx="28" ry="17" fill="#6b5d4f"/>
+  <ellipse cx="268" cy="365" rx="22" ry="14" fill="#4f4238"/>
+  
+  <!-- Body -->
+  <ellipse cx="400" cy="310" rx="70" ry="52" fill="#d8c8b0"/>
+  <!-- Tabby patches -->
+  <ellipse cx="355" cy="295" rx="30" ry="22" fill="#a89885"/>
+  <ellipse cx="445" cy="292" rx="32" ry="24" fill="#a89885"/>
+  <ellipse cx="400" cy="285" rx="38" ry="18" fill="#b8a895"/>
+  
+  <!-- Front paws on trackpad -->
+  <ellipse cx="360" cy="355" rx="20" ry="26" fill="#faf0e6"/>
+  <ellipse cx="440" cy="355" rx="20" ry="26" fill="#faf0e6"/>
+  <!-- Paw pads -->
+  <ellipse cx="360" cy="360" rx="11" ry="7" fill="#e8d4c0"/>
+  <ellipse cx="440" cy="360" rx="11" ry="7" fill="#e8d4c0"/>
+  
+  <!-- Head -->
+  <ellipse cx="400" cy="215" rx="50" ry="46" fill="#d8c8b0"/>
+  <ellipse cx="400" cy="208" rx="40" ry="38" fill="#f0e6d4"/>
+  
+  <!-- Ears -->
+  <polygon points="358,182 368,148 394,178" fill="#b8a895"/>
+  <polygon points="442,182 432,148 406,178" fill="#b8a895"/>
+  <!-- Inner ear pink -->
+  <polygon points="370,158 375,170 390,165" fill="#eec0b0"/>
+  <polygon points="430,158 425,170 410,165" fill="#eec0b0"/>
+  
+  <!-- Eyes - large, green -->
+  <ellipse cx="376" cy="208" rx="14" ry="16" fill="#fff"/>
+  <ellipse cx="424" cy="210" rx="14" ry="16" fill="#fff"/>
+  <circle cx="376" cy="208" r="9" fill="#8fbc8f"/>
+  <circle cx="424" cy="210" r="9" fill="#8fbc8f"/>
+  <circle cx="376" cy="208" r="5" fill="#000"/>
+  <circle cx="424" cy="210" r="5" fill="#000"/>
+  <!-- Eye shine -->
+  <circle cx="374" cy="206" r="3" fill="#fff"/>
+  <circle cx="422" cy="208" r="3" fill="#fff"/>
+  
+  <!-- Pink nose -->
+  <polygon points="400,225 392,233 408,233" fill="#ffb6c1"/>
+  
+  <!-- Mouth -->
+  <path d="M 400 233 Q 393 242 389 240" stroke="#666" stroke-width="1.5" fill="none"/>
+  <path d="M 400 233 Q 407 242 411 240" stroke="#666" stroke-width="1.5" fill="none"/>
+  
+  <!-- Whiskers -->
+  <g stroke="#444" stroke-width="1">
+    <line x1="358" y1="228" x2="320" y2="222"/>
+    <line x1="358" y1="233" x2="320" y2="233"/>
+    <line x1="358" y1="238" x2="320" y2="245"/>
+    <line x1="442" y1="228" x2="480" y2="222"/>
+    <line x1="442" y1="233" x2="480" y2="233"/>
+    <line x1="442" y1="238" x2="480" y2="245"/>
+  </g>
+  
+  <!-- Collar with buckle -->
+  <rect x="378" y="245" width="44" height="10" rx="3" fill="#c9b896"/>
+  <circle cx="400" cy="250" r="5" fill="#c0c0c0"/>
+  <circle cx="400" cy="250" r="3" fill="#e8e8e8"/>
+  
+  <!-- White chest fur -->
+  <ellipse cx="400" cy="280" rx="30" ry="35" fill="#faf8f0"/>
+  
+  <!-- Forehead tabby stripes -->
+  <path d="M 386 180 Q 400 175 414 180" stroke="#b8a895" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M 383 187 Q 400 183 417 187" stroke="#b8a895" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
