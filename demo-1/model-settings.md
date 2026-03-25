@@ -14,7 +14,7 @@ Each GPU runs one llama-server instance with identical model and settings, diffe
 
 | GPU | Context | Service unit |
 |-----|---------|-------------|
-| RTX PRO 6000 | 131072 | `llama-qwen27-6000.service` |
+| RTX PRO 6000 Max-Q (300W) | 131072 | `llama-qwen27-6000.service` |
 | RTX 5090 | 131072 | `llama-qwen27-5090.service` |
 | RTX 4090 | 131072 | `llama-qwen27-4090.service` |
 | RTX 3090 | 131072 | `llama-qwen27-3090.service` |

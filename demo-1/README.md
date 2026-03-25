@@ -7,7 +7,7 @@ Each GPU runs an independent AI agent that uses **native vision** to analyze a r
 
 | GPU | VRAM | Context |
 |-----|------|---------|
-| NVIDIA RTX PRO 6000 (Blackwell) | 48 GB | 131072 |
+| NVIDIA RTX PRO 6000 Blackwell Max-Q (300W) | 48 GB | 131072 |
 | NVIDIA GeForce RTX 5090 | 32 GB | 131072 |
 | NVIDIA GeForce RTX 4090 | 24 GB | 131072 |
 | NVIDIA GeForce RTX 3090 | 24 GB | 131072 |
@@ -38,7 +38,7 @@ Each agent:
 
 <table>
 <tr>
-<td align="center"><strong>RTX PRO 6000</strong><br>(19 iterations)</td>
+<td align="center"><strong>RTX PRO 6000 Max-Q</strong><br>(19 iterations)</td>
 <td align="center"><strong>RTX 5090</strong><br>(21 iterations)</td>
 <td align="center"><strong>RTX 4090</strong><br>(13 iterations)</td>
 <td align="center"><strong>RTX 3090</strong><br>(14 iterations)</td>
@@ -55,7 +55,7 @@ Each agent:
 
 Collected via `nvidia-smi` (power, utilization) and llama.cpp `/slots` (token throughput) polled every 2 seconds during the 10-minute run.
 
-| Metric | RTX PRO 6000 | RTX 5090 | RTX 4090 | RTX 3090 |
+| Metric | RTX PRO 6000 Max-Q | RTX 5090 | RTX 4090 | RTX 3090 |
 |--------|:------------:|:--------:|:--------:|:--------:|
 | **Iterations completed** | 19 | **21** | 13 | 14 |
 | **TPS (avg)** | 49.3 | **60.2** | 42.7 | 33.9 |
@@ -72,17 +72,17 @@ Collected via `nvidia-smi` (power, utilization) and llama.cpp `/slots` (token th
 
 | GPU | tok/s | Avg Power (W) | **Tokens per Watt** |
 |-----|------:|:-------------:|:-------------------:|
-| RTX PRO 6000 | 49.3 | 292 | **0.169** |
+| RTX PRO 6000 Max-Q | 49.3 | 292 | **0.169** |
 | RTX 5090 | 60.2 | 550 | 0.109 |
 | RTX 4090 | 42.7 | 366 | 0.117 |
 | RTX 3090 | 33.9 | 333 | 0.102 |
 
-The RTX PRO 6000 delivers **55% more tokens per watt** than the 5090 and **44% more** than the 4090.
+The RTX PRO 6000 Max-Q (300W TDP) delivers **55% more tokens per watt** than the 5090 and **44% more** than the 4090.
 
 ### Key Takeaways
 
 - **RTX 5090** is the fastest at 60.2 tok/s average and completed the most iterations (21), but draws 550W average — nearly double the RTX PRO 6000.
-- **RTX PRO 6000** delivers 49.3 tok/s at only 292W average — best **tokens per watt** efficiency by a large margin.
+- **RTX PRO 6000 Max-Q** delivers 49.3 tok/s at only 292W average — best **tokens per watt** efficiency by a large margin.
 - **RTX 4090** holds up well at 42.7 tok/s on a consumer card.
 - **RTX 3090** at 33.9 tok/s is the slowest but still completed 14 iterations with meaningful SVG output.
 - All GPUs saturate at 90-96% utilization — the workload is fully GPU-bound.
